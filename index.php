@@ -13,6 +13,7 @@ and open the template in the editor.
         hi
         bye
         ha
+        karu
         <?php
         // put your code here
         ?>
