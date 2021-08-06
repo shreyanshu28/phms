@@ -1,0 +1,46 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.page-logo {
+  text-align: center;
+  font-size: 30px;
+}
+
+.login-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 30%;
+}
+
+.row {
+  width: 100%;
+}
+
+.input-icon > img {
+  width: 30px;
+  height: 30px;
+  margin: 10px 0px 0px 0px;
+}
+
+input {
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 10px;
+  width: 100%;
+  height: 6vh;
+}
+
+input[type="text"] {
+}
+
+input[type="email"] {
+}
