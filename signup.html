@@ -36,25 +36,51 @@
       <p class="page-logo title is-1">Sign Up</p>
     </div>
     <div class="login-main">
+      <div class="row registration-progress">
+        <progress
+          class="progress is-primary"
+          value="0"
+          max="100"
+          id="registration-progress"
+        >
+          15%
+        </progress>
+      </div>
       <div class="row">
         <div class="input-icon title">First Name</div>
-        <input type="text" class="subtitle" placeholder="First Name" />
+        <input
+          type="text"
+          class="subtitle input is-primary"
+          placeholder="First Name"
+          id="firstname"
+        />
       </div>
       <div class="row">
         <div class="input-icon title">Last Name</div>
-        <input type="text" class="subtitle" placeholder="Last Name" />
+        <input
+          type="text"
+          class="subtitle input is-primary"
+          placeholder="Last Name"
+          id="lastname"
+        />
       </div>
       <div class="row">
         <div class="input-icon title">Email</div>
-        <input type="text" class="subtitle" placeholder="Email" />
+        <input
+          type="text"
+          class="subtitle input is-primary"
+          placeholder="Email"
+          id="email"
+        />
       </div>
       <div class="row">
         <div class="input-icon title">Username</div>
         <input
           type="text"
           name="txtUsername"
-          class="subtitle"
+          class="subtitle input is-primary"
           placeholder="Username"
+          id="username"
         />
       </div>
       <div class="row">
@@ -62,8 +88,9 @@
         <input
           type="text"
           name="txtPassword"
-          class="subtitle"
+          class="subtitle input is-primary"
           placeholder="Last Name"
+          id="password"
         />
       </div>
       <div class="row">
@@ -71,4 +98,5 @@
       </div>
     </div>
   </body>
+  <script src="./scripts/signup.js"></script>
 </html>

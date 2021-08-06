@@ -36,27 +36,41 @@
       <p class="page-logo title is-1">Log In</p>
     </div>
     <div class="login-main">
-      <div class="row">
-        <div class="input-icon title">Username</div>
+      <div class="row" id="userInput">
+        <div class="title">Username</div>
         <input
           type="text"
           name="txtUsername"
-          class="subtitle"
+          class="subtitle input is-primary"
           placeholder="Username"
+          id="username"
+          required
         />
       </div>
       <div class="row">
         <div class="input-icon title">Password</div>
         <input
-          type="text"
+          type="password"
           name="txtPassword"
-          class="subtitle"
-          placeholder="Last Name"
+          class="subtitle input is-primary"
+          placeholder="password"
+          id="password"
+          minlength="8"
+          required
         />
       </div>
       <div class="row">
+        <progress
+          class="progress is-primary"
+          value="0"
+          max="100"
+          id="login-progress"
+        >
+          15%
+        </progress>
         <a href="#" class="button is-info">Log In</a>
       </div>
     </div>
   </body>
+  <script src="./scripts/login.js"></script>
 </html>
