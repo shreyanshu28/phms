@@ -8,10 +8,9 @@ usernameClass.addEventListener("keypress", function (event) {
 });
 
 password.addEventListener("focus", function (event) {
-  //let count = 0;
   let username = document.getElementById("username").value;
 
-  //display error message
+  //display error message is username is empty
   if (username === "") {
     usernameClass.classList.remove("is-primary");
     usernameClass.classList.add("is-danger");
@@ -19,13 +18,10 @@ password.addEventListener("focus", function (event) {
 
     if (!messageCreated) {
       messageCreated = createUsernameEmptyMessage(); //if created, returns true
-      //count++;
     }
   } else {
     if (messageCreated) {
-      removeUsernameEmptyMessage();
-      messageCreated = false;
-      //count = 0;
+      messageCreated = removeUsernameEmptyMessage(); //when removed, returns false
     }
   }
 });
@@ -55,4 +51,5 @@ function removeUsernameEmptyMessage() {
 
 function setProgressBar(size) {
   document.getElementById("login-progress").value = size;
+  return false;
 }
