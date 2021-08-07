@@ -87,8 +87,5 @@
         </div>
       </div>
     </div>
-      <?php
-        echo 'kushal';
-      ?>
   </body>
 </html>
