@@ -32,6 +32,11 @@ body {
   padding: 10px;
 }
 
+.box {
+  text-align: center;
+  padding: 5px;
+}
+
 .page-logo {
   text-align: center;
   font-size: 30px;
@@ -43,12 +48,13 @@ body {
   justify-content: center;
   align-items: center;
   align-self: center; 
-} */
+} 
 
 .row {
   width: 100%;
 }
-*/ .input-icon > img {
+*/
+.input-icon > img {
   width: 30px;
   height: 30px;
   margin: 10px 0px 0px 0px;
@@ -70,4 +76,7 @@ body {
 .registration-progress {
   margin-top: auto;
   position: sticky;
+}
+
+@media only screen and (max-width: 800px) {
 }
