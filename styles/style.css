@@ -7,6 +7,15 @@ body {
   padding: 0px;
 }
 
+.navbar-end .button {
+  margin-top: auto;
+  margin-right: 1%;
+}
+
+.navbar-item {
+  margin-top: auto;
+}
+
 .page-logo {
   text-align: center;
   font-size: 30px;
@@ -39,8 +48,12 @@ input {
   height: 6vh;
 }
 
-input[type="text"] {
+.row {
+  margin: 2%;
 }
 
-input[type="email"] {
+/* signup.html */
+.registration-progress {
+  margin-top: auto;
+  position: sticky;
 }
