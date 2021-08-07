@@ -16,6 +16,89 @@
     <title>Log In</title>
   </head>
   <body>
+    <nav class="navbar" role="navigration" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a href="./index.html" class="navbar-item">
+          <h1 class="title is-4">Production House</h1>
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-taget="navbarMain"
+          id="navbar-burger"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu has-shadow is-grey" id="navbar-main">
+        <div class="navbar-end">
+          <a href="./index.html" class="navbar-item pr">Home</a>
+          <a href="./about-us.html" class="navbar-item">About Us</a>
+          <a href="./contact-us.html" class="navbar-item">Contact Us</a>
+          <a href="./login.html" class="navbar-item button mr-2 is-light"
+            >Login</a
+          >
+          <a href="./signup.html" class="navbar-item button is-info">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+    <div class="header">
+      <p class="has-text-centered title is-1">Log In</p>
+    </div>
+    <form action="" method="post">
+      <div class="login-main container mt-0">
+        <div class="row" id="userInput">
+          <div class="title">Username</div>
+          <input
+            type="text"
+            name="txtUsername"
+            class="subtitle input is-primary"
+            placeholder="Username"
+            id="username"
+            required
+          />
+        </div>
+        <div class="row">
+          <div class="input-icon title">Password</div>
+          <input
+            type="password"
+            name="txtPassword"
+            class="subtitle input is-primary"
+            placeholder="password"
+            id="password"
+            minlength="8"
+            required
+          />
+        </div>
+        <div class="row">
+          <progress
+            class="progress is-primary"
+            value="0"
+            max="100"
+            id="login-progress"
+          >
+            15%
+          </progress>
+          <input
+            class="button is-primary is-outlined"
+            type="submit"
+            value="Log In"
+          />
+        </div>
+      </div>
+    </form>
+  </body>
+  <script src="./scripts/login.js"></script>
+  <script src="./scripts/navbar.js"></script>
+</html>
+
+<!-- <body>
     <div class="block">
       <div class="navbar">
         <div class="navbar-brand">
@@ -35,7 +118,7 @@
     <div class="header">
       <p class="page-logo title is-1">Log In</p>
     </div>
-    <div class="login-main">
+    <div class="login-main container">
       <div class="row" id="userInput">
         <div class="title">Username</div>
         <input
@@ -71,6 +154,4 @@
         <a href="#" class="button is-info">Log In</a>
       </div>
     </div>
-  </body>
-  <script src="./scripts/login.js"></script>
-</html>
+  </body> -->
