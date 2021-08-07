@@ -1,13 +1,15 @@
 const password = document.getElementById("password");
 const usernameClass = document.getElementById("username");
 
-usernameClass.addEventListener("focus", function (event) {
+let messageCreated = false;
+
+usernameClass.addEventListener("keypress", function (event) {
   setProgressBar(50);
 });
 
 password.addEventListener("focus", function (event) {
-  let count = 0;
-  const username = document.getElementById("username").value;
+  //let count = 0;
+  let username = document.getElementById("username").value;
 
   //display error message
   if (username === "") {
@@ -15,13 +17,16 @@ password.addEventListener("focus", function (event) {
     usernameClass.classList.add("is-danger");
     console.log("Error");
 
-    if (!count) {
-      createUsernameEmptyMessage();
-      count++;
+    if (!messageCreated) {
+      messageCreated = createUsernameEmptyMessage(); //if created, returns true
+      //count++;
     }
   } else {
-    removeUsernameEmptyMessage();
-    count = 0;
+    if (messageCreated) {
+      removeUsernameEmptyMessage();
+      messageCreated = false;
+      //count = 0;
+    }
   }
 });
 
@@ -36,6 +41,8 @@ function createUsernameEmptyMessage() {
   emptyUsername.appendChild(emptyUsernameMessage);
   usernameError.appendChild(emptyUsername);
   setProgressBar(0);
+
+  return true;
 }
 
 function removeUsernameEmptyMessage() {
@@ -45,6 +52,7 @@ function removeUsernameEmptyMessage() {
   usernameClass.classList.add("is-primary");
   usernameError.remove();
 }
+
 function setProgressBar(size) {
   document.getElementById("login-progress").value = size;
 }
