@@ -16,15 +16,35 @@ body {
   margin-top: 2%;
 }
 
+.photo-title {
+  text-align: center;
+}
+
 .photo-type {
   /* display: flex; */
   /* padding-left: 45%; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .photo-type img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  width: auto;
+  height: auto;
+  margin: 5px;
+  padding: 10px;
+}
+
+.photo-type a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 400px;
   width: auto;
   height: auto;
