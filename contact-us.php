@@ -18,7 +18,7 @@
   <body>
     <nav class="navbar my-1" role="navigration" aria-label="main navigation">
       <div class="navbar-brand">
-        <a href="./index.html" class="navbar-item">
+        <a href="./index.php" class="navbar-item">
           <h1 class="title is-4">Production House</h1>
         </a>
 
@@ -38,7 +38,7 @@
 
       <div class="navbar-menu has-shadow is-grey" id="navbar-main">
         <div class="navbar-end">
-          <a href="./index.phpl" class="navbar-item pr">Home</a>
+          <a href="./index.php" class="navbar-item pr">Home</a>
           <a href="./about-us.php" class="navbar-item">About Us</a>
           <a href="./contact-us.php" class="navbar-item is-active"
             >Contact Us</a

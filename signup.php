@@ -18,7 +18,7 @@
   <body>
     <nav class="navbar" role="navigration" aria-label="main navigation">
       <div class="navbar-brand">
-        <a href="./index.html" class="navbar-item">
+        <a href="./index.php" class="navbar-item">
           <h1 class="title is-4">Production House</h1>
         </a>
 

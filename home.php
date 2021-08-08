@@ -1,3 +1,6 @@
+<?php
+  include('./check-session.php')
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +11,9 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
-    <title>Document</title>
+    <title>Home</title>
   </head>
-  <body></body>
+  <body>
+    <h1 class="is-1">Home</h1>
+  </body>
 </html>
