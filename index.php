@@ -38,13 +38,13 @@
 
       <div class="navbar-menu has-shadow is-grey" id="navbar-main">
         <div class="navbar-end">
-          <a href="./index.html" class="navbar-item is-active">Home</a>
-          <a href="./about-us.html" class="navbar-item">About Us</a>
-          <a href="./contact-us.html" class="navbar-item">Contact Us</a>
-          <a href="./login.html" class="navbar-item button mr-2 is-light"
+          <a href="./index.php" class="navbar-item is-active">Home</a>
+          <a href="./about-us.php" class="navbar-item">About Us</a>
+          <a href="./contact-us.php" class="navbar-item">Contact Us</a>
+          <a href="./login.php" class="navbar-item button mr-2 is-light"
             >Login</a
           >
-          <a href="./signup.html" class="navbar-item button is-info">Sign Up</a>
+          <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
         </div>
       </div>
     </nav>
