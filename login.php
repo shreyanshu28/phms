@@ -1,3 +1,6 @@
+<?php
+  include('./reset-session.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +21,7 @@
   <body>
     <nav class="navbar" role="navigration" aria-label="main navigation">
       <div class="navbar-brand">
-        <a href="./index.html" class="navbar-item">
+        <a href="./index.php" class="navbar-item">
           <h1 class="title is-4">Production House</h1>
         </a>
 
@@ -38,20 +41,21 @@
 
       <div class="navbar-menu has-shadow is-grey" id="navbar-main">
         <div class="navbar-end">
-          <a href="./index.html" class="navbar-item pr">Home</a>
-          <a href="./about-us.html" class="navbar-item">About Us</a>
-          <a href="./contact-us.html" class="navbar-item">Contact Us</a>
-          <a href="./login.html" class="navbar-item button mr-2 is-light"
+          <a href="./index.php" class="navbar-item pr">Home</a>
+          <a href="./about-us.php" class="navbar-item">About Us</a>
+          <a href="./contact-us.php" class="navbar-item">Contact Us</a>
+          <a href="./login.php" class="navbar-item button mr-2 is-light"
             >Login</a
           >
-          <a href="./signup.html" class="navbar-item button is-info">Sign Up</a>
+          <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
         </div>
       </div>
     </nav>
     <div class="header">
       <p class="has-text-centered title is-1">Log In</p>
     </div>
-    <form action="" method="post">
+
+    <form action="./check-login.php" method="post">
       <div class="login-main container mt-0">
         <div class="row" id="userInput">
           <div class="title">Username</div>
