@@ -12,7 +12,11 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <!--<link rel="stylesheet" href="./styles/style.css" />-->
+    <style><?php
+        include('./styles/style.css')
+    ?></style>
+    <!--<link rel="stylesheet" href="./styles/style.css?v=<?php echo time(); ?>" />-->
     <title>Home</title>
   </head>
   <body>
@@ -58,7 +62,7 @@
         </div>
       </div>
       <div class="box columns">
-        <div class="">
+        <div class="show-page">
           <img
             src="./images/jonathan-borba-PGIDs5PKWns-unsplash.jpg"
             alt="Image by jonathan borba"
@@ -68,7 +72,7 @@
             >Photo Shooting<i class="fa fa-arrow-right"></i
           ></a>
         </div>
-        <div class="">
+        <div class="show-page">
           <img
             src="./images/ian-dooley-TLD6iCOlyb0-unsplash.jpg"
             alt="Image by ian dooley"
