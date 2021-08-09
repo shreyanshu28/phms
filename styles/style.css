@@ -34,9 +34,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 400px;
+  /*max-width: 400px;*/
   width: auto;
-  height: auto;
+  height: 68vh;
   margin: 5px;
   padding: 10px;
 }
