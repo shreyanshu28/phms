@@ -12,11 +12,7 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <!--<link rel="stylesheet" href="./styles/style.css" />-->
-    <style><?php
-        include('./styles/style.css')
-    ?></style>
-    <!--<link rel="stylesheet" href="./styles/style.css?v=<?php echo time(); ?>" />-->
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>Home</title>
   </head>
   <body>
@@ -84,78 +80,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="column is-center">
-      <div class="card equal-height">
-        <div class="card-image has-text-centered">
-          <figure class="image is-128x128 is-inline-block">
-            <img
-              class=""
-              src="./images/jonathan-borba-PGIDs5PKWns-unsplash.jpg"
-            />
-          </figure>
-        </div>
-        <div class="card-content">
-           other content here 
-        </div>
-      </div> 
-    </div> -->
   </body>
   <script src="./scripts/navbar.js"></script>
 </html>
-
-<!-- <section class="hero is-info">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">Title</h1>
-      <h2 class="subtitle">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-        possimus.
-      </h2>
-    </div>
-  </div>
-</section>
-<div class="block columns">
-  <div class="card column">
-    <div class="card-content">
-      <p class="title">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum ipsum
-        maxime qui minima voluptates nemo unde? Facilis dolorum sequi
-        beatae.
-      </p>
-    </div>
-    <div class="card-footer">
-      <div class="card-footer-item">
-        <a href="">Share on <i class="fa fa-facebook"></i></a>
-      </div>
-    </div>
-  </div>
-  <div class="card column">
-    <div class="card-content">
-      <p class="title">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum ipsum
-        maxime qui minima voluptates nemo unde? Facilis dolorum sequi
-        beatae.
-      </p>
-    </div>
-    <div class="card-footer">
-      <div class="card-footer-item">
-        <a href="">Share on <i class="fa fa-facebook"></i></a>
-      </div>
-    </div>
-  </div>
-  <div class="card column">
-    <div class="card-content">
-      <p class="title">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum ipsum
-        maxime qui minima voluptates nemo unde? Facilis dolorum sequi
-        beatae.
-      </p>
-    </div>
-    <div class="card-footer">
-      <div class="card-footer-item">
-        <a href="#">Share on <i class="fa fa-facebook"></i></a>
-      </div>
-    </div>
-  </div>
-</div> -->
