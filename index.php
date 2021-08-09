@@ -22,7 +22,7 @@
     <nav class="navbar my-1" role="navigration" aria-label="main navigation">
       <div class="navbar-brand">
         <a href="./index.php" class="navbar-item">
-          <h1 class="title is-4">Production House</h1>
+          <h1 class="title is-4">Apricis Productions</h1>
         </a>
 
         <a
@@ -42,20 +42,20 @@
       <div class="navbar-menu has-shadow is-grey" id="navbar-main">
         <div class="navbar-end">
           <a href="./index.php" class="navbar-item is-active">Home</a>
-          <a href="./about-us.php" class="navbar-item">About Us</a>
-          <a href="./contact-us.php" class="navbar-item">Contact Us</a>
+          <a href="#aboutUs" class="navbar-item">About Us</a>
+          <a href="#contactUs" class="navbar-item">Contact Us</a>
+           <!-- if logged in , show logout and hello. otherwise login and signup  -->
           <?php
-          if(!isset($_SESSION['userKey'])) {
-              echo "<a href=./login.php class='navbar-item button mr-2 is-light'
-              >Login</a
-            >
-            <a href=./signup.php class='navbar-item button is-info'>Sign Up</a>";
-          }
-          else {
-              echo "<a href=./home.php class='navbar-item button mr-2 is-light'>Hello, $_SESSION[userKey]</a>
-                  <a href=./log-out.php class='narvbar-item button is-light'>Log out</a>";
-          }
-                    ?>
+            if(!isset($_SESSION['userKey'])) {
+                echo "<a href=./login.php class='navbar-item button mr-2 is-light'
+                >Login</a>
+                    <a href=./signup.php class='navbar-item button is-info'>Sign Up</a>";
+            }
+            else {
+                echo "<a href=./home.php class='navbar-item button mr-2 is-light'>Hello, $_SESSION[userKey]</a>
+                    <a href=./log-out.php class='narvbar-item button is-light'>Log out</a>";
+            }
+          ?>
         </div>
       </div>
     </nav>
@@ -91,6 +91,26 @@
         </div>
       </div>
     </div>
+    <div class="block" id="aboutUs">
+      <div class="container">
+        <article class="message is-info">
+          <div class="message-header">About Us</div>
+          <div class="message-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
+            id, voluptatibus debitis officia ut labore rerum tempora quibusdam
+            amet praesentium unde eligendi animi quis porro, illo sequi, veniam
+            architecto eius.
+          </div>
+        </article>
+      </div>
+    <footer class="block" id="contactUs">
+      <div class="box">
+        <h1 class="title">Contact Us</h1>
+        <a href="#" class="column"><i class="fa fa-github"></i> Github</a>
+        <a href="#" class="column"><i class="fa fa-facebook"></i> Facebook</a>
+        <a href="#" class="column"><i class="fa fa-twitter"></i> Twitter</a>
+      </div>
+    </footer>
   </body>
   <script src="./scripts/navbar.js"></script>
 </html>

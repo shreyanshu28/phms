@@ -6,11 +6,6 @@ body {
   margin: 0px;
   padding: 0px;
 }
-/* 
-.navbar-end .button {
-  margin-top: auto;
-  margin-right: 1%;
-} */
 
 .navbar-item {
   margin-top: 2%;
@@ -34,7 +29,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*max-width: 400px;*/
   width: auto;
   height: 68vh;
   margin: 5px;
@@ -61,31 +55,11 @@ body {
   font-size: 30px;
 }
 
-/* .login-main {
-  display: flex;
-  /* flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: center; 
-} 
-
-.row {
-  width: 100%;
-}
-*/
 .input-icon > img {
   width: 30px;
   height: 30px;
   margin: 10px 0px 0px 0px;
 }
-
-/* input {
-  padding: 5px;
-  font-size: 15px;
-  border-radius: 10px;
-  width: 100%;
-  height: 6vh;
-} */
 
 .row {
   margin: 2%;
