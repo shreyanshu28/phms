@@ -1,5 +1,8 @@
 <?php
-  include('./reset-session.php');
+  session_start();
+  if(isset($_SESSION['userKey'])) {
+    header("location:./home.php");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +25,7 @@
     <nav class="navbar" role="navigration" aria-label="main navigation">
       <div class="navbar-brand">
         <a href="./index.php" class="navbar-item">
-          <h1 class="title is-4">Production House</h1>
+          <h1 class="title is-4">Apricus Productions</h1>
         </a>
 
         <a
