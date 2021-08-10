@@ -61,8 +61,10 @@ body {
   margin: 10px 0px 0px 0px;
 }
 
-.row {
-  margin: 2%;
+.signup-main,
+.login-main {
+  align-self: center;
+  width: 50%;
 }
 
 /* signup.html */
@@ -72,4 +74,9 @@ body {
 }
 
 @media only screen and (max-width: 800px) {
+  .signup-main,
+  .login-main {
+    align-self: center;
+    width: 80%;
+  }
 }
