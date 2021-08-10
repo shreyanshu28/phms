@@ -22,7 +22,7 @@
     <nav class="navbar my-1" role="navigration" aria-label="main navigation">
       <div class="navbar-brand">
         <a href="./index.php" class="navbar-item">
-          <h1 class="title is-4">Apricis Productions</h1>
+          <h1 class="title is-4">Apricus Productions</h1>
         </a>
 
         <a
