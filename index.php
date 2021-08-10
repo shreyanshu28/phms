@@ -15,10 +15,10 @@ session_start();
 </head>
 
 <body>
-  <nav class="navbar my-1" role="navigration" aria-label="main navigation">
+  <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
       <a href="./index.php" class="navbar-item">
-        <h1 class="title is-4">Apricus Productions</h1>
+        <h1 class="title is-4">Production House</h1>
       </a>
 
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-taget="navbarMain" id="navbar-burger">
@@ -28,22 +28,13 @@ session_start();
       </a>
     </div>
 
-    <div class="navbar-menu has-shadow is-grey" id="navbar-main">
+    <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="./index.php" class="navbar-item is-active">Home</a>
-        <a href="#aboutUs" class="navbar-item">About Us</a>
-        <a href="#contactUs" class="navbar-item">Contact Us</a>
-        <!-- if logged in , show logout and hello. otherwise login and signup  -->
-        <?php
-        if (!isset($_SESSION['userKey'])) {
-          echo "<a href=./login.php class='navbar-item button mr-2 is-light'
-                >Login</a>
-                    <a href=./signup.php class='navbar-item button is-info'>Sign Up</a>";
-        } else {
-          echo "<a href=./home.php class='navbar-item button mr-2 is-light'>Hello, $_SESSION[userKey]</a>
-                    <a href=./log-out.php class='narvbar-item button is-light'>Log out</a>";
-        }
-        ?>
+        <a href="./index.php" class="navbar-item pr">Home</a>
+        <a href="./about-us.php" class="navbar-item">About Us</a>
+        <a href="./contact-us.php" class="navbar-item">Contact Us</a>
+        <a href="./login.php" class="navbar-item button mr-2 is-light">Login</a>
+        <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
       </div>
     </div>
   </nav>
