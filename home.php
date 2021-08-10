@@ -1,6 +1,3 @@
-<?php
-  include('./check-session.php')
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
