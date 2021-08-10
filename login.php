@@ -18,7 +18,7 @@ if (isset($_SESSION['userKey'])) {
 </head>
 
 <body>
-  <nav class="navbar" role="navigration" aria-label="main navigation">
+  <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
       <a href="./index.php" class="navbar-item">
         <h1 class="title is-4">Apricus Productions</h1>
@@ -31,7 +31,7 @@ if (isset($_SESSION['userKey'])) {
       </a>
     </div>
 
-    <div class="navbar-menu has-shadow is-grey" id="navbar-main">
+    <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
         <a href="./index.php" class="navbar-item pr">Home</a>
         <a href="./about-us.php" class="navbar-item">About Us</a>
@@ -41,26 +41,25 @@ if (isset($_SESSION['userKey'])) {
       </div>
     </div>
   </nav>
-  <div class="header">
-    <p class="has-text-centered title is-1">Log In</p>
-  </div>
 
-  <form action="./check-login.php" method="post">
-    <div class="login-main container mt-0">
-      <div class="row" id="userInput">
-        <div class="title">Username</div>
-        <input type="text" name="txtUsername" class="subtitle input is-primary" placeholder="Username" id="username" required />
+  <p class="title is-1 has-text-centered">Log In</p>
+
+  <form action="./check-login.php" method="post" class="login-main">
+    <div class="field" id="userInput">
+      <label class="label is-size-4">Username</label>
+      <div class="control">
+        <input type="text" name="txtUsername" class="input is-info is-medium" placeholder="Username" id="username" required />
       </div>
-      <div class="row">
-        <div class="input-icon title">Password</div>
-        <input type="password" name="txtPassword" class="subtitle input is-primary" placeholder="password" id="password" minlength="8" required />
-      </div>
-      <div class="row">
-        <progress class="progress is-primary" value="0" max="100" id="login-progress">
-          15%
-        </progress>
-        <input class="button is-primary is-outlined" type="submit" value="Log In" />
-      </div>
+    </div>
+    <div class="field">
+      <div class="label is-size-4">Password</div>
+      <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="password" id="password" minlength="8" required />
+    </div>
+    <div class="field">
+      <progress class="progress is-info" value="0" max="100" id="login-progress">
+        15%
+      </progress>
+      <input class="button is-info is-outlined" type="submit" value="Log In" />
     </div>
   </form>
 </body>

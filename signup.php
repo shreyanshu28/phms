@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="./styles/style.css" />
-  <title>Login Form</title>
+  <title>Signup Form</title>
 </head>
 
 <body>
-  <nav class="navbar" role="navigration" aria-label="main navigation">
+  <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
       <a href="./index.php" class="navbar-item">
         <h1 class="title is-4">Production House</h1>
@@ -25,7 +25,7 @@
       </a>
     </div>
 
-    <div class="navbar-menu has-shadow is-grey" id="navbar-main">
+    <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
         <a href="./index.php" class="navbar-item pr">Home</a>
         <a href="./about-us.php" class="navbar-item">About Us</a>
@@ -77,7 +77,7 @@
     <div class="field">
       <div class="label is-size-4">Gender:</div>
       <label class="checkbox">
-        <input type="radio" name="Gender" id="Gender" value="male" />
+        <input type="radio" name="Gender" id="Gender" value="male" checked />
         Male
       </label>
       <div class="checkbox">
