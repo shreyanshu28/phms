@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +42,7 @@
 
   <p class="title is-1 has-text-centered">Sign Up</p>
 
-  <form action="" method="post" class="signup-main">
+  <form action="./signup-data.php" method="post" class="signup-main">
     <div class="field registration-progress">
       <progress class="progress is-info" value="0" max="100" id="registration-progress">
         15%
@@ -47,43 +51,43 @@
     <div class="field">
       <div class="label is-size-4">First Name</div>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="First Name" id="firstname" />
+        <input type="text" class="input is-info is-medium" placeholder="First Name" name="txtFName" id="firstname" />
       </div>
     </div>
     <div class="field">
       <div class="label is-size-4">Middle Name</div>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Middle Name" id="middlename" />
+        <input type="text" class="input is-info is-medium" placeholder="Middle Name" name="txtMName" id="middlename" />
       </div>
     </div>
     <div class="field">
       <label class="label is-size-4">Last Name</label>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Last Name" id="lastname" />
+        <input type="text" class="input is-info is-medium" placeholder="Last Name" name="txtLName" id="lastname" />
       </div>
     </div>
     <div class="field">
       <label class="label is-size-4">Contact No</label>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" id="contactNo" />
+        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" />
       </div>
     </div>
     <div class="field">
       <div class="label is-size-4">Email</div>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Email" id="email" />
+        <input type="text" class="input is-info is-medium" placeholder="Email" name="txtEmail" id="email" />
       </div>
     </div>
     <div class="field">
       <div class="label is-size-4">Gender:</div>
       <label class="checkbox">
-        <input type="radio" name="Gender" id="Gender" value="male" checked />
+        <input type="radio" id="Gender" name="rbGender" value="male" checked />
         Male
       </label>
-      <div class="checkbox">
-        <input type="radio" name="Gender" id="Gender" value="female" />
+      <label class="checkbox">
+        <input type="radio" id="Gender" name="rbGender" value="female" />
         Female
-      </div>
+      </label>
     </div>
     <div class="field">
       <div class="label is-size-4">Username</div>
@@ -94,18 +98,18 @@
     <div class="field">
       <div class="label is-size-4">Password</div>
       <div class="control">
-        <input type="text" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" required />
+        <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" required />
       </div>
     </div>
     <div class="field">
       <div class="label is-size-4">Confirm Password</div>
       <div class="control">
-        <input type="text" name="txtChangePassword" class="input is-info is-medium" placeholder="Confirm Password" id="confirm-password" minlength="8" required />
+        <input type="password" name="txtConfirmPassword" class="input is-info is-medium" placeholder="Confirm Password" id="confirm-password" minlength="8" required />
       </div>
     </div>
     <div class="field">
       <div class="control">
-        <input type="submit" class="button is-info" value="sign up" />
+        <input type="submit" class="button is-info" name="btnSubmit" value="sign up" />
       </div>
     </div>
   </form>
