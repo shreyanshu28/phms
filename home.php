@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['Username'])) {
+  header("location: ./login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +77,7 @@ session_start();
       <div class="label is-size-4">Gender:</div>
       <label class="checkbox">
         <?php
-        if ($_SESSION['Gender'] == 'male') {
+        if ($_SESSION['Gender'] == "male") {
           echo "<input type='radio' id='Gender' name='rbGender' value='male' checked />";
         } else {
           echo "<input type='radio' id='Gender' name='rbGender' value='male' />";
@@ -84,7 +87,7 @@ session_start();
       </label>
       <label class="checkbox">
         <?php
-        if ($_SESSION['Gender'] == 'female') {
+        if ($_SESSION['Gender'] == "female") {
           echo "<input type='radio' id='Gender' name='rbGender' value='female' checked />";
         } else {
           echo "<input type='radio' id='Gender' name='rbGender' value='female' />";
@@ -96,13 +99,13 @@ session_start();
     <div class="field">
       <div class="label is-size-4">Username</div>
       <div class="control">
-        <input type="text" name="txtUsername" class="input is-info is-medium" placeholder="Username" id="username" value=<?php echo $_SESSION['Username']; ?> required />
+        <input type="text" name="txtUsername" class="input is-info is-medium" placeholder="Username" id="username" value=<?php echo $_SESSION['Username']; ?> disabled />
       </div>
     </div>
     <div class="field">
       <div class="label is-size-4">Password</div>
       <div class="control">
-        <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" value=<?php echo $_SESSION['Password']; ?> required />
+        <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" value=<?php echo $_SESSION['Password']; ?> disabled />
       </div>
     </div>
     <div class="field">

@@ -1,7 +1,10 @@
 <?php
 session_start();
-if (isset($_SESSION['userKey'])) {
-  header("location:./home.php");
+session_destroy();
+session_start();
+$_SESSION['Username'] = null;
+if (isset($_SESSION['Username'])) {
+  header("location: ./home.php");
 }
 ?>
 <!DOCTYPE html>
