@@ -7,10 +7,6 @@ body {
   padding: 0px;
 }
 
-.navbar-item {
-  margin-top: 2%;
-}
-
 .photo-title {
   text-align: center;
 }
@@ -30,9 +26,8 @@ body {
   justify-content: center;
   align-items: center;
   width: auto;
-  height: 68vh;
+  height: 65vh;
   margin: 5px;
-  padding: 10px;
 }
 
 .photo-type a {
@@ -61,8 +56,10 @@ body {
   margin: 10px 0px 0px 0px;
 }
 
-.row {
-  margin: 2%;
+.signup-main,
+.login-main {
+  align-self: center;
+  width: 50%;
 }
 
 /* signup.html */
@@ -71,5 +68,15 @@ body {
   position: sticky;
 }
 
-@media only screen and (max-width: 800px) {
+/* breakpoint in bulma for desktop devices 1024px */
+@media only screen and (max-width: 1024px) {
+  .signup-main,
+  .login-main {
+    align-self: center;
+    width: 90%;
+  }
+
+  .navbar-item {
+    margin-top: 2%;
+  }
 }
