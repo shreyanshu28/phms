@@ -10,7 +10,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./user/styles/style.css" />
   <title>Home</title>
 </head>
 
@@ -30,9 +30,9 @@ session_start();
 
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="./index.php" class="navbar-item is-active">Home</a>
-        <a href="./login.php" class="navbar-item button mr-2 is-light">Login</a>
-        <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
+        <a href="./user/index.php" class="navbar-item is-active">Home</a>
+        <a href="./user/login.php" class="navbar-item button mr-2 is-light">Login</a>
+        <a href="./user/signup.php" class="navbar-item button is-info">Sign Up</a>
       </div>
     </div>
   </nav>
