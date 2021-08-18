@@ -1,7 +1,10 @@
 <?php
 session_start();
-if (isset($_SESSION['userKey'])) {
-  header("location:./home.php");
+session_destroy();
+session_start();
+$_SESSION['Username'] = null;
+if (isset($_SESSION['Username'])) {
+  header("location: ./home.php");
 }
 ?>
 <!DOCTYPE html>
@@ -14,7 +17,7 @@ if (isset($_SESSION['userKey'])) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="./styles/style.css" />
-  <title>Log In</title>
+  <title>Log in</title>
 </head>
 
 <body>
@@ -33,7 +36,7 @@ if (isset($_SESSION['userKey'])) {
 
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="./index.php" class="navbar-item pr">Home</a>
+        <a href="./index.php" class="navbar-item is-active">Home</a>
         <a href="./about-us.php" class="navbar-item">About Us</a>
         <a href="./contact-us.php" class="navbar-item">Contact Us</a>
         <a href="./login.php" class="navbar-item button mr-2 is-light">Login</a>
