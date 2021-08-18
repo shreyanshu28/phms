@@ -31,7 +31,7 @@ session_start();
 
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="./index.php" class="navbar-item is-active">Home</a>
+        <a href="./../index.php" class="navbar-item is-active">Home</a>
         <a href="./login.php" class="navbar-item button mr-2 is-light">Login</a>
         <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
       </div>
