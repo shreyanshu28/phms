@@ -37,8 +37,6 @@ if (isset($_SESSION['Username'])) {
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
         <a href="./index.php" class="navbar-item is-active">Home</a>
-        <a href="./about-us.php" class="navbar-item">About Us</a>
-        <a href="./contact-us.php" class="navbar-item">Contact Us</a>
         <a href="./login.php" class="navbar-item button mr-2 is-light">Login</a>
         <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
       </div>
