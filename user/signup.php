@@ -109,6 +109,5 @@
   </form>
 </body>
 <script src="./scripts/signup.js"></script>
-<script src="./scripts/navbar.js"></script>
-
+<script src="../scripts/navbar.js"></script>
 </html>
