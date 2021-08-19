@@ -1,0 +1,8 @@
+#placeholder {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.inventory:hover {
+  transform: scale(1.1);
+}

@@ -61,6 +61,6 @@ session_start();
   </form>
 </body>
 <script src="./scripts/login.js"></script>
-<script src="./scripts/navbar.js"></script>
+<script src="../scripts/navbar.js"></script>
 
 </html>
