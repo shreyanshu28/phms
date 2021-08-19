@@ -2,10 +2,6 @@
 session_start();
 session_destroy();
 session_start();
-$_SESSION['Username'] = null;
-if (isset($_SESSION['Username'])) {
-  header("location: ./home.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
