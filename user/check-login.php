@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include "./../make-connection.php";
+include "../make-connection.php";
 
 $username = $_POST['txtUsername'];
 $password = $_POST['txtPassword'];
