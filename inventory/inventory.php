@@ -50,8 +50,15 @@
         </div>
       </div>
     </nav>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+      <ul class="ml-6">
+        <li><a href="../index.php">Home</a></li>
+        <li class="is-active"><a href="#" aria-current="page">Inventory</a></li>
+      </ul>
+    </nav>
     <!-- Fetch products from database -->
-    <div id="placeholder" class="m-2 columns"></div>
+    <div id="inventory" class="m-2 columns"></div>
   </body>
   <script src="../scripts/navbar.js"></script>
   <script src="./scripts/createImage.js"></script>

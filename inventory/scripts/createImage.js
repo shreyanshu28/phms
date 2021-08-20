@@ -1,32 +1,39 @@
-const imageBox = document.getElementById("placeholder");
-const imageSrc = [
-  "./images/camera-32871_640.png",
-  "./images/camera-1867184_1280.jpg",
-  "./images/smartphone-1894723_640.jpg",
+const imageBox = document.getElementById("inventory");
+const inventory = {
+  Camera: "./images/camera-32871_640.png",
+  Video: "./images/camera-1867184_1280.jpg",
+  Mobile: "./images/smartphone-1894723_640.jpg",
+};
+const aClassList = [
+  "column",
+  "is-one-fifth-desktop",
+  "is-one-third-tablet",
+  "is-full-mobile",
+  "m-5",
+  "inventory",
+  "has-text-centered",
 ];
-let count = 0;
 
-function createImage() {
+//tblProps : add image path
+//Make associative array of propname=>image and then display
+function createImage(key) {
+  let a = document.createElement("a");
   let figure = document.createElement("figure");
   let image = document.createElement("img");
   let figcaption = document.createElement("figcaption");
-  let caption = document.createTextNode("This is a caption");
+  let caption = document.createTextNode(key);
 
-  figure.classList.add("column");
-  figure.classList.add("is-one-fifth-desktop");
-  figure.classList.add("is-one-third-tablet");
-  figure.classList.add("is-full-mobile");
-  figure.classList.add("m-5");
+  a.setAttribute("href", "../index.php");
+  a.classList.add(...aClassList);
 
-  //image.classList.add("image is-square");
-  image.src = imageSrc[count];
+  image.src = inventory[key];
   figcaption.appendChild(caption);
   figure.appendChild(image);
   figure.appendChild(figcaption);
-  imageBox.appendChild(figure);
-  count++;
+  a.appendChild(figure);
+  imageBox.appendChild(a);
 }
 
-for (i = 0; i < 3; i++) {
-  createImage();
+for (key in inventory) {
+  createImage(key);
 }
