@@ -10,7 +10,8 @@ if (isset($_POST['btnSubmit'])) {
     $user['LName'] = $_POST['txtLName'];
     $user['dob'] = $_POST['dob'];
     // concate contactno to make 91 9283746282 as 919283746282 whole
-    $user['ContactNo'] = "${_POST['country-code']}${_POST['txtContactNo']}";
+    // number not able to concatinate
+    $user['ContactNo'] = $_POST['country-code'] . $_POST['txtContactNo'];
     $user['Email'] = $_POST['txtEmail'];
     $user['Gender'] = $_POST['rbGender'];
     $user['Address1'] = $_POST['txtAddress1'];
