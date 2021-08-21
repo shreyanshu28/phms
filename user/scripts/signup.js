@@ -74,6 +74,7 @@ selectCity.addEventListener("change", function (event) {
     city.name = "txtCity";
     city.placeholder = "City";
     city.id = "city";
+    city.value = null;
 
     city.classList.add("input");
     city.classList.add("is-info");
