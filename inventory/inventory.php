@@ -59,7 +59,11 @@
     </nav>
     <!-- Fetch products from database -->
     <div id="inventory" class="m-2 columns"></div>
+    <table class="table" id="inventoryTable" border="0">
+      
+    </table>
   </body>
   <script src="../scripts/navbar.js"></script>
   <script src="./scripts/createImage.js"></script>
+  <script src="./scripts/fetchProducts.js"></script>
 </html>
