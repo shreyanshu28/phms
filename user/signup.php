@@ -115,8 +115,12 @@
             <option value="SURAT">SURAT</option>
           </select>
         </div>
-        <!-- <input type="hidden" class="input is-info is-medium" name="txtCity" id="hidcity" placeholder="City" /> -->
+      </div>
+      <!-- <input type="hidden" class="input is-info is-medium" name="txtCity" id="hidcity" placeholder="City" /> -->
+      <div class="control mt-2">
         <input type="text" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" />
+      </div>
+      <div class="control mt-2">
         <input type="text" class="input is-info is-medium" name="txtLandmark" id="landmark" placeholder="Landmark" />
       </div>
     </div>
