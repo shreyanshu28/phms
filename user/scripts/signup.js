@@ -8,7 +8,7 @@ const pincode = document.getElementById("pincode");
 const userName = document.getElementById("username");
 const password = document.getElementById("password");
 const confirmPassowrd = document.getElementById("confirm-password");
-const city = document.getElementById("select-city");
+const selectCity = document.getElementById("select-city");
 
 let count = 0;
 firstName.addEventListener("focus", function (event) {
@@ -65,27 +65,27 @@ function setProgressBar(size) {
 }
 
 let cnt = 0;
-city.addEventListener("change", function (event) {
-  // to add new city input if not already
-  if (city.value === "1" && cnt === 0) {
-    hidcity = document.createElement("input");
+selectCity.addEventListener("change", function (event) {
+  // to add new selectCity input if not already
+  if (selectCity.value === "1" && cnt === 0) {
+    city = document.createElement("input");
 
-    hidcity.type = "text";
-    hidcity.name = "txtCity";
-    hidcity.placeholder = "City";
-    hidcity.id = "city";
+    city.type = "text";
+    city.name = "txtCity";
+    city.placeholder = "City";
+    city.id = "city";
 
-    hidcity.classList.add("input");
-    hidcity.classList.add("is-info");
-    hidcity.classList.add("is-medium");
+    city.classList.add("input");
+    city.classList.add("is-info");
+    city.classList.add("is-medium");
 
     // option -> select -> div.select -> div.control
-    city.parentElement.parentElement.insertBefore(hidcity, pincode);
+    selectCity.parentElement.parentElement.appendChild(city);
     cnt = 1;
   } else {
     if (cnt !== 0) {
       // remove when city already exists
-      hidcity.parentElement.removeChild(hidcity);
+      city.parentElement.removeChild(city);
     }
     cnt = 0;
   }
