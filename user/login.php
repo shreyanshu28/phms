@@ -41,7 +41,7 @@ session_start();
 
   <p class="title is-1 has-text-centered">Log In</p>
 
-  <form action="./check-login.php" method="post" class="login-main">
+  <form action="./utilities/_check-login.php" method="post" class="login-main">
     <div class="field" id="userInput">
       <label class="label is-size-4">Username</label>
       <div class="control">
