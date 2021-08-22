@@ -17,6 +17,18 @@ firstName.addEventListener("focus", function (event) {
   }
 });
 
+firstName.addEventListener("keydown", function (event) {
+  if (!(event.target.keyCode >= 48 && event.target.keyCode <= 57)) {
+    firstName.value = event.target.value;
+  }
+});
+
+firstName.addEventListener("keyup", function (event) {
+  if (!(event.target.keyCode >= 48 && event.target.keyCode <= 57)) {
+    firstName.value = event.target.value;
+  }
+});
+
 middleName.addEventListener("focus", function (event) {
   if (count >= 12 && count < 24) {
     setProgressBar(24);
@@ -64,6 +76,7 @@ function setProgressBar(size) {
   count = size;
 }
 
+// If user wants to select city that isn't in database
 let cnt = 0;
 selectCity.addEventListener("change", function (event) {
   // to add new selectCity input if not already
@@ -74,6 +87,7 @@ selectCity.addEventListener("change", function (event) {
     city.name = "txtCity";
     city.placeholder = "City";
     city.id = "city";
+    city.value = null;
 
     city.classList.add("input");
     city.classList.add("is-info");
