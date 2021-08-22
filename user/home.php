@@ -18,8 +18,8 @@ if (!isset($_SESSION['Username'])) {
 <body>
   <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
-      <a href="./index.php" class="navbar-item">
-        <h1 class="title is-4">Production House</h1>
+      <a href="../index.php" class="navbar-item">
+        <h1 class="title is-4">Apricus Productions</h1>
       </a>
 
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-taget="navbarMain" id="navbar-burger">
