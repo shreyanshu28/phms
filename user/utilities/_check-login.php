@@ -1,12 +1,14 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-include "../make-connection.php";
+include "../../_make-connection.php";
 
 $username = $_POST['txtUsername'];
 $password = $_POST['txtPassword'];
 
-// Transaction testing remaining
+// TODO: Transaction testing remaining
 try {
     $pdo->beginTransaction();
     $sql = "select * from tbllogin where username = :username && password = :password";
@@ -22,7 +24,7 @@ $userid = $user->lid;
 
 if ($userid) {
     $_SESSION['Username'] = $_POST['txtUsername'];
-    header("Location: ./home.php");
+    header("Location: ../home.php");
 } else {
-    header("Location: ./login.php");
+    header("Location: ../../index.php");
 }

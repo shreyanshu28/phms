@@ -36,7 +36,7 @@
 
   <p class="title is-1 has-text-centered">Sign Up</p>
 
-  <form action="./add-new-user.php" method="post" class="signup-main">
+  <form action="./utilities/_add-user.php" method="post" class="signup-main">
     <div class="field registration-progress">
       <progress class="progress is-info" value="0" max="100" id="registration-progress">
         15%
