@@ -1,9 +1,9 @@
 <?php 
-// if (!$_SESSION) {
-//     header("location:./inventory.php");
-// } 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+    if (!(isset($_SESSION['products']))) {
+        header("location:./inventory.php");
+    } 
     $inventory = $_SESSION['products'];
 
     foreach($inventory as $product) {
@@ -14,13 +14,6 @@ if (session_status() === PHP_SESSION_NONE) {
         $_SESSION['ownership'] = $product->ownership;
         $_SESSION['iType'] = $product->iType;
     }
-    echo $_SESSION['poid'];
-    echo $_SESSION['pName'];
-    echo $_SESSION['qty'];
-    echo $_SESSION['price'];
-    echo $_SESSION['ownership'];
-    echo $_SESSION['iType'];
-
 }
 ?>
 <!DOCTYPE html>
