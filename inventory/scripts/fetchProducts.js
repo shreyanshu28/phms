@@ -1,4 +1,4 @@
-const inventoryBox = document.getElementById("myTable");
+const inventoryBox = document.getElementById("inventoryTable");
 const array = [
   {
     pid: 1,
@@ -19,7 +19,7 @@ const array = [
 ];
 
 let html =
-  "<thead><tr><td>ID</td><td>Name</td><td>Quantity</td><td>Price</td><td>Ownership</td><td>Type</td><td>Action</td></tr></thead>";
+  "<thead><tr><td>ID</td><td>Name</td><td>Quantity</td><td>Price</td><td>Ownership</td><td>Camera</td></tr></thead>";
 
 for (i = 0; i < array.length; i++) {
   html += "<tr>";
@@ -29,7 +29,6 @@ for (i = 0; i < array.length; i++) {
   html += "<td>" + array[i].price + "</td>";
   html += "<td>" + array[i].ownership + "</td>";
   html += "<td>" + array[i].type + "</td>";
-  html += "<td><a href=../index.php>Edit</a></td>";
   html += "</tr>";
 }
 
