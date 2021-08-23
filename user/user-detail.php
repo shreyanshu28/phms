@@ -1,36 +1,34 @@
 <?php
 // If session already started gives
 if (session_status() == PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 
 if (!isset($_SESSION['Username'])) {
-    header("Location: ./login.php");
+  header("Location: ./login.php");
 } else {
-    // the path of _make-connection must be relative to the file for which it must be used
-    // include doesn't change the path of the location
-    include "../_make-connection.php";
-    include "./utilities/_fetch-user.php";
+  // the path of _make-connection must be relative to the file for which it must be used
+  // include doesn't change the path of the location
+  include "../_make-connection.php";
+  include "./utilities/_fetch-user.php";
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
-    <link rel="stylesheet" href="./style/style.css" />
-    <title>Home</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+  <title>User Details</title>
 </head>
 
 <body>
-<<<<<<< HEAD
   <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
-      <a href="../index.php" class="navbar-item">
-        <h1 class="title is-4">Apricus Productions</h1>
+      <a href="./index.php" class="navbar-item">
+        <h1 class="title is-4">Production House</h1>
       </a>
 
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-taget="navbarMain" id="navbar-burger">
@@ -50,11 +48,10 @@ if (!isset($_SESSION['Username'])) {
 
   <p class="title is-1 has-text-centered">Confirm Details</p>
 
-  <form action="./signup-data.php" method="post" class="signup-main">
+  <form action="./utilities/_add-user.php" method="post" class="signup-main">
     <div class="field">
       <div class="label is-size-4">First Name</div>
       <div class="control">
-
         <input type="text" class="input is-info is-medium" placeholder="First Name" name="txtFName" id="firstname" value=<?php echo $_SESSION['FName']; ?> />
       </div>
     </div>
@@ -86,7 +83,7 @@ if (!isset($_SESSION['Username'])) {
       <div class="label is-size-4">Gender:</div>
       <label class="checkbox">
         <?php
-        if ($_SESSION['Gender'] == "male") {
+        if ($_SESSION['Gender'] == "MALE") {
           echo "<input type='radio' id='Gender' name='rbGender' value='male' checked />";
         } else {
           echo "<input type='radio' id='Gender' name='rbGender' value='male' />";
@@ -96,7 +93,7 @@ if (!isset($_SESSION['Username'])) {
       </label>
       <label class="checkbox">
         <?php
-        if ($_SESSION['Gender'] == "female") {
+        if ($_SESSION['Gender'] == "FEMALE") {
           echo "<input type='radio' id='Gender' name='rbGender' value='female' checked />";
         } else {
           echo "<input type='radio' id='Gender' name='rbGender' value='female' />";
@@ -114,41 +111,15 @@ if (!isset($_SESSION['Username'])) {
     <div class="field">
       <div class="label is-size-4">Password</div>
       <div class="control">
-        <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" value=<?php echo $_SESSION['Password']; ?> disabled />
+        <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" value="dummypassword" disabled />
       </div>
     </div>
     <div class="field">
       <div class="control">
-        <input type="submit" class="button is-info" name="btnSubmit" value="sign up" />
+        <input type="submit" class="button is-info" name="btnSubmit" value="Submit" />
       </div>
     </div>
   </form>
-=======
-    <nav class=" navbar is-spaced" role="navigration" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a href="./index.php" class="navbar-item">
-                <h1 class="title is-4">Production House</h1>
-            </a>
-
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-taget="navbarMain" id="navbar-burger">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div class="navbar-menu" id="navbar-main">
-            <div class="navbar-end">
-                <a href="./home.php" class="navbar-item is-active">Home</a>
-                <a href="./login.php" class="navbar-item button is-danger">Log Out</a>
-            </div>
-        </div>
-    </nav>
-
-    <form action="./utilities/_add-user.php" method="post" class="signup-main">
-
-    </form>
->>>>>>> fe1520c84e418f72fb38e31fd75c67115d495ff1
 </body>
 
 </html>
