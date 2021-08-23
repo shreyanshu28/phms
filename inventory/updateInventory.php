@@ -4,16 +4,23 @@
 // } 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-    // $inventory = $_SESSION['products'];
+    $inventory = $_SESSION['products'];
 
-    // foreach($inventory as $product) {
-    //     $poid = $inventory->poid;
-    //     $name = $inventory->pName;
-    //     $qty =  $inventory->qty;
-    //     $price = $inventory->price;
-    //     $ownership = $inventory->ownership;
-    //     $itype = $inventory->iType;
-    // }
+    foreach($inventory as $product) {
+        $_SESSION['poid'] = $product->poid;
+        $_SESSION['pName'] = $product->pName;
+        $_SESSION['qty']=  $product->qty;
+        $_SESSION['price'] = $product->price;
+        $_SESSION['ownership'] = $product->ownership;
+        $_SESSION['iType'] = $product->iType;
+    }
+    echo $_SESSION['poid'];
+    echo $_SESSION['pName'];
+    echo $_SESSION['qty'];
+    echo $_SESSION['price'];
+    echo $_SESSION['ownership'];
+    echo $_SESSION['iType'];
+
 }
 ?>
 <!DOCTYPE html>
@@ -53,51 +60,51 @@ if (session_status() === PHP_SESSION_NONE) {
         <li><a href="#" class="is-active">Update Inventory</a></li>
       </ul>
     </nav>
-    <!-- <form action="" method="post">
+    <form action="" method="post">
         <div class="field">
             <label class="label" for="pid">Product Id</label>
             <div class="control">
-                <input class="input" type="text"name="pid" id="pid" value="<?php echo "$poid";?>" disabled>
+                <input class="input" type="text"name="pid" id="pid" value="<?php echo "$_SESSION[poid]";?>" disabled>
             </div>
         </div>
         <div class="field">
             <label class="label" for="pName">Name</label>
             <div class="control">
-                <input class="input" type="text" name="pName" id="pName" value="<?php echo "$pName";?>">
+                <input class="input" type="text" name="pName" id="pName" value="<?php echo "$_SESSION[pName]";?>">
             </div>
         </div>
         <div class="field">
             <label class="label" for="qty">Quantity</label>
             <div class="control">
-                <input  type="number" name="qty" id="qty" value="<?php echo "$qty";?>">
+                <input  type="number" name="qty" id="qty" value="<?php echo "$_SESSION[qty]";?>">
             </div>
         </div>
         <div class="field">
         <label class="label" for="price">Price</label>
             <div class="control">
-                <input type="number" name="price" id="price" value="<?php echo "$price";?>">
+                <input type="number" name="price" id="price" value="<?php echo "$_SESSION[price]";?>">
             </div>
         </div>
         <div class="field">
             <label class="label" for="ownership">Owner</label>
             <div class="control">
-                <input class="input" type="text" name="ownership" id="ownership" value="<?php echo "$ownership";?>">
+                <input class="input" type="text" name="ownership" id="ownership" value="<?php echo "$_SESSION[ownership]";?>">
             </div>
         </div>
         <div class="field">
             <label class="label" for="iType">Type</label>
             <div class="control">
-                <input class="input" type="text" name="iType" id="iType" value="<?php echo "$iType";?>">
+                <input class="input" type="text" name="iType" id="iType" value="<?php echo "$_SESSION[iType]";?>">
             </div>
         </div>        
         <div class="field is-grouped">
         <div class="control">
-            <input type="submit" class="button is-link">Update</input>
+            <input type="submit" value="update"class="button is-link"></input>
         </div>
         <div class="control">
-            <input type="reset" class="button is-link is-light">Reset</input>
+            <input type="reset" class="button is-link is-light"></input>
         </div>
         </div>
-    </form> -->
+    </form>
 </body>
 </html>
