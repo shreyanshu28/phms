@@ -25,38 +25,7 @@
   </head>
   <body class="container">
     <table id="myTable" class="table table-responsive-md">
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>Name</td>
-          <td>Qty</td>
-          <td>Price</td>
-          <td>Ownership</td>
-          <td>Type</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae,
-            beatae.
-          </td>
-          <td>Saepe sequi, beatae eum corrupti sed modi quasi ipsa veniam?</td>
-          <td>
-            Ratione rerum sed libero rem perferendis laboriosam veritatis hic
-            animi.
-          </td>
-          <td>Debitis in, quidem minima qui quasi animi cum ex culpa?</td>
-          <td>
-            Assumenda cum doloremque quo voluptatibus, quidem expedita nemo
-            totam quas!
-          </td>
-          <td>
-            Dicta a commodi facilis. Quis libero velit sapiente beatae
-            recusandae!
-          </td>
-        </tr>
-      </tbody>
+      
     </table>
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -78,5 +47,6 @@
         $("#myTable").DataTable();
       });
     </script>
+    <script src="./scripts//fetchProducts.js"></script>
   </body>
 </html>
