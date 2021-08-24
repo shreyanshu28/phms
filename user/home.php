@@ -9,8 +9,8 @@ if (!isset($_SESSION['Username'])) {
 } else {
     // the path of _make-connection must be relative to the file for which it must be used
     // include doesn't change the path of the location
-    include "../_make-connection.php";
-    include "./utilities/_fetch-user.php";
+    require_once "../_make-connection.php";
+    require_once "./utilities/_fetch-user.php";
 }
 ?>
 <!DOCTYPE html>

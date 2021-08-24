@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-include "../../_make-connection.php";
+require_once "../../_make-connection.php";
 
 $username = $_POST['txtUsername'];
 $password = $_POST['txtPassword'];

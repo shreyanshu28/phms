@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 if (isset($_POST['btnSubmit'])) {
 
     // established connection to database
-    include "../../_make-connection.php";
+    require_once "../../_make-connection.php";
 
     // if someone trying to use make multiple accounts
     $user = [];
