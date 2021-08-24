@@ -77,8 +77,8 @@ if (!isset($_SESSION['Username'])) {
                             </span>
                         </a>
                     </div>
-                    <a href="./utilities/_log-out.php" class="navbar-item button is-danger">Logout</a>
                 </div>
+                <a href="./utilities/_log-out.php" class="navbar-item button is-danger">Logout</a>
             </div>
         </div>
     </nav>

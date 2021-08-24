@@ -29,7 +29,7 @@
       <div class="navbar-end">
         <a href="./../index.php" class="navbar-item">Home</a>
         <a href="./login.php" class="navbar-item button is-light mr-2">Login</a>
-        <a href="./signup.php" class="navbar-item button is-info is-active">Sign Up</a>
+        <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
       </div>
     </div>
     </div>

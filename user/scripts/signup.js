@@ -7,7 +7,6 @@ const email = document.getElementById("email");
 const pincode = document.getElementById("pincode");
 const userName = document.getElementById("username");
 const password = document.getElementById("password");
-const confirmPassowrd = document.getElementById("confirm-password");
 const selectCity = document.getElementById("select-city");
 
 let count = 0;
@@ -61,12 +60,6 @@ userName.addEventListener("focus", function (event) {
 
 password.addEventListener("focus", function (event) {
   if (count >= 72 && count < 84) {
-    setProgressBar(84);
-  }
-});
-
-confirmPassowrd.addEventListener("focus", function (event) {
-  if (count >= 84 && count < 100) {
     setProgressBar(100);
   }
 });

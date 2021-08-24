@@ -11,6 +11,7 @@ if (!isset($_SESSION['Username'])) {
   // include doesn't change the path of the location
   require_once "../_make-connection.php";
   require_once "./utilities/_fetch-user.php";
+  require_once "./utilities/_fetch-cities.php";
 }
 ?>
 <!DOCTYPE html>
@@ -51,6 +52,7 @@ if (!isset($_SESSION['Username'])) {
               Hello, <?php echo $_SESSION['Username']; ?>
             </span>
           </a>
+
           <div class="navbar-dropdown">
             <a href="./user-detail.php" class="navbar-item">
               <div class="icon is-small is-left">
@@ -77,15 +79,21 @@ if (!isset($_SESSION['Username'])) {
               </span>
             </a>
           </div>
-          <a href="./utilities/_log-out.php" class="navbar-item button is-danger">Logout</a>
         </div>
+        <a href="./utilities/_log-out.php" class="navbar-item button is-danger">Logout</a>
       </div>
     </div>
   </nav>
 
-  <p class="title mt-3 is-2 has-text-centered">Edit Profile</p>
+  <h1 class="title mt-3 is-2 has-text-centered">Edit Profile</h1>
 
-  <form action="./utilities/_add-user.php" method="post" class="signup-main">
+  <div id="demo"></div>
+  <form action="./utilities/_update-user.php" method="post" class="signup-main">
+    <div class="field registration-progress">
+      <progress class="progress is-info" value="0" max="100" id="registration-progress">
+        15%
+      </progress>
+    </div>
     <div class="field">
       <div class="label is-size-4">First Name</div>
       <div class="control">
@@ -107,7 +115,7 @@ if (!isset($_SESSION['Username'])) {
     <div class="field">
       <label class="label is-size-4">Data of Birth</label>
       <div class="control">
-        <input type="date" name="dob" id="dob" class="input is-info is-medium" />
+        <input type="date" name="dob" id="dob" class="input is-info is-medium" value="<?php echo $_SESSION['DOB']; ?>" disabled />
       </div>
     </div>
     <div class="field">
@@ -123,7 +131,11 @@ if (!isset($_SESSION['Username'])) {
             <i class="fa fa-globe"></i>
           </div>
         </div>
-        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" required />
+        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value=<?php
+                                                                                                                                            for ($i = 2; $i < strlen($_SESSION['ContactNo']); $i++) {
+                                                                                                                                              echo $_SESSION['ContactNo'][$i];
+                                                                                                                                            }
+                                                                                                                                            ?> required />
       </div>
     </div>
     <div class="field">
@@ -158,26 +170,34 @@ if (!isset($_SESSION['Username'])) {
     <div class="field">
       <label class="label is-size-4">Address</label>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Flat, House no, Building, Company, Apartment" name="txtAddress1" id="flat" />
+        <input type="text" class="input is-info is-medium" placeholder="Flat, House no, Building, Company, Apartment" name="txtAddress1" id="flat" value=<?php echo $_SESSION['Address1']; ?> />
       </div>
       <div class="control mt-2">
-        <input type="text" class="input is-info is-medium" placeholder="Area, Street, Sector, Village" name="txtAddress2" id="area" />
+        <input type="text" class="input is-info is-medium" placeholder="Area, Street, Sector, Village" name="txtAddress2" id="area" value=<?php echo $_SESSION['Address2']; ?> />
       </div>
       <div class="control mt-2 field has-addons">
         <div class="select is-medium is-info">
           <select name="cbCity" id="select-city">
             <option value="-1">City</option>
             <option value="1">Add New</option>
-            <option value="SURAT">SURAT</option>
+            <?php
+            foreach ($_SESSION['AllCities'] as $city) {
+              if ($_SESSION['City'] == $city->cname) {
+                echo "<option value=$city->cname selected>" . $city->cname . "</option>";
+              } else {
+                echo "<option value=$city->cname>" . $city->cname . "</option>";
+              }
+            }
+            ?>
           </select>
         </div>
       </div>
       <!-- <input type="hidden" class="input is-info is-medium" name="txtCity" id="hidcity" placeholder="City" /> -->
       <div class="control mt-2">
-        <input type="text" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" />
+        <input type="text" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" value=<?php echo $_SESSION['Pincode']; ?> />
       </div>
       <div class="control mt-2">
-        <input type="text" class="input is-info is-medium" name="txtLandmark" id="landmark" placeholder="Landmark" />
+        <input type="text" class="input is-info is-medium" name="txtLandmark" id="landmark" placeholder="Landmark" value=<?php echo $_SESSION['Landmark']; ?> />
       </div>
     </div>
     <div class="field">
@@ -199,7 +219,8 @@ if (!isset($_SESSION['Username'])) {
     </div>
   </form>
 </body>
-<script src="./scripts/login.js"></script>
+<!-- <script src="./scripts/fetchUser.js" type="module"></script> -->
+<script src="./scripts/signup.js"></script>
 <script src="../scripts/navbar.js"></script>
 
 </html>
