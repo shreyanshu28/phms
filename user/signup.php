@@ -72,7 +72,7 @@
         <div class="control has-icons-left">
           <div class="select is-medium is-info">
             <select name="country-code">
-              <option selected>91+</option>
+              <option value="91" selected>91+</option>
             </select>
           </div>
           <div class="icon is-small is-left">
