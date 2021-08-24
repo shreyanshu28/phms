@@ -27,14 +27,15 @@
 
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="./../index.php" class="navbar-item is-active">Home</a>
-        <a href="./login.php" class="navbar-item button mr-2 is-light">Login</a>
+        <a href="./../index.php" class="navbar-item">Home</a>
+        <a href="./login.php" class="navbar-item button is-light mr-2">Login</a>
         <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
       </div>
     </div>
+    </div>
   </nav>
 
-  <p class="title is-1 has-text-centered">Sign Up</p>
+  <p class="title mt-3 is-2 has-text-centered">Sign Up</p>
 
   <form action="./utilities/_add-user.php" method="post" class="signup-main">
     <div class="field registration-progress">
@@ -72,7 +73,7 @@
         <div class="control has-icons-left">
           <div class="select is-medium is-info">
             <select name="country-code">
-              <option selected>91+</option>
+              <option value="91" selected>91+</option>
             </select>
           </div>
           <div class="icon is-small is-left">

@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-include "../../_make-connection.php";
+require_once "../../_make-connection.php";
 
 $username = $_POST['txtUsername'];
 $password = $_POST['txtPassword'];
@@ -11,7 +11,7 @@ $password = $_POST['txtPassword'];
 // TODO: Transaction testing remaining
 try {
     $pdo->beginTransaction();
-    $sql = "select * from tbllogin where username = :username && password = :password";
+    $sql = "select * from tbllogin where username = :username && password = sha(:password)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(["username" => $username, "password" => $password]);
     $pdo->commit();

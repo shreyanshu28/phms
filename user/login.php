@@ -32,14 +32,14 @@ session_start();
 
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="../index.php" class="navbar-item is-active">Home</a>
-        <a href="./login.php" class="navbar-item button mr-2 is-light">Login</a>
+        <a href="../index.php" class="navbar-item">Home</a>
+        <a href="./login.php" class="navbar-item button is-light is-active mr-2">Login</a>
         <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
       </div>
     </div>
   </nav>
 
-  <p class="title is-1 has-text-centered">Log In</p>
+  <p class="title mt-3 is-2 has-text-centered">Log In</p>
 
   <form action="./utilities/_check-login.php" method="post" class="login-main">
     <div class="field" id="userInput">

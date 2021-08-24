@@ -157,5 +157,5 @@
       echo "$_SESSION[type]";
     }
     ?>
-  </body>
+</body>
 </html>

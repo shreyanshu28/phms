@@ -33,7 +33,8 @@ session_start();
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
         <a href="./index.php" class="navbar-item is-active">Home</a>
-        <a href="./user/login.php" class="navbar-item button mr-2 is-light">Login</a>
+        <hr class="navbar-divider">
+        <a href="./user/login.php" class="navbar-item button is-light mr-2">Login</a>
         <a href="./user/signup.php" class="navbar-item button is-info">Sign Up</a>
       </div>
     </div>
@@ -41,7 +42,7 @@ session_start();
   <div class="photo-type">
     <div class="content">
       <div class="hero">
-        <h1 class="title is-3 photo-title">Let's start our Journey</h1>
+        <h1 class="title mt-3 is-3 photo-title">Let's start our Journey</h1>
         <h2 class="subtitle is-5 photo-title">
           The place where you will find your memories come to life
         </h2>

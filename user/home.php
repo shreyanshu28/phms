@@ -9,8 +9,8 @@ if (!isset($_SESSION['Username'])) {
 } else {
     // the path of _make-connection must be relative to the file for which it must be used
     // include doesn't change the path of the location
-    include "../_make-connection.php";
-    include "./utilities/_fetch-user.php";
+    require_once "../_make-connection.php";
+    require_once "./utilities/_fetch-user.php";
 }
 ?>
 <!DOCTYPE html>
@@ -20,13 +20,14 @@ if (!isset($_SESSION['Username'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
-    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>Home</title>
 </head>
 
 <body>
-    <nav class=" navbar is-spaced" role="navigration" aria-label="main navigation">
+    <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
         <div class="navbar-brand">
             <a href="../index.php" class="navbar-item">
                 <h1 class="title is-4">Apricus Productions</h1>
@@ -41,15 +42,50 @@ if (!isset($_SESSION['Username'])) {
 
         <div class="navbar-menu" id="navbar-main">
             <div class="navbar-end">
-                <a href="./home.php" class="navbar-item is-active">Home</a>
-                <a href="./login.php" class="navbar-item button is-danger">Log Out</a>
+                <div class="navbar-item has-dropdown is-hoverable mr-2">
+                    <a class="navbar-link">
+                        <div class="icon is-small is-left">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <span>
+                            Hello, <?php echo $_SESSION['Username']; ?>
+                        </span>
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a href="./user-detail.php" class="navbar-item">
+                            <div class="icon is-small is-left">
+                                <i class="fa fa-edit"></i>
+                            </div>
+                            <span>
+                                Edit Profile
+                            </span>
+                        </a>
+                        <a href="#" class="navbar-item">
+                            <div class="icon is-small is-left">
+                                <i class="fa fa-lock"></i>
+                            </div>
+                            <span>
+                                Privacy & Security
+                            </span>
+                        </a>
+                        <a href="#" class="navbar-item">
+                            <div class="icon is-small is-left">
+                                <i class="fa fa-gear"></i>
+                            </div>
+                            <span>
+                                Settings
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <a href="./utilities/_log-out.php" class="navbar-item button is-danger">Logout</a>
             </div>
         </div>
     </nav>
-
     <form action="./utilities/_add-user.php" method="post" class="signup-main">
-
     </form>
 </body>
+<script src="./scripts/login.js"></script>
+<script src="../scripts/navbar.js"></script>
 
 </html>

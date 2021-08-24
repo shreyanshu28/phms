@@ -9,8 +9,9 @@ if (!isset($_SESSION['Username'])) {
 } else {
   // the path of _make-connection must be relative to the file for which it must be used
   // include doesn't change the path of the location
-  include "../_make-connection.php";
-  include "./utilities/_fetch-user.php";
+  require_once "../_make-connection.php";
+  require_once "./utilities/_fetch-user.php";
+  require_once "./utilities/_fetch-cities.php";
 }
 ?>
 <!DOCTYPE html>
@@ -21,14 +22,16 @@ if (!isset($_SESSION['Username'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="./styles/style.css">
   <title>User Details</title>
 </head>
 
 <body>
   <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
-      <a href="./index.php" class="navbar-item">
-        <h1 class="title is-4">Production House</h1>
+      <a href="../index.php" class="navbar-item">
+        <h1 class="title is-4">Apricus Productions</h1>
       </a>
 
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-taget="navbarMain" id="navbar-burger">
@@ -40,19 +43,61 @@ if (!isset($_SESSION['Username'])) {
 
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="./home.php" class="navbar-item is-active">Home</a>
-        <a href="./login.php" class="navbar-item button is-danger">Log Out</a>
+        <div class="navbar-item has-dropdown is-hoverable mr-2">
+          <a class="navbar-link">
+            <div class="icon is-small is-left">
+              <i class="fa fa-user"></i>
+            </div>
+            <span>
+              Hello, <?php echo $_SESSION['Username']; ?>
+            </span>
+          </a>
+
+          <div class="navbar-dropdown">
+            <a href="./user-detail.php" class="navbar-item">
+              <div class="icon is-small is-left">
+                <i class="fa fa-edit"></i>
+              </div>
+              <span>
+                Edit Profile
+              </span>
+            </a>
+            <a href="#" class="navbar-item">
+              <div class="icon is-small is-left">
+                <i class="fa fa-lock"></i>
+              </div>
+              <span>
+                Privacy & Security
+              </span>
+            </a>
+            <a href="#" class="navbar-item">
+              <div class="icon is-small is-left">
+                <i class="fa fa-gear"></i>
+              </div>
+              <span>
+                Settings
+              </span>
+            </a>
+          </div>
+        </div>
+        <a href="./utilities/_log-out.php" class="navbar-item button is-danger">Logout</a>
       </div>
     </div>
   </nav>
 
-  <p class="title is-1 has-text-centered">Confirm Details</p>
+  <h1 class="title mt-3 is-2 has-text-centered">Edit Profile</h1>
 
-  <form action="./utilities/_add-user.php" method="post" class="signup-main">
+  <div id="demo"></div>
+  <form action="./utilities/_update-user.php" method="post" class="signup-main">
+    <div class="field registration-progress">
+      <progress class="progress is-info" value="0" max="100" id="registration-progress">
+        15%
+      </progress>
+    </div>
     <div class="field">
       <div class="label is-size-4">First Name</div>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="First Name" name="txtFName" id="firstname" value=<?php echo $_SESSION['FName']; ?> />
+        <input type="text" class="input is-info is-medium" placeholder="First Name" name="txtFName" id="firstname" value=<?php echo $_SESSION['FName']; ?> required />
       </div>
     </div>
     <div class="field">
@@ -64,13 +109,33 @@ if (!isset($_SESSION['Username'])) {
     <div class="field">
       <label class="label is-size-4">Last Name</label>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Last Name" name="txtLName" id="lastname" value=<?php echo $_SESSION['LName']; ?> />
+        <input type="text" class="input is-info is-medium" placeholder="Last Name" name="txtLName" id="lastname" value=<?php echo $_SESSION['LName']; ?> required />
+      </div>
+    </div>
+    <div class="field">
+      <label class="label is-size-4">Data of Birth</label>
+      <div class="control">
+        <input type="date" name="dob" id="dob" class="input is-info is-medium" value="<?php echo $_SESSION['DOB']; ?>" disabled />
       </div>
     </div>
     <div class="field">
       <label class="label is-size-4">Contact No</label>
-      <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value=<?php echo $_SESSION['ContactNo']; ?> />
+      <div class="control field has-addons">
+        <div class="control has-icons-left">
+          <div class="select is-medium is-info">
+            <select name="country-code">
+              <option value="91" selected>91+</option>
+            </select>
+          </div>
+          <div class="icon is-small is-left">
+            <i class="fa fa-globe"></i>
+          </div>
+        </div>
+        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value=<?php
+                                                                                                                                            for ($i = 2; $i < strlen($_SESSION['ContactNo']); $i++) {
+                                                                                                                                              echo $_SESSION['ContactNo'][$i];
+                                                                                                                                            }
+                                                                                                                                            ?> required />
       </div>
     </div>
     <div class="field">
@@ -81,9 +146,9 @@ if (!isset($_SESSION['Username'])) {
     </div>
     <div class="field">
       <div class="label is-size-4">Gender:</div>
-      <label class="checkbox">
+      <label class="radio">
         <?php
-        if ($_SESSION['Gender'] == "MALE") {
+        if ($_SESSION['Gender'] == "M") {
           echo "<input type='radio' id='Gender' name='rbGender' value='male' checked />";
         } else {
           echo "<input type='radio' id='Gender' name='rbGender' value='male' />";
@@ -93,7 +158,7 @@ if (!isset($_SESSION['Username'])) {
       </label>
       <label class="checkbox">
         <?php
-        if ($_SESSION['Gender'] == "FEMALE") {
+        if ($_SESSION['Gender'] == "F") {
           echo "<input type='radio' id='Gender' name='rbGender' value='female' checked />";
         } else {
           echo "<input type='radio' id='Gender' name='rbGender' value='female' />";
@@ -101,6 +166,39 @@ if (!isset($_SESSION['Username'])) {
         ?>
         Female
       </label>
+    </div>
+    <div class="field">
+      <label class="label is-size-4">Address</label>
+      <div class="control">
+        <input type="text" class="input is-info is-medium" placeholder="Flat, House no, Building, Company, Apartment" name="txtAddress1" id="flat" value=<?php echo $_SESSION['Address1']; ?> />
+      </div>
+      <div class="control mt-2">
+        <input type="text" class="input is-info is-medium" placeholder="Area, Street, Sector, Village" name="txtAddress2" id="area" value=<?php echo $_SESSION['Address2']; ?> />
+      </div>
+      <div class="control mt-2 field has-addons">
+        <div class="select is-medium is-info">
+          <select name="cbCity" id="select-city">
+            <option value="-1">City</option>
+            <option value="1">Add New</option>
+            <?php
+            foreach ($_SESSION['AllCities'] as $city) {
+              if ($_SESSION['City'] == $city->cname) {
+                echo "<option value=$city->cname selected>" . $city->cname . "</option>";
+              } else {
+                echo "<option value=$city->cname>" . $city->cname . "</option>";
+              }
+            }
+            ?>
+          </select>
+        </div>
+      </div>
+      <!-- <input type="hidden" class="input is-info is-medium" name="txtCity" id="hidcity" placeholder="City" /> -->
+      <div class="control mt-2">
+        <input type="text" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" value=<?php echo $_SESSION['Pincode']; ?> />
+      </div>
+      <div class="control mt-2">
+        <input type="text" class="input is-info is-medium" name="txtLandmark" id="landmark" placeholder="Landmark" value=<?php echo $_SESSION['Landmark']; ?> />
+      </div>
     </div>
     <div class="field">
       <div class="label is-size-4">Username</div>
@@ -121,5 +219,8 @@ if (!isset($_SESSION['Username'])) {
     </div>
   </form>
 </body>
+<!-- <script src="./scripts/fetchUser.js" type="module"></script> -->
+<script src="./scripts/signup.js"></script>
+<script src="../scripts/navbar.js"></script>
 
 </html>
