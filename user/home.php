@@ -46,7 +46,7 @@ if (!isset($_SESSION['Username'])) {
                     <div class="icon is-small is-left mr-1"><i class="fa fa-user"></i></div>
                     Hello, <?php echo $_SESSION['Username']; ?>
                 </a>
-                <a href="./log-out.php" class="navbar-item button is-danger ml-2">Logout</a>
+                <a href="./utilities/_log-out.php" class="navbar-item button is-danger ml-2">Logout</a>
             </div>
         </div>
     </nav>
