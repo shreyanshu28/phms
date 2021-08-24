@@ -35,7 +35,7 @@ else {
         $sql = "SELECT po.poid, p.pName, po.qty, po.price, po.ownership, it.iType FROM ".
         "tblpropownership po inner join tblProps p ".
         "inner join tblinventorytype it ".
-        "on p.pid = po.propid and it.itid=po.intId ";
+        "on p.pid = po.propid and it.itid=po.intId";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $products = $stmt->fetchAll();
