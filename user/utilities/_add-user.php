@@ -13,7 +13,7 @@ if (isset($_POST['btnSubmit'])) {
     $user['ContactNo'] = $_POST['country-code'] . "" . $_POST['txtContactNo'];
     $sql = "SELECT count(uid) FROM tblUser WHERE contactnumber = :contactno";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['contactno' => (int)$user['ContactNo']]);
+    $stmt->execute(['contactno' => $user['ContactNo']]);
     $verifyUser = $stmt->fetchColumn();
 
     if ($verifyUser == "0") {
@@ -109,7 +109,7 @@ if (isset($_POST['btnSubmit'])) {
         if ($verifyLogin == "0") {
             $sql = "INSERT INTO tblLogin"
                 . "(username, password, uid) VALUES"
-                . "(:username, :password,"
+                . "(:username, sha(:password),"
                 . "(select uid from tblUser where contactnumber = :contactno))";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
