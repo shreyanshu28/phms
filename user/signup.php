@@ -27,14 +27,15 @@
 
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="./../index.php" class="navbar-item is-active">Home</a>
-        <a href="./login.php" class="navbar-item button mr-2 is-light">Login</a>
-        <a href="./signup.php" class="navbar-item button is-info">Sign Up</a>
+        <a href="./../index.php" class="navbar-item">Home</a>
+        <a href="./login.php" class="navbar-item button is-light mr-2">Login</a>
+        <a href="./signup.php" class="navbar-item button is-info is-active">Sign Up</a>
       </div>
+    </div>
     </div>
   </nav>
 
-  <p class="title is-1 has-text-centered">Sign Up</p>
+  <p class="title mt-3 is-2 has-text-centered">Sign Up</p>
 
   <form action="./utilities/_add-user.php" method="post" class="signup-main">
     <div class="field registration-progress">
