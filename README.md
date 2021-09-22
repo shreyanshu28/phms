@@ -1,5 +1,5 @@
 # phms
-Production House Management System for semester 5 project.<br />
+Production House Management System for semester 5 project.
 <br />
 <a href="https://stackoverflow.com/questions/8295131/best-practices-for-sql-varchar-column-length" target="_blank" >Database Attributes size preferences</a>
 <br />
