@@ -1,7 +1,13 @@
 # phms
 Production House Management System for semester 5 project.<br />
-CDNs used:<br />
-Font-Awesome:<br />
+<br />
+```html
+<a herf="https://stackoverflow.com/questions/8295131/best-practices-for-sql-varchar-column-length" target="_black" >Database Attributes size preferences</a>
+```
+CDNs used:
+<br />
+Font-Awesome:
+<br />
 ```html
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 ```
