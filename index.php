@@ -2,6 +2,9 @@
 session_start();
 session_destroy();
 session_start();
+if (isset($_SESSION['userstring'])) {
+  echo "SESSION: " . $_SESSION['userstring'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
