@@ -2,7 +2,7 @@
 session_start();
 session_destroy();
 session_start();
-require './utilities/_check-login.php';
+require_once './utilities/_check-login.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

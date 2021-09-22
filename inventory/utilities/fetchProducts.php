@@ -5,8 +5,9 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once(__DIR__ . '../../../_make-connection.php');
 
-if ($_REQUEST) {
+if (isset($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
+    // if ($_SERVER["REQUEST_METHOD"] == "POST")
 
     try {
         $pdo->beginTransaction();
