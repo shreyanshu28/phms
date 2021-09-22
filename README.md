@@ -1,7 +1,7 @@
 # phms
 Production House Management System for semester 5 project.<br />
 <br />
-<a herf="https://stackoverflow.com/questions/8295131/best-practices-for-sql-varchar-column-length" target="_black" >Database Attributes size preferences</a>
+<a href="https://stackoverflow.com/questions/8295131/best-practices-for-sql-varchar-column-length" target="_black" >Database Attributes size preferences</a>
 CDNs used:
 <br />
 Font-Awesome:
