@@ -16,9 +16,48 @@ firstName.addEventListener("focus", function (event) {
   }
 });
 
-firstName.addEventListener("keydown", function (event) {
-  if (!(event.target.keyCode >= 48 && event.target.keyCode <= 57)) {
-    firstName.value = event.target.value;
+nameReg = RegExp("^[a-zA-Z]+$");
+firstName.addEventListener("keyup", function (event) {
+  console.log(nameReg.test(firstName.value));
+  if (!nameReg.test(firstName.value)) {
+    firstName.classList.remove("is-info");
+    firstName.classList.add("is-danger");
+  } else {
+    firstName.classList.remove("is-danger");
+    firstName.classList.add("is-info");
+  }
+});
+
+middleName.addEventListener("keyup", function (event) {
+  console.log(nameReg.test(middleName.value));
+  if (!nameReg.test(middleName.value)) {
+    middleName.classList.remove("is-info");
+    middleName.classList.add("is-danger");
+  } else {
+    middleName.classList.remove("is-danger");
+    middleName.classList.add("is-info");
+  }
+});
+
+lastName.addEventListener("keyup", function (event) {
+  console.log(nameReg.test(lastName.value));
+  if (!nameReg.test(lastName.value)) {
+    lastName.classList.remove("is-info");
+    lastName.classList.add("is-danger");
+  } else {
+    lastName.classList.remove("is-danger");
+    lastName.classList.add("is-info");
+  }
+});
+
+middleName.addEventListener("keyup", function (event) {
+  console.log(nameReg.test(middleName.value));
+  if (!nameReg.test(middleName.value)) {
+    middleName.classList.remove("is-info");
+    middleName.classList.add("is-danger");
+  } else {
+    middleName.classList.remove("is-danger");
+    middleName.classList.add("is-info");
   }
 });
 

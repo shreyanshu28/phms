@@ -1,16 +1,16 @@
 <?php
 // If session already started gives
-if (session_status() == PHP_SESSION_NONE) {
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (!isset($_SESSION['Username'])) {
-    header("Location: ./login.php");
+if (!isset($_COOKIE["Username"])) {
+    header("location: ./login.php?no=TRUE");
 } else {
     // the path of _make-connection must be relative to the file for which it must be used
     // include doesn't change the path of the location
-    require_once "../_make-connection.php";
-    require_once "./utilities/_fetch-user.php";
+    // require_once "../_make-connection.php";
+    // require_once "./utilities/_fetch-user.php";
 }
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['Username'])) {
                             <i class="fa fa-user"></i>
                         </div>
                         <span>
-                            Hello, <?php echo $_SESSION['Username']; ?>
+                            Hello, <?php echo $_COOKIE["Username"]; ?>
                         </span>
                     </a>
                     <div class="navbar-dropdown">

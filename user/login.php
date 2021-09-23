@@ -2,6 +2,7 @@
 session_start();
 session_destroy();
 session_start();
+require_once './utilities/_check-login.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +57,7 @@ session_start();
       <progress class="progress is-info" value="0" max="100" id="login-progress">
         15%
       </progress>
-      <input class="button is-info is-outlined" type="submit" value="Log In" />
+      <input class="button is-info is-outlined" type="submit" name="submit" value="Log In" />
     </div>
   </form>
 </body>

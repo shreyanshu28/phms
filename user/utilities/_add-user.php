@@ -113,16 +113,15 @@ if (isset($_POST['btnSubmit'])) {
 
                 // if login successfully created
                 $_SESSION['Username'] = $user['Username'];
-                header("Location: ../home.php");
+                header("Location: /ProductionHouse/user/home.php");
             } catch (Exception $ex) {
                 echo ("Error");
             }
         } else {
-            header("Location: ../signup.php");
+            header("Location: /ProductionHouse/user/signup.php");
         }
     } else {
-        header("Location: ../signup.php");
+        header("Location: /ProductionHouse/user/signup.php");
     }
-} else {
-    header("Location: ../../index.php");
 }
+header("Location: /ProductionHouse/user/login.php");

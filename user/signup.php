@@ -73,14 +73,14 @@
         <div class="control has-icons-left">
           <div class="select is-medium is-info">
             <select name="country-code">
-              <option value="91" selected>91+</option>
+              <option value="91" selected>+91</option>
             </select>
           </div>
           <div class="icon is-small is-left">
             <i class="fa fa-globe"></i>
           </div>
         </div>
-        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" required />
+        <input type="tel" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" required />
       </div>
     </div>
     <div class="field">
@@ -113,7 +113,13 @@
           <select name="cbCity" id="select-city">
             <option value="-1">City</option>
             <option value="1">Add New</option>
-            <option value="SURAT">SURAT</option>
+            <?php
+            require_once "../_make-connection.php";
+            require_once "./utilities/_fetch-cities.php";
+            foreach ($_SESSION['AllCities'] as $city) {
+              echo "<option value=$city->cname>" . $city->cname . "</option>";
+            }
+            ?>
           </select>
         </div>
       </div>

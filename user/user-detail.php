@@ -1,6 +1,6 @@
 <?php
 // If session already started gives
-if (session_status() == PHP_SESSION_NONE) {
+if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
@@ -131,11 +131,7 @@ if (!isset($_SESSION['Username'])) {
             <i class="fa fa-globe"></i>
           </div>
         </div>
-        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value=<?php
-                                                                                                                                            for ($i = 2; $i < strlen($_SESSION['ContactNo']); $i++) {
-                                                                                                                                              echo $_SESSION['ContactNo'][$i];
-                                                                                                                                            }
-                                                                                                                                            ?> required />
+        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value=<?php echo substr($_SESSION['ContactNo'], 2); ?> required />
       </div>
     </div>
     <div class="field">
@@ -209,7 +205,7 @@ if (!isset($_SESSION['Username'])) {
     <div class="field">
       <div class="label is-size-4">Password</div>
       <div class="control">
-        <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" value="dummypassword" disabled />
+        <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" value="password" disabled />
       </div>
     </div>
     <div class="field">
