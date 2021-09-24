@@ -1,23 +1,23 @@
-<?php 
+<?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
     if (!(isset($_SESSION['products']))) {
         header("location:./inventory.php");
-    } 
+    }
     $inventory = $_SESSION['products'];
 
-    foreach($inventory as $product) {
-        $_SESSION['poid'] = $product->poid;
-        $_SESSION['pName'] = $product->pName;
-        $_SESSION['qty']=  $product->qty;
+    foreach ($inventory as $product) {
+        $_SESSION['pid'] = $product->pid;
+        $_SESSION['productName'] = $product->productName;
+        $_SESSION['qty'] =  $product->qty;
         $_SESSION['price'] = $product->price;
-        $_SESSION['ownership'] = $product->ownership;
-        $_SESSION['iType'] = $product->iType;
+        $_SESSION['type'] = $product->type;
     }
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,9 +25,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
     <title>Update Inventory</title>
 </head>
+
 <body>
     <?php require_once './utilities/_fetchType.php' ?>
-<nav class=" navbar is-spaced" role="navigration" aria-label="main navigation">
+    <nav class=" navbar is-spaced" role="navigration" aria-label="main navigation">
         <div class="navbar-brand">
             <a href="../index.php" class="navbar-item">
                 <h1 class="title is-4">Apricus Productions</h1>
@@ -48,94 +49,93 @@ if (session_status() === PHP_SESSION_NONE) {
         </div>
     </nav>
     <nav class="breadcrumb navbar ml-6">
-      <ul>
-        <li><a href="../index.php">Home</a></li>
-        <li><a href="./inventory.php">Inventory</a></li>
-        <li class="is-active"><a href="#">Update Inventory</a></li>
-      </ul>
+        <ul>
+            <li><a href="../index.php">Home</a></li>
+            <li><a href="./inventory.php">Inventory</a></li>
+            <li class="is-active"><a href="#">Update Inventory</a></li>
+        </ul>
     </nav>
-    <form action="" method="post" class="m-6">
+    <form action="./utilities/updateProducts.php" method="post" class="m-6">
         <div class="field">
             <label class="label" for="pid">Product Id</label>
             <div class="control">
-                <input class="input is-success" type="text"name="pid" id="pid" value="<?php echo "$_SESSION[poid]";?>" disabled>
+                <!-- use readonly not disabled php not able to get disabled post value -->
+                <input class="input is-success" type="text" name="pid" id="pid" value="<?php echo "$_SESSION[pid]"; ?>" readonly />
             </div>
         </div>
         <div class="field">
             <label class="label" for="pName">Name</label>
             <div class="control">
-                <input class="input is-success" type="text" name="pName" id="pName" value="<?php echo "$_SESSION[pName]";?>">
+                <input class="input is-success" type="text" name="productName" id="pName" value="<?php echo "$_SESSION[productName]"; ?>">
             </div>
         </div>
         <div class="field">
             <label class="label" for="qty">Quantity</label>
             <div class="control">
-                <input  type="number"  class="is-success" name="qty" id="qty" value="<?php echo "$_SESSION[qty]";?>">
+                <input type="number" class="is-success" name="qty" id="qty" value="<?php echo "$_SESSION[qty]"; ?>">
             </div>
         </div>
         <div class="field">
-        <label class="label" for="price">Price</label>
+            <label class="label" for="price">Price</label>
             <div class="control">
-                <input type="number"  class="is-success" name="price" id="price" value="<?php echo "$_SESSION[price]";?>">
+                <input type="number" class="is-success" name="price" id="price" value="<?php echo "$_SESSION[price]"; ?>">
             </div>
         </div>
-        <div class="field">
+        <!--<div class="field">
             <label class="label" for="ownership">Owner</label>
             <div class="control">
                 <div class="select">
                     <select>
                         <option>Add new</option>
                         <?php
-                        foreach($owner as $o) {
-                            if($o->ownership == $_SESSION['ownership']) {
-                                echo "<option  class=is-success selected=selected>".$o->ownership."</option>";
-                            }
-                            else {
-                                echo "<option class=is-success >".$o->ownership."</option>";
-                            }
-                            
-                        }?>
+                        // foreach ($owner as $o) {
+                        //     if ($o->ownership == $_SESSION['ownership']) {
+                        //         echo "<option  class=is-success selected=selected>" . $o->ownership . "</option>";
+                        //     } else {
+                        //         echo "<option class=is-success >" . $o->ownership . "</option>";
+                        //     }
+                        // } 
+                        ?>
                     </select>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="field">
             <label class="label" for="iType">Type</label>
             <div class="control">
-            <div class="select">
-                    <select>
+                <div class="select">
+                    <select name="type">
                         <option>Add new</option>
                         <?php
-                        foreach($type as $t) {
-                            if($t->iType == $_SESSION['iType']) {
-                                echo "<option selected=selected>".$t->iType."</option>";
+                        foreach ($type as $t) {
+                            if ($t->type == $_SESSION['type']) {
+                                echo "<option selected>" . $t->type . "</option>";
+                            } else {
+                                echo "<option>" . $t->type . "</option>";
                             }
-                            else {
-                                echo "<option>".$t->iType."</option>";
-                            }
-                            
-                        }?>
+                        } ?>
                     </select>
                 </div>
             </div>
-        </div>        
+        </div>
         <div class="field is-grouped">
-        <div class="control">
-            <input type="submit" value="Update" class="button is-link" id="update" disabled></input>
-        </div>
-        <div class="control">
-            <input type="reset" class="button is-link is-light"></input>
-        </div>
+            <div class="control">
+                <input type="submit" name="update" value="Update" class="button is-link" id="update"></input>
+            </div>
+            <div class="control">
+                <input type="reset" class="button is-link is-light"></input>
+            </div>
         </div>
     </form>
 
     <?php
-    // if(isset($_POST['submit'])) {
-    //     header("location:./utilities/updateProducts.php?")
-    //     unset($_SESSION['products']);
-    //     unset($_SESSION['products']);
+    // if (isset($_POST['update'])) {
+    //     header("location: ?id=${_SESSION['id']}");
+    //     // unset($_SESSION['products']);
+    //     // unset($_SESSION['products']);
     // }
     ?>
 </body>
 <script src="../scripts/navbar.js"></script>
+
 </html>
