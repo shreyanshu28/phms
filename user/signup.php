@@ -132,9 +132,9 @@
       </div>
     </div>
     <div class="field">
-      <label class="label is-size-4">Username</label>
+      <label class="label is-size-4">Email</label>
       <div class="control">
-        <input type="text" name="txtUsername" class="input is-info is-medium" placeholder="Username" id="username" required />
+        <input type="text" name="txtEmail" class="input is-info is-medium" placeholder="Username" id="username" required />
       </div>
     </div>
     <div class="field">

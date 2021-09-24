@@ -8,6 +8,11 @@ $dbname = "production_house";
 // no space between equal signs in connection string
 $dns = "mysql:host=${host};dbname=${dbname}";
 
-$pdo = new PDO($dns, $user, $password);
+try {
+    $pdo = new PDO($dns, $user, $password);
+} catch (Exception $e) {
+    die("Database Not connected!");
+}
 
+// Default attribute for data fetching
 $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);

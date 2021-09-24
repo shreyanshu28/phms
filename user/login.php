@@ -44,14 +44,20 @@ require_once './utilities/_check-login.php';
 
   <form action="./utilities/_check-login.php" method="post" class="login-main">
     <div class="field" id="userInput">
-      <label class="label is-size-4">Username</label>
+      <label class="label is-size-4">Email</label>
       <div class="control">
-        <input type="text" name="txtUsername" class="input is-info is-medium" placeholder="Username" id="username" required />
+        <input type="text" name="txtEmail" class="input is-info is-medium" placeholder="xyz@email.com" id="username" required />
       </div>
     </div>
     <div class="field">
       <div class="label is-size-4">Password</div>
       <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="password" id="password" minlength="8" required />
+    </div>
+    <div class="field">
+      <label class="label checkbox is-size-6">
+        <input type="checkbox" name="RememberMe" class="is-info" id="remember-me" />
+        Remember Me
+      </label>
     </div>
     <div class="field">
       <progress class="progress is-info" value="0" max="100" id="login-progress">

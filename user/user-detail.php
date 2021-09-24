@@ -4,12 +4,11 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-if (!isset($_SESSION['Username'])) {
-  header("Location: ./login.php");
+if (!isset($_SESSION['Email'])) {
+  header("location: ./login.php");
 } else {
   // the path of _make-connection must be relative to the file for which it must be used
   // include doesn't change the path of the location
-  require_once "../_make-connection.php";
   require_once "./utilities/_fetch-user.php";
   require_once "./utilities/_fetch-cities.php";
 }
@@ -49,7 +48,7 @@ if (!isset($_SESSION['Username'])) {
               <i class="fa fa-user"></i>
             </div>
             <span>
-              Hello, <?php echo $_SESSION['Username']; ?>
+              Hello, <?php echo $_SESSION['FName']; ?>
             </span>
           </a>
 
@@ -131,7 +130,7 @@ if (!isset($_SESSION['Username'])) {
             <i class="fa fa-globe"></i>
           </div>
         </div>
-        <input type="text" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value=<?php echo substr($_SESSION['ContactNo'], 2); ?> required />
+        <input type="tel" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value=<?php echo substr($_SESSION['ContactNo'], 2); ?> required />
       </div>
     </div>
     <div class="field">
