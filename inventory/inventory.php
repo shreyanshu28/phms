@@ -33,11 +33,11 @@
         <button class="delete" id="close-modal" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
-        <form action="#" method="post">
+        <form action="./utilities/addProducts.php" method="post">
           <div class="field">
             <label class="label" for="pName">Name</label>
             <div class="control">
-              <input class="input is-success" type="text" name="pName" id="pName">
+              <input class="input is-success" type="text" name="productName" id="pName">
             </div>
           </div>
           <div class="field">
@@ -130,14 +130,12 @@
     });
   </script>
   <?php
-  if (array_key_exists('button1', $_POST)) {
-    $_SESSION['pName'] = $_POST['pName'];
-    $_SESSION['qty'] = $_POST['qty'];
-    $_SESSION['price'] = $_POST['price'];
-    $_SESSION['type'] = $_POST['type'];
-    // echo "$_SESSION[owner]";
-    // echo "$_SESSION[type]";
-  }
+  // if (array_key_exists("button1", $_POST)) {
+  //   $_SESSION['pName'] = $_POST['pName'];
+  //   $_SESSION['qty'] = $_POST['qty'];
+  //   $_SESSION['price'] = $_POST['price'];
+  //   $_SESSION['type'] = $_POST['type'];
+  // }
   ?>
 </body>
 

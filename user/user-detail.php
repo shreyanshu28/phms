@@ -48,7 +48,7 @@ if (!isset($_SESSION['Email'])) {
               <i class="fa fa-user"></i>
             </div>
             <span>
-              Hello, <?php echo $_SESSION['FName']; ?>"
+              Hello, <?php echo $_SESSION['FName']; ?>
             </span>
           </a>
 
