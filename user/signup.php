@@ -84,12 +84,6 @@
       </div>
     </div>
     <div class="field">
-      <label class="label is-size-4">Email</label>
-      <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Email" name="txtEmail" id="email" required />
-      </div>
-    </div>
-    <div class="field">
       <label class="label is-size-4">Gender:</label>
       <label class="checkbox">
         <input type="radio" id="Gender" name="rbGender" value="Male" checked />
@@ -123,12 +117,8 @@
           </select>
         </div>
       </div>
-      <!-- <input type="hidden" class="input is-info is-medium" name="txtCity" id="hidcity" placeholder="City" /> -->
       <div class="control mt-2">
         <input type="text" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" />
-      </div>
-      <div class="control mt-2">
-        <input type="text" class="input is-info is-medium" name="txtLandmark" id="landmark" placeholder="Landmark" />
       </div>
     </div>
     <div class="field">

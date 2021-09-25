@@ -81,7 +81,8 @@ if (session_status() === PHP_SESSION_NONE) {
                 <input type="number" class="is-success" name="price" id="price" value="<?php echo "$_SESSION[price]"; ?>">
             </div>
         </div>
-        <!--<div class="field">
+        <!--
+        <div class="field">
             <label class="label" for="ownership">Owner</label>
             <div class="control">
                 <div class="select">
@@ -99,7 +100,8 @@ if (session_status() === PHP_SESSION_NONE) {
                     </select>
                 </div>
             </div>
-        </div> -->
+        </div> 
+        -->
         <div class="field">
             <label class="label" for="iType">Type</label>
             <div class="control">

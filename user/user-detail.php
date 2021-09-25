@@ -48,7 +48,7 @@ if (!isset($_SESSION['Email'])) {
               <i class="fa fa-user"></i>
             </div>
             <span>
-              Hello, <?php echo $_SESSION['FName']; ?>
+              Hello, <?php echo $_SESSION['FName']; ?>"
             </span>
           </a>
 
@@ -96,19 +96,19 @@ if (!isset($_SESSION['Email'])) {
     <div class="field">
       <div class="label is-size-4">First Name</div>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="First Name" name="txtFName" id="firstname" value=<?php echo $_SESSION['FName']; ?> required />
+        <input type="text" class="input is-info is-medium" placeholder="First Name" name="txtFName" id="firstname" value="<?php echo $_SESSION['FName']; ?>" required />
       </div>
     </div>
-    <div class="field">
+    <div class=" field">
       <div class="label is-size-4">Middle Name</div>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Middle Name" name="txtMName" id="middlename" value=<?php echo $_SESSION['MName']; ?> />
+        <input type="text" class="input is-info is-medium" placeholder="Middle Name" name="txtMName" id="middlename" value="<?php echo $_SESSION['MName']; ?>" />
       </div>
     </div>
     <div class="field">
       <label class="label is-size-4">Last Name</label>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Last Name" name="txtLName" id="lastname" value=<?php echo $_SESSION['LName']; ?> required />
+        <input type="text" class="input is-info is-medium" placeholder="Last Name" name="txtLName" id="lastname" value="<?php echo $_SESSION['LName']; ?>" required />
       </div>
     </div>
     <div class="field">
@@ -130,16 +130,10 @@ if (!isset($_SESSION['Email'])) {
             <i class="fa fa-globe"></i>
           </div>
         </div>
-        <input type="tel" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value=<?php echo substr($_SESSION['ContactNo'], 2); ?> required />
+        <input type="tel" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value="<?php echo substr($_SESSION['ContactNo'], 2); ?>" required />
       </div>
     </div>
-    <div class="field">
-      <div class="label is-size-4">Email</div>
-      <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Email" name="txtEmail" id="email" value=<?php echo $_SESSION['Email']; ?> />
-      </div>
-    </div>
-    <div class="field">
+    <div class=" field">
       <div class="label is-size-4">Gender:</div>
       <label class="radio">
         <?php
@@ -165,12 +159,12 @@ if (!isset($_SESSION['Email'])) {
     <div class="field">
       <label class="label is-size-4">Address</label>
       <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Flat, House no, Building, Company, Apartment" name="txtAddress1" id="flat" value=<?php echo $_SESSION['Address1']; ?> />
+        <input type="text" class="input is-info is-medium" placeholder="Flat, House no, Building, Company, Apartment" name="txtAddress1" id="flat" value="<?php echo $_SESSION['Address1']; ?>" />
       </div>
-      <div class="control mt-2">
-        <input type="text" class="input is-info is-medium" placeholder="Area, Street, Sector, Village" name="txtAddress2" id="area" value=<?php echo $_SESSION['Address2']; ?> />
+      <div class=" control mt-2">
+        <input type="text" class="input is-info is-medium" placeholder="Area, Street, Sector, Village" name="txtAddress2" id="area" value="<?php echo $_SESSION['Address2']; ?>" />
       </div>
-      <div class="control mt-2 field has-addons">
+      <div class=" control mt-2 field has-addons">
         <div class="select is-medium is-info">
           <select name="cbCity" id="select-city">
             <option value="-1">City</option>
@@ -187,21 +181,17 @@ if (!isset($_SESSION['Email'])) {
           </select>
         </div>
       </div>
-      <!-- <input type="hidden" class="input is-info is-medium" name="txtCity" id="hidcity" placeholder="City" /> -->
       <div class="control mt-2">
-        <input type="text" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" value=<?php echo $_SESSION['Pincode']; ?> />
-      </div>
-      <div class="control mt-2">
-        <input type="text" class="input is-info is-medium" name="txtLandmark" id="landmark" placeholder="Landmark" value=<?php echo $_SESSION['Landmark']; ?> />
+        <input type="text" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" value="<?php echo $_SESSION['Pincode']; ?>" />
       </div>
     </div>
-    <div class="field">
-      <div class="label is-size-4">Username</div>
+    <div class=" field">
+      <div class="label is-size-4">Email</div>
       <div class="control">
-        <input type="text" name="txtUsername" class="input is-info is-medium" placeholder="Username" id="username" value=<?php echo $_SESSION['Username']; ?> disabled />
+        <input type="text" class="input is-info is-medium" placeholder="Email" name="txtEmail" id="email" value="<?php echo $_SESSION['Email']; ?>" />
       </div>
     </div>
-    <div class="field">
+    <div class=" field">
       <div class="label is-size-4">Password</div>
       <div class="control">
         <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" value="password" disabled />

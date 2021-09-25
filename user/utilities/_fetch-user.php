@@ -25,7 +25,7 @@ try {
 
     foreach ($user as $detail) {
         $_SESSION['FName'] = $detail->firstName;
-        $_SESSION['MName'] = $detail->middleName;
+        $_SESSION['MName'] = $detail->middleName == NULL ? " " : $detail->middleName;
         $_SESSION['LName'] = $detail->lastName;
         $_SESSION['DOB'] = $detail->dob;
         $_SESSION['Gender'] = $detail->gender;
