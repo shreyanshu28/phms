@@ -4,13 +4,13 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (!isset($_COOKIE["Username"])) {
+if (!isset($_SESSION["Email"])) {
     header("location: ./login.php?no=TRUE");
 } else {
     // the path of _make-connection must be relative to the file for which it must be used
     // include doesn't change the path of the location
     // require_once "../_make-connection.php";
-    // require_once "./utilities/_fetch-user.php";
+    require_once "./utilities/_fetch-user.php";
 }
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,9 @@ if (!isset($_COOKIE["Username"])) {
                             <i class="fa fa-user"></i>
                         </div>
                         <span>
-                            Hello, <?php echo $_COOKIE["Username"]; ?>
+                            Hello, <?php
+                                    echo $_SESSION["FName"];
+                                    ?>
                         </span>
                     </a>
                     <div class="navbar-dropdown">
@@ -60,6 +62,20 @@ if (!isset($_COOKIE["Username"])) {
                                 Edit Profile
                             </span>
                         </a>
+
+                        <?php
+                        if ($_SESSION["Role"] == "A") {
+                            echo "
+                                <a href='../inventory/inventory.php' class='navbar-item'>
+                                    <div class='icon is-small is-left'>
+                                        <i class='fa fa-edit'></i>
+                                    </div>
+                                    <span>
+                                        Manage Inventory
+                                    </span>
+                                </a>";
+                        }
+                        ?>
                         <a href="#" class="navbar-item">
                             <div class="icon is-small is-left">
                                 <i class="fa fa-lock"></i>
