@@ -18,3 +18,9 @@ Bootstrap:<br />
 ```html
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 ```
+
+
+Technology Used:
+Front-end: HTML5, CSS3, JavaScript5  
+Back-end: PHP8  
+Database: MySQL  
