@@ -16,7 +16,7 @@ try {
 
     //TODO: refactor
     $pdo->beginTransaction();
-    $sql = "SELECT DISTINCT type from tblProductMaster";
+    $sql = "SELECT DISTINCT(type) from tblProductMaster";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $type = $stmt->fetchAll();

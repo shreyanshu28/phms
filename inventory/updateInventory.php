@@ -103,11 +103,12 @@ if (session_status() === PHP_SESSION_NONE) {
         </div> 
         -->
         <div class="field">
-            <label class="label" for="iType">Type</label>
-            <div class="control">
+            <label class="label" for="type">Type</label>
+            <div class="field control has-addons">
                 <div class="select">
-                    <select name="type">
-                        <option>Add new</option>
+                    <select name="type" id="type">
+                        <option value="-1">Types</option>
+                        <option value="1">Add New</option>
                         <?php
                         foreach ($type as $t) {
                             if ($t->type == $_SESSION['type']) {
@@ -139,5 +140,6 @@ if (session_status() === PHP_SESSION_NONE) {
     ?>
 </body>
 <script src="../scripts/navbar.js"></script>
+<script src="./scripts/inventory.js"></script>
 
 </html>

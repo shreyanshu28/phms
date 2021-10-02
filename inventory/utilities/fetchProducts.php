@@ -11,7 +11,7 @@ if (isset($_REQUEST['id'])) {
 
     try {
         $pdo->beginTransaction();
-        $sql = "SELECT pid, productName, qty, price, type FROM tblProductMaster WHERE pid = :pid";
+        $sql = "SELECT * FROM tblProductMaster WHERE pid = :pid";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(["pid" => $id]);
         $products = $stmt->fetchAll();

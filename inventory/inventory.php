@@ -52,27 +52,13 @@
               <input type="number" class="is-success" name="price" id="price">
             </div>
           </div>
-          <!-- <div class="field">
-            <label class="label" for="ownership">Owner</label>
-            <div class="control">
-              <div class="select">
-                <select name="owner">
-                  <option selected='selected'>Add new</option>
-                  <?php
-                  // foreach ($owner as $o) {
-                  //   echo "<option class=is-success >" . $o->ownership . "</option>";
-                  // } 
-                  ?>
-                </select>
-              </div>
-            </div>
-          </div> -->
           <div class="field">
-            <label class="label" for="iType">Type</label>
-            <div class="control">
+            <label class="label" for="type">Type</label>
+            <div class="field control has-addons">
               <div class="select">
-                <select name="type">
-                  <option selected='selected'>Add new</option>
+                <select name="type" id="type">
+                  <option value="-1">Types</option>
+                  <option value="1">Add New</option>
                   <?php
                   foreach ($type as $t) {
                     echo "<option>" . $t->type . "</option>";
@@ -121,6 +107,7 @@
   </table>
 
   <script src="../scripts/showModal.js"></script>
+  <script src="./scripts/inventory.js"></script>
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <script src="https://cdnjs.buttflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
