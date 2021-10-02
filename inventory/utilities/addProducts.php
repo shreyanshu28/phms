@@ -6,6 +6,8 @@ if (session_start() === PHP_SESSION_NONE) {
 require_once __DIR__ . "/../../_make-connection.php";
 
 if (isset($_POST["submit"])) {
+    $type = strtoupper($_POST["type"] == "1" ? $_POST["txtType"] : $_POST["type"]);
+
     try {
         $pdo->beginTransaction();
         $sql = "INSERT INTO tblProductMaster "
@@ -14,7 +16,7 @@ if (isset($_POST["submit"])) {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             "productName" => $_POST["productName"], "price" => $_POST["price"],
-            "qty" => $_POST["qty"], "type" => $_POST["type"]
+            "qty" => $_POST["qty"], "type" => $type
         ]);
         $pdo->commit();
     } catch (Exception $e) {

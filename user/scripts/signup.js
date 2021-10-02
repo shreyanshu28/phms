@@ -1,9 +1,8 @@
-//firstname, lastname, email, username, password
+//firstname, lastname, username, password
 const firstName = document.getElementById("firstname");
 const middleName = document.getElementById("middlename");
 const lastName = document.getElementById("lastname");
 const contactNo = document.getElementById("contactNo");
-const email = document.getElementById("email");
 const pincode = document.getElementById("pincode");
 const userName = document.getElementById("username");
 const password = document.getElementById("password");
@@ -82,12 +81,6 @@ lastName.addEventListener("focus", function (event) {
 contactNo.addEventListener("focus", function (event) {
   if (count >= 36 && count < 48) {
     setProgressBar(48);
-  }
-});
-
-email.addEventListener("focus", function (event) {
-  if (count >= 48 && count < 60) {
-    setProgressBar(60);
   }
 });
 

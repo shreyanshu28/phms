@@ -11,7 +11,7 @@ if (!isset($_SESSION['Email'])) {
 
 
 // TODO: need to remove u.uid column from the sql output
-$sql = "SELECT Distinct city FROM tblUserAddress";
+$sql = "SELECT Distinct (city) FROM tblUserAddress";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $user = $stmt->fetchAll();
