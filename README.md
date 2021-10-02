@@ -21,6 +21,6 @@ Bootstrap:<br />
 
 
 Technology Used:
-Front-end: HTML5, CSS3, JavaScript5, Bootstrap5.0  
+Front-end: HTML5, CSS3, JavaScript5  
 Back-end: PHP8  
 Database: MySQL  
