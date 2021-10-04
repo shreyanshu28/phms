@@ -13,7 +13,7 @@ try {
     // error for kushal@gmail.com but not for kuga@gmail.com
     // SELECT u.uid, u.firstName, u.middleName, u.lastName, u.dob, u.gender, u.contactNumber, u.email, u.profilePhoto, u.status, ua.addressline1, ua.addressline2, ua.city, ua.pincode FROM tblUserMaster u INNER JOIN tblUserAddress ua ON u.uid = ua.uid WHERE email = 'kushal@gmail.com';
 
-    $sql = "SELECT u.uid, u.firstName, u.middleName, u.lastName, u.dob, u.gender, u.contactNumber, u.email, u.profilePhoto, u.status, "
+    $sql = "SELECT u.uid, u.firstName, u.middleName, u.lastName, u.dob, u.gender, u.contactNumber, u.email, u.profilePhoto, u.status, u.role,"
         . "ua.addressline1, ua.addressline2, ua.city, ua.pincode FROM "
         . "tblUserMaster u INNER JOIN tblUserAddress ua "
         . "ON ua.uid = u.uid "
@@ -37,6 +37,7 @@ try {
         $_SESSION['Address2'] = $detail->addressline2;
         $_SESSION['City'] = $detail->city;
         $_SESSION['Pincode'] = $detail->pincode;
+        $_SESSION['Role'] = $detail->role;
     }
 } catch (Exception $e) {
     echo $e;

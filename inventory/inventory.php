@@ -12,6 +12,12 @@
 
 <body class="container">
   <?php
+ if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+if($_SESSION["Role"] != 'A') {
+  header("location: ../index.php");
+}
   require_once './utilities/fetchProducts.php';
   require_once './utilities/_fetchType.php';
   require_once './navbar.php';
@@ -100,7 +106,9 @@
         echo "<td>" . $inventory->qty . "</td>";
         echo "<td>" . $inventory->price . "</td>";
         echo "<td>" . $inventory->type . "</td>";
-        echo "<td><a class='button is-dark' href='./utilities/fetchProducts.php?id=$inventory->pid' id='btn'>Edit</a></td>";
+        echo "<td><a class='button is-dark' href='./utilities/fetchProducts.php?id=$inventory->pid' id='btn'>Edit</a>&nbsp";
+        echo "<a class='button is-danger' href='./utilities/fetchProducts.php?id=$inventory->pid' id='btn'>Delete</a></td>";
+        echo "</tr>";
       }
       ?>
     </tbody>
