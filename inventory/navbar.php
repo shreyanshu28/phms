@@ -36,7 +36,7 @@
         <div class="navbar-end">
           <a href="./home.php" class="navbar-item">Home</a>
           <a href="#" class="navbar-item is-active">Inventory</a>
-          <a href="./login.php" class="navbar-item button is-danger">Log Out</a>
+          <a href="../user/login.php" class="navbar-item button is-danger">Log Out</a>
         </div>
       </div>
     </nav>

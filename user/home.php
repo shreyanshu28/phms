@@ -11,6 +11,9 @@ if (!isset($_SESSION["Email"])) {
     // include doesn't change the path of the location
     // require_once "../_make-connection.php";
     require_once "./utilities/_fetch-user.php";
+    if($_SESSION["Role"] != 'A') {
+        header("location: ../index.php");
+    }
 }
 ?>
 <!DOCTYPE html>
