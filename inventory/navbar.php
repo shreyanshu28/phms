@@ -34,8 +34,9 @@
 
       <div class="navbar-menu" id="navbar-main">
         <div class="navbar-end">
-          <a href="./home.php" class="navbar-item">Home</a>
+          <a href="../user/home.php" class="navbar-item">Home</a>
           <a href="#" class="navbar-item is-active">Inventory</a>
+          <a href="./deleted-inventory.php" class="navbar-item">Deleted Products</a>
           <a href="../user/login.php" class="navbar-item button is-danger">Log Out</a>
         </div>
       </div>

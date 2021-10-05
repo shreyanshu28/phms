@@ -100,15 +100,20 @@ if($_SESSION["Role"] != 'A') {
     <tbody>
       <?php
       foreach ($products as $inventory) {
-        echo "<tr>";
-        echo "<td>" . $inventory->pid . "</td>";
-        echo "<td>" . $inventory->productName . "</td>";
-        echo "<td>" . $inventory->qty . "</td>";
-        echo "<td>" . $inventory->price . "</td>";
-        echo "<td>" . $inventory->type . "</td>";
-        echo "<td><a class='button is-dark' href='./utilities/fetchProducts.php?id=$inventory->pid' id='btn'>Edit</a>&nbsp";
-        echo "<a class='button is-danger' href='./utilities/fetchProducts.php?id=$inventory->pid' id='btn'>Delete</a></td>";
-        echo "</tr>";
+        if(!$inventory->qty) {
+          continue;
+        }
+        else{
+          echo "<tr>";
+          echo "<td>" . $inventory->pid . "</td>";
+          echo "<td>" . $inventory->productName . "</td>";
+          echo "<td>" . $inventory->qty . "</td>";
+          echo "<td>" . $inventory->price . "</td>";
+          echo "<td>" . $inventory->type . "</td>";
+          echo "<td><a class='button is-dark' href='./utilities/fetchProducts.php?id=$inventory->pid' id='btn'>Edit</a>&nbsp";
+          echo "<a class='button is-danger' href='./utilities/deleteProduct.php?id=$inventory->pid' id='btn'>Delete</a></td>";
+          echo "</tr>";
+        }
       }
       ?>
     </tbody>
@@ -117,7 +122,7 @@ if($_SESSION["Role"] != 'A') {
   <script src="../scripts/showModal.js"></script>
   <script src="./scripts/inventory.js"></script>
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdnjs.buttflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script>
     $(document).ready(function() {
