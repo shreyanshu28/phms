@@ -1,4 +1,18 @@
 const types = document.getElementById("type");
+const qtyListener = document.getElementById("qty");
+const priceListener = document.getElementById("price");
+
+priceListener.addEventListener("change", function () {
+  if (priceListener.value < 0) {
+    priceListener.value = 0;
+  }
+});
+
+qtyListener.addEventListener("change", function () {
+  if (qtyListener.value < 1) {
+    qtyListener.value = 1;
+  }
+});
 
 // If user wants to select type that isn't in database
 let cnt = 0;
