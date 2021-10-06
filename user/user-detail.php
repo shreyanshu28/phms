@@ -199,7 +199,7 @@ if (!isset($_SESSION['Email'])) {
     </div>
     <div class="field">
       <div class="control">
-        <input type="submit" class="button is-info" name="btnSubmit" value="Submit" />
+        <input type="submit" class="button is-info" name="updateUser" value="Submit" />
       </div>
     </div>
   </form>
