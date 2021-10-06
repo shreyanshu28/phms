@@ -11,9 +11,9 @@ if (!isset($_SESSION["Email"])) {
     // include doesn't change the path of the location
     // require_once "../_make-connection.php";
     require_once "./utilities/_fetch-user.php";
-    if($_SESSION["Role"] != 'A') {
-        header("location: ../index.php");
-    }
+    // if($_SESSION["Role"] != 'A') {
+    //     header("location: ../index.php");
+    // }
 }
 ?>
 <!DOCTYPE html>
@@ -75,6 +75,16 @@ if (!isset($_SESSION["Email"])) {
                                     </div>
                                     <span>
                                         Manage Inventory
+                                    </span>
+                                </a>";
+                        } else if ($_SESSION["Role"] == "C") {
+                            echo "
+                                <a href='../order/cart.php' class='navbar-item'>
+                                    <div class='icon is-small is-left'>
+                                        <i class='fa fa-shopping-cart'></i>
+                                    </div>
+                                    <span>
+                                        Your Cart
                                     </span>
                                 </a>";
                         }

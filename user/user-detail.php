@@ -171,10 +171,10 @@ if (!isset($_SESSION['Email'])) {
             <option value="1">Add New</option>
             <?php
             foreach ($_SESSION['AllCities'] as $city) {
-              if ($_SESSION['City'] == $city->cname) {
-                echo "<option value=$city->cname selected>" . $city->cname . "</option>";
+              if ($_SESSION['City'] == $city->city) {
+                echo "<option value=$city->city selected>" . $city->city . "</option>";
               } else {
-                echo "<option value=$city->cname>" . $city->cname . "</option>";
+                echo "<option value=$city->city>" . $city->city . "</option>";
               }
             }
             ?>

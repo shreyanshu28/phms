@@ -111,7 +111,7 @@
             require_once "../_make-connection.php";
             require_once "./utilities/_fetch-cities.php";
             foreach ($_SESSION['AllCities'] as $city) {
-              echo "<option value=$city->cname>" . $city->cname . "</option>";
+              echo "<option value=$city->city>" . $city->city . "</option>";
             }
             ?>
           </select>
