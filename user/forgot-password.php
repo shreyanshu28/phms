@@ -3,6 +3,8 @@ session_start();
 session_destroy();
 session_start();
 require_once './utilities/_check-login.php';
+require_once __DIR__ . '/email/function.php';
+require_once __DIR__ . '/email/smtp/PHPMailerAutoload.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +16,7 @@ require_once './utilities/_check-login.php';
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="./styles/style.css" />
-  <title>Log in</title>
+  <title>Change Password</title>
 </head>
 
 <body>
@@ -42,39 +44,37 @@ require_once './utilities/_check-login.php';
 
   <p class="title mt-3 is-2 has-text-centered">Log In</p>
 
-  <form action="./utilities/_check-login.php" method="post" class="login-main">
+  <form action="" method="post" class="login-main">
     <div class="field" id="userInput">
       <label class="label is-size-4">Email</label>
       <div class="control">
         <input type="text" name="txtEmail" class="input is-info is-medium" placeholder="xyz@email.com" id="username" required />
+        <p class="help is-info">If Email is valid OTP will be sent to the entered email</p>
       </div>
     </div>
     <div class="field">
-      <div class="label is-size-4">Password</div>
-      <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="password" id="password" minlength="8" required />
-    </div>
-    <div class="row">
-      <div class="row-column">
-        <label class="label checkbox is-size-6">
-          <input type="checkbox" name="RememberMe" class="is-info" id="remember-me" />
-          Remember Me
-        </label>
+      <div class="field has-addons">
+        <button type="submit" class="button is-medium is-info" id="otp-btn" name="otp-btn">GET OTP</button>
       </div>
-      <div class="row-column">
-        <a href="./forgot-password.php" class="">
-          Forgot Password?
-        </a>
-      </div>
-    </div>
-    <div class="field">
-      <progress class="progress is-info" value="0" max="100" id="login-progress">
-        15%
-      </progress>
-      <input class="button is-info is-outlined" type="submit" name="submit" value="Log In" />
     </div>
   </form>
+  <?php
+  // if (isset($_POST["otp-btn"])) {
+
+  $email = "19bmiit052@gmail.com";
+  $subject  = "HERE tSKE THIS";
+  $html = rand(1111, 9999);
+
+  if (!send_email($email, $html, $subject)) {
+    echo "Mail not sent";
+  } else {
+    // header("location: ./")
+  }
+
+  // }
+  ?>
 </body>
-<script src="./scripts/login.js"></script>
+<script src="./scripts/forgotPassword.js"></script>
 <script src="../scripts/navbar.js"></script>
 
 </html>
