@@ -22,6 +22,37 @@ if (isset($_POST['btnSubmit'])) {
         $user['ConfirmPassword'] = $_POST['txtConfirmPassword'];
         if ($user['Password'] == $user['ConfirmPassword']) {
             try {
+                // $reg_alpha = "/[a-zA-Z]+/";
+                // $reg_num = "/[0-9]+/";
+                // if (!preg_match($reg_alpha, $_POST["txtFName"])) {
+                //     header("location: /ProductionHouse/user/signup.php?error=fname");
+                // }
+
+                // if (!preg_match($reg_alphs, $_POST["txtMName"])) {
+                //     header("location: /ProductionHouse/user/signup.php?error=lname");
+                // }
+
+                // if (!preg_match($reg_alpha, $_POST["txtLName"])) {
+                //     header("location: /ProductionHouse/user/signup.php?error=lname");
+                // }
+
+                // if (!preg_match($reg_num, $_POST["txtContactNo"])) {
+                // }
+
+                // if (!isset($_POST["txtAddress1"])) {
+                // }
+
+                // if (isset($_POST['txtCity'])) {
+                //     if (!preg_match($reg_alpha, $_POST["txtCity"])) {
+                //     }
+                // } else {
+                //     if (!preg_match($reg_alpha, $_POST["cbCity"])) {
+                //     }
+                // }
+
+                // if (!preg_match("[0-9]{6}", $_POST["txtPincode"])) {
+                // }
+
                 $user['FName'] = $_POST['txtFName'];
                 $user['MName'] = $_POST['txtMName'];
                 $user['LName'] = $_POST['txtLName'];
@@ -55,33 +86,53 @@ if (isset($_POST['btnSubmit'])) {
                     . "(firstName, middleName, lastName, dob, gender, contactNumber, email, password, role, profilePhoto, status) VALUES "
                     . "(:fname, :mname, :lname, :dob, :gender, :contactno, :email, :password, :role, :profilePhoto, :status)";
                 $stmt = $pdo->prepare($sql);
-                $stmt->execute([
+                $result = $stmt->execute([
                     'fname' => $user['FName'], 'mname' => $user['MName'], 'lname' => $user['LName'],
                     'dob' => $user['dob'], 'gender' => $gender, 'contactno' => $user['ContactNo'],
-                    'email' => $user['Email'], 'password' => $user['Password'],
+                    'email' => $user['Email'], 'password' => password_hash($user['Password'], PASSWORD_DEFAULT),
                     'role' => $ROLE, 'profilePhoto' => $PHOTO_PATH, 'status' => $STATUS
                 ]);
 
-                $sql = "INSERT INTO tblUserAddress "
-                    . "(addressline1, addressline2, city, pincode, uid) VALUES "
-                    . "(:addressline1, :addressline2, :city, :pincode, "
-                    . "(select uid from tblUserMaster where email = :email))";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute([
-                    'addressline1' => $user['Address1'], 'addressline2' => $user['Address2'],
-                    'cname' => $user['City'], 'pincode' => $user['Pincode'], 'email' => $user['Email']
-                ]);
-
-                // if login successfully created
-                $_SESSION['Email'] = $user['Email'];
-                header("Location: /ProductionHouse/user/home.php");
+                if ($result) {
+                    $sql = "INSERT INTO tblUserAddress "
+                        . "(addressline1, addressline2, city, pincode, uid) VALUES "
+                        . "(:addressline1, :addressline2, :city, :pincode, "
+                        . "(select uid from tblUserMaster where email = :email))";
+                    $stmt = $pdo->prepare($sql);
+                    $result = $stmt->execute([
+                        'addressline1' => $user['Address1'], 'addressline2' => $user['Address2'],
+                        'city' => $user['City'], 'pincode' => $user['Pincode'], 'email' => $user['Email']
+                    ]);
+                    if ($result) {
+                        // if login successfully created
+                        $_SESSION['Email'] = $user['Email'];
+                        header("Location: /ProductionHouse/user/home.php");
+                    }
+                }
             } catch (Exception $e) {
-                echo $e;
+                setSessionValue($_POST);
+                header("location: /ProductionHouse/user/signup.php?error=query");
             }
         } else {
+            setSessionValue($_POST);
             header("location: /ProductionHouse/user/signup.php?error=pass");
         }
     } else {
+        setSessionValue($_POST);
         header("location: /ProductionHouse/user/signup.php?error=user");
     }
+}
+
+function setSessionValue($user)
+{
+    $_SESSION['fname'] = $user['txtFName'];
+    $_SESSION['mname'] = $user['txtMName'];
+    $_SESSION['lname'] = $user['txtLName'];
+    $_SESSION['dob'] = $user['dob'];
+    $_SESSION['contactno'] = $user['txtContactNo'];
+    $_SESSION['gender'] = $user['rbGender'];
+    $_SESSION['address1'] = $user['txtAddress1'];
+    $_SESSION['address2'] = $user['txtAddress2'];
+    $_SESSION['city'] = isset($user["cbCity"]) ? $user['cbCity'] : $user["txtCity"];
+    $_SESSION['pincode'] = $user['txtPincode'];
 }
