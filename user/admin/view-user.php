@@ -14,31 +14,39 @@
   <?php
  if (session_status() === PHP_SESSION_NONE) {
   session_start();
+  ob_start();
+  if($_SESSION["Role"] != 'A') {
+    header("location: ../../index.php");
+  }
 }
-// if($_SESSION["Role"] != 'A') {
-//     header("location: ../../index.php");
-// }
-// require_once '../../inventory/navbar.php' ;
 require_once './user-info.php';
+require_once './navbar.php';
 $users = $_SESSION['adminUsers'];
 $role = $_SESSION['adminRole'];
 ?>
-
+  <nav class="breadcrumb navbar">
+      <ul>
+        <li><a href="../index.php">Home</a></li>
+        <li class="is-active"><a href="#">User</a></li>
+      </ul>
+    </nav>
   <table id="myTable" class="table table-responsive-md">
       <thead>
-          <tr>Id</tr>
-          <tr>FIrst Name</tr>
-          <tr>Middle Name</tr>
-          <tr>Last Name</tr>
-          <tr>Date of Birth</tr>
-          <tr>Gender</tr>
-          <tr>Contact Number</tr>
-          <tr>Email</tr>
-          <tr>Society</tr>
-          <tr>Area</tr>
-          <tr>City</tr>
-          <tr>Role</tr>
-          <tr>Action</tr>
+          <tr>
+          <td>Id</td>
+          <td>FIrst Name</td>
+          <td>Middle Name</td>
+          <td>Last Name</td>
+          <td>Date of Birth</td>
+          <td>Gender</td>
+          <td>Contact Number</td>
+          <td>Email</td>
+          <td>Society</td>
+          <td>Area</td>
+          <td>City</td>
+          <td>Role</td>
+          <td>Action</td>
+          </tr>
       </thead>
       <tbody>
           <?php
@@ -55,13 +63,42 @@ $role = $_SESSION['adminRole'];
               echo "<td>".$u->addressline1."</td>";
               echo "<td>".$u->addressline2."</td>";
               echo "<td>".$u->city."</td>";
-              echo "<td>".$u->role."</td>";
-              echo "<td>action</td>";
-              echo "</tr>";
+              // echo "<form method=POST>";
+              ?>
+              <td><form action="" method="post">
+                <?php
+              // echo "<td>
+                echo "<div class=select>
+                    <select name=role id=role>";
+                foreach($role as $r) {
+                    if($r->role == $u->role) {
+                        echo "<option selected name=newRole value=".$r->role.">".$r->role."</option>";
+                    }
+                    else {
+                        echo "<option name=newRole value=".$r->role.">".$r->role."</option>";
+                    }
+                }
+                echo "</select>
+                </div>
+                </td>";
+                echo "<td><input type=hidden name=uid value=".$u->uid."><input type=submit name=submit value=update class='button is-primary'></td>";
+              
+                ?>
+  </form>
+              </tr><?php
             }
+            
           ?>
       </tbody>
   </table>
+  <?php 
+            
+            if(isset($_POST['submit'])) {
+                  $_SESSION['role'] = $_POST['role'];
+                  $_SESSION['uid'] = $_POST['uid'];
+                  header('location:./user-info.php');
+            }
+            ?>
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
