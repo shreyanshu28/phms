@@ -37,7 +37,7 @@
 
   <p class="title mt-3 is-2 has-text-centered">Sign Up</p>
 
-  <form action="./utilities/_add-user.php" method="post" class="signup-main">
+  <form action="./get-otp.php" method="post" class="signup-main">
     <div class="field registration-progress">
       <progress class="progress is-info" value="0" max="100" id="registration-progress">
         15%
@@ -122,26 +122,8 @@
       </div>
     </div>
     <div class="field">
-      <label class="label is-size-4">Email</label>
       <div class="control">
-        <input type="text" name="txtEmail" class="input is-info is-medium" placeholder="Username" id="username" required />
-      </div>
-    </div>
-    <div class="field">
-      <label class="label is-size-4">Password</label>
-      <div class="control">
-        <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" required />
-      </div>
-    </div>
-    <div class="field">
-      <label class="label is-size-4">Confirm Password</label>
-      <div class="control">
-        <input type="password" name="txtConfirmPassword" class="input is-info is-medium" placeholder="Confirm Password" id="confirm-password" minlength="8" required />
-      </div>
-    </div>
-    <div class="field">
-      <div class="control">
-        <input type="submit" class="button is-info" name="btnSubmit" value="sign up" />
+        <input type="submit" class="button is-info" name="btnSubmit" value="Next" />
       </div>
     </div>
   </form>

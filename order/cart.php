@@ -2,6 +2,11 @@
 if (session_start() === PHP_SESSION_NONE) {
   session_start();
 }
+
+if (!isset($_SESSION["Email"])) {
+  header("location: /ProductionHouse/user/login.php?no=TRUE");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +41,7 @@ if (session_start() === PHP_SESSION_NONE) {
         <a href="../index.php" class="navbar-item is-active">Home</a>
         <hr class="navbar-divider">
         <?php
-        if (isset($_SESSION["Email"])) {
+        if (isset($_SESSION["Email"]) && $_SESSION["Role"] == "C") {
           echo "
                 <div class='navbar-item has-dropdown is-hoverable mr-2'>
                     <a class='navbar-link'>
@@ -74,11 +79,11 @@ if (session_start() === PHP_SESSION_NONE) {
                         </a>
                     </div>
                 </div>
-                <a href='./utilities/_log-out.php' class='navbar-item button is-danger'>Logout</a>";
+                <a href='/ProductionHouse/user/utilities/_log-out.php' class='navbar-item button is-danger'>Logout</a>";
         } else {
           echo "
-                <a href='../../user/login.php' class='navbar-item button is-light mr-2'>Login</a>
-                <a href='../../user/signup.php' class='navbar-item button is-info'>Sign Up</a>";
+                <a href='/ProductionHouse/user/login.php' class='navbar-item button is-light mr-2'>Login</a>
+                <a href='/ProductionHouse/user/signup.php' class='navbar-item button is-info'>Sign Up</a>";
         }
         ?>
       </div>
