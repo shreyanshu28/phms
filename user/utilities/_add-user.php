@@ -11,90 +11,41 @@ $user = [];
 
 $user["Email"] = $_SESSION["Email"];
 
-if (isset($_POST["create-pass"])) {
-    if (!($_POST["txtPassword"] == $_POST["txtRePassword"])) {
-        header("location: /ProductionHouse/user/login.php?pass=1");
-    }
+if (isset($_SESSION['submit'])) {
+    // $user['Email'] = $_POST['txtEmail'];
 
-    $password = password_hash($_POST["txtPassword"], PASSWORD_DEFAULT);
-
-    $sql = "UPDATE tblUserMaster SET password = :password WHERE email = :email";
+    $sql = "SELECT count(uid) FROM tblUserMaster WHERE email = :email";
     $stmt = $pdo->prepare($sql);
-    $result = $stmt->execute(["password" => $password, "email" => $user["Email"]]);
+    $stmt->execute(['email' => $user['Email']]);
+    $verifyUser = $stmt->fetchColumn();
 
-    if (!$result) {
-        header("location: /ProductionHouse/user/login.php?pass=1");
-    } else {
-        header("location: /ProductionHouse/user/login.php?pass=0");
-    }
-} else {
-    if (isset($_SESSION['signup'])) {
-        // $user['Email'] = $_POST['txtEmail'];
+    if ($verifyUser == "0") {
+        if (!($_POST["txtPassword"] == $_POST["txtRePassword"])) {
+            header("location: /ProductionHouse/user/login.php?pass=1");
+        }
+        $user['Password'] = $_POST['txtPassword'];
+        $user['RePassword'] = $_POST['txtRePassword'];
+        if ($user['Password'] == $user['RePassword']) {
+            try {
 
-        $sql = "SELECT count(uid) FROM tblUserMaster WHERE email = :email";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(['email' => $user['Email']]);
-        $verifyUser = $stmt->fetchColumn();
+                $user['FName'] = $_SESSION['fname'];
+                $user['MName'] = $_SESSION['mname'];
+                $user['LName'] = $_SESSION['lname'];
+                $user['dob'] = $_SESSION['dob'];
+                $user['ContactNo'] = $_SESSION['contactno'];
+                $user['Gender'] = $_SESSION['gender'];
+                $user['Address1'] = $_SESSION['address1'];
 
-        if ($verifyUser == "0") {
-            $user['Password'] = $_POST['txtPassword'];
-            $user['ConfirmPassword'] = $_POST['txtConfirmPassword'];
-            if ($user['Password'] == $user['ConfirmPassword']) {
-                try {
-                    // $reg_alpha = "/[a-zEA-Z]+/";
-                    // $reg_num = "/[0-9]+/";
-                    // if (!preg_match($reg_alpha, $_POST["txtFName"])) {
-                    //     header("location: /ProductionHouse/user/signup.php?error=fname");
-                    // }
+                // Address 2 is area
+                $user['Address2'] = $_SESSION['address2'];
 
-                    // if (!preg_match($reg_alphs, $_POST["txtMName"])) {
-                    //     header("location: /ProductionHouse/user/signup.php?error=lname");
-                    // }
+                // making sure which element is selected for city
+                $user['City'] = $_SESSION['city'];
 
-                    // if (!preg_match($reg_alpha, $_POST["txtLName"])) {
-                    //     header("location: /ProductionHouse/user/signup.php?error=lname");
-                    // }
-
-                    // if (!preg_match($reg_num, $_POST["txtContactNo"])) {
-                    // }
-
-                    // if (!isset($_POST["txtAddress1"])) {
-                    // }
-
-                    // if (isset($_POST['txtCity'])) {
-                    //     if (!preg_match($reg_alpha, $_POST["txtCity"])) {
-                    //     }
-                    // } else {
-                    //     if (!preg_match($reg_alpha, $_POST["cbCity"])) {
-                    //     }
-                    // }
-
-                    // if (!preg_match("[0-9]{6}", $_POST["txtPincode"])) {
-                    // }
-
-                    $user['FName'] = $_POST['txtFName'];
-                    $user['MName'] = $_POST['txtMName'];
-                    $user['LName'] = $_POST['txtLName'];
-                    $user['dob'] = $_POST['dob'];
-                    $user['ContactNo'] = $_POST['country-code'] . $_POST['txtContactNo'];
-                    $user['Gender'] = $_POST['rbGender'];
-                    $user['Address1'] = $_POST['txtAddress1'];
-
-                    // Address 2 is area
-                    $user['Address2'] = $_POST['txtAddress2'];
-
-                    // making sure which element is selected for city
-                    if (isset($_POST['txtCity'])) {
-                        $user['City'] = $_POST['txtCity'];
-                    } else {
-                        $user['City'] = $_POST['cbCity'];
-                    }
-
-                    $user['Pincode'] = $_POST['txtPincode'];
+                $user['Pincode'] = $_SESSION['pincode'];
 
                 // Making gender character uppercase
-                $gender = strtoupper($user['Gender']);
-                $gender = $gender == "MALE" || $gender == "FEMALE" ? $gender[0] : 'M';
+                $gender = $user['Gender'];
                 $user["MName"] = $user["MName"] != "" ? $user["MName"] : NULL;
 
                 $ROLE = 'Customer';
@@ -112,36 +63,55 @@ if (isset($_POST["create-pass"])) {
                     'role' => $ROLE, 'profilePhoto' => $PHOTO_PATH, 'status' => $STATUS
                 ]);
 
+                if ($result) {
+                    $user['Address2'] = !isset($_SESSION["address2"]) ? $_SESSION["address2"] : null;
+                    $sql = "INSERT INTO tblUserAddress "
+                        . "(addressline1, addressline2, city, pincode, uid) VALUES "
+                        . "(:addressline1, :addressline2, :city, :pincode, "
+                        . "(select uid from tblUserMaster where email = :email))";
+                    $stmt = $pdo->prepare($sql);
+                    $result = $stmt->execute([
+                        'addressline1' => $user['Address1'], 'addressline2' => $user['Address2'],
+                        'city' => $user['City'], 'pincode' => $user['Pincode'], 'email' => $user['Email']
+                    ]);
                     if ($result) {
-                        $sql = "INSERT INTO tblUserAddress "
-                            . "(addressline1, addressline2, city, pincode, uid) VALUES "
-                            . "(:addressline1, :addressline2, :city, :pincode, "
-                            . "(select uid from tblUserMaster where email = :email))";
-                        $stmt = $pdo->prepare($sql);
-                        $result = $stmt->execute([
-                            'addressline1' => $user['Address1'], 'addressline2' => $user['Address2'],
-                            'city' => $user['City'], 'pincode' => $user['Pincode'], 'email' => $user['Email']
-                        ]);
-                        if ($result) {
-                            // if login successfully created
-                            $_SESSION['Email'] = $user['Email'];
-                            header("Location: /ProductionHouse/user/home.php");
-                        }
+                        // if login successfully created
+                        $_SESSION['Email'] = $user['Email'];
+                        header("Location: /ProductionHouse/user/home.php");
                     }
-                } catch (Exception $e) {
-                    setSessionValue($_POST);
-                    header("location: /ProductionHouse/user/signup.php?error=query");
                 }
-            } else {
-                setSessionValue($_POST);
-                header("location: /ProductionHouse/user/signup.php?error=pass");
+            } catch (Exception $e) {
+                setSessionValue($_SESSION);
+                header("location: /ProductionHouse/user/signup.php?error=query");
             }
         } else {
-            setSessionValue($_POST);
-            header("location: /ProductionHouse/user/signup.php?error=user");
+            setSessionValue($_SESSION);
+            header("location: /ProductionHouse/user/signup.php?error=pass");
+        }
+    } else {
+        setSessionValue($_SESSION);
+        header("location: /ProductionHouse/user/signup.php?error=user");
+    }
+} else {
+    if (isset($_POST["create-pass"])) {
+        if (!($_POST["txtPassword"] == $_POST["txtRePassword"])) {
+            header("location: /ProductionHouse/user/login.php?pass=1");
+        }
+
+        $password = password_hash($_POST["txtPassword"], PASSWORD_DEFAULT);
+
+        $sql = "UPDATE tblUserMaster SET password = :password WHERE email = :email";
+        $stmt = $pdo->prepare($sql);
+        $result = $stmt->execute(["password" => $password, "email" => $user["Email"]]);
+
+        if (!$result) {
+            header("location: /ProductionHouse/user/login.php?pass=1");
+        } else {
+            header("location: /ProductionHouse/user/login.php?pass=0");
         }
     }
 }
+
 
 function setSessionValue($user)
 {

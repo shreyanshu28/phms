@@ -4,8 +4,8 @@ const middleName = document.getElementById("middlename");
 const lastName = document.getElementById("lastname");
 const contactNo = document.getElementById("contactNo");
 const pincode = document.getElementById("pincode");
-const userName = document.getElementById("username");
-const password = document.getElementById("password");
+// const userName = document.getElementById("username");
+// const password = document.getElementById("password");
 const selectCity = document.getElementById("select-city");
 
 let count = 0;
@@ -84,17 +84,11 @@ contactNo.addEventListener("focus", function (event) {
   }
 });
 
-userName.addEventListener("focus", function (event) {
-  if (count >= 60 && count < 72) {
-    setProgressBar(72);
-  }
-});
-
-password.addEventListener("focus", function (event) {
-  if (count >= 72 && count < 84) {
-    setProgressBar(100);
-  }
-});
+// password.addEventListener("focus", function (event) {
+//   if (count >= 72 && count < 84) {
+//     setProgressBar(100);
+//   }
+// });
 
 function setProgressBar(size) {
   document.getElementById("registration-progress").value = size;
@@ -106,6 +100,7 @@ let cnt = 0;
 selectCity.addEventListener("change", function (event) {
   // to add new selectCity input if not already
   if (selectCity.value === "1" && cnt === 0) {
+    console.log("sh");
     city = document.createElement("input");
 
     city.type = "text";
@@ -123,6 +118,7 @@ selectCity.addEventListener("change", function (event) {
     cnt = 1;
   } else {
     if (cnt !== 0) {
+      console.log("ku");
       // remove when city already exists
       city.parentElement.removeChild(city);
     }

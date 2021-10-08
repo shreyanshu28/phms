@@ -26,6 +26,7 @@ if (!isset($_SESSION["Email"])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="../styles/style.css" /> <!-- for packages view -->
     <title>Home</title>
 </head>
 
@@ -110,10 +111,9 @@ if (!isset($_SESSION["Email"])) {
                 <a href="./utilities/_log-out.php" class="navbar-item button is-danger">Logout</a>
             </div>
         </div>
+
     </nav> --><?php
     require_once './admin/navbar.php'; ?>
-    <form action="./utilities/_add-user.php" method="post" class="signup-main">
-    </form>
 </body>
 <script src="./scripts/login.js"></script>
 <script src="../scripts/navbar.js"></script>

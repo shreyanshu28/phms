@@ -20,6 +20,7 @@ function send_email($email, $html, $subject)
 		'verify_peer_name' => false,
 		'allow_self_signed' => false
 	));
+
 	if ($mail->send()) {
 		return 1;
 	} else {

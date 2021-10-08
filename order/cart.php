@@ -25,7 +25,7 @@ if (!isset($_SESSION["Email"])) {
 <body>
   <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
-      <a href="../index.php" class="navbar-item">
+      <a href="../user/home.php" class="navbar-item">
         <h1 class="title is-4">Apricus Productions</h1>
       </a>
 
@@ -38,7 +38,7 @@ if (!isset($_SESSION["Email"])) {
 
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="../index.php" class="navbar-item is-active">Home</a>
+        <a href="../user/home.php" class="navbar-item is-active">Home</a>
         <hr class="navbar-divider">
         <?php
         if (isset($_SESSION["Email"]) && $_SESSION["Role"] == "C") {

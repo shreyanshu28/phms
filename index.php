@@ -58,15 +58,23 @@ if (isset($_SESSION['FName'])) {
     <div class="box columns">
       <div class="show-page">
         <img src="./images/jonathan-borba-PGIDs5PKWns-unsplash.jpg" alt="Image by jonathan borba" class="" />
-        <a href="#" class="">Photo Shooting<i class="fa fa-arrow-right"></i></a>
+        <a href="./user/show-images.php" class="">Photo Shooting<i class="fa fa-arrow-right"></i></a>
       </div>
       <div class="show-page">
         <img src="./images/ian-dooley-TLD6iCOlyb0-unsplash.jpg" alt="Image by ian dooley" class="" />
-        <a href="#" class="">Video Making <i class="fa fa-arrow-right"></i></a>
+        <a href="./user/show-images.php" class="">Video Making <i class="fa fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="card-container">
+      <div class="card">
+        <a href="./user/login.php" class="title mt-3 is-3 photo-title plan-detail">View our top packages</a>
       </div>
     </div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="card-container">
       <div class="card">
         <div class="card-content">
@@ -74,10 +82,10 @@ if (isset($_SESSION['FName'])) {
             Starter Plan 👦
           </div>
           <div class="plan-monthly-cost">
-            $6.99/mo
+            ₹6.99/mo
           </div>
           <div class="plan-annual-cost">
-            $83.88 billed annually
+            ₹83.88 billed annually
           </div>
           <a href="./order/cart.php?cart=A">
             <button class="indexing-button">
@@ -100,10 +108,10 @@ if (isset($_SESSION['FName'])) {
             Advanced Plan 🧑
           </div>
           <div class="plan-monthly-cost">
-            $12.99/mo
+            ₹12.99/mo
           </div>
           <div class="plan-annual-cost">
-            $155.88 billed annually
+            ₹155.88 billed annually
           </div>
           <div class="indexing-button-div">
             <a href="./order/cart.php?cart=B">
@@ -128,10 +136,10 @@ if (isset($_SESSION['FName'])) {
             Pro Plan 😎
           </div>
           <div class="plan-monthly-cost">
-            $20.99/mo
+            ₹20.99/mo
           </div>
           <div class="plan-annual-cost">
-            $251.78 billed annually
+            ₹251.78 billed annually
           </div>
           <div class="indexing-button-div">
             <a href="./order/cart.php?cart=C">
@@ -151,7 +159,7 @@ if (isset($_SESSION['FName'])) {
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="block" id="aboutUs">
     <div class="container">
       <article class="message is-info">

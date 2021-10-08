@@ -47,24 +47,54 @@
       <label class="label is-size-4">First Name</label>
       <div class="control">
         <input type="text" class="input is-info is-medium" placeholder="First Name" name="txtFName" id="firstname" required />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "fname") {
+            echo "<p class='help is-danger'>No number allowed</p>";
+          }
+        }
+        ?>
       </div>
     </div>
     <div class="field">
       <label class="label is-size-4">Middle Name</label>
       <div class="control">
         <input type="text" class="input is-info is-medium" placeholder="Middle Name" name="txtMName" id="middlename" />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "mname") {
+            echo "<p class='help is-danger'>No number allowed</p>";
+          }
+        }
+        ?>
       </div>
     </div>
     <div class="field">
       <label class="label is-size-4">Last Name</label>
       <div class="control">
         <input type="text" class="input is-info is-medium" placeholder="Last Name" name="txtLName" id="lastname" required />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "lname") {
+            echo "<p class='help is-danger'>No number allowed</p>";
+          }
+        }
+        ?>
       </div>
     </div>
     <div class="field">
       <label class="label is-size-4">Data of Birth</label>
       <div class="control">
         <input type="date" name="dob" id="dob" class="input is-info is-medium" />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "dob") {
+            echo "<p class='help is-danger'>Age below 18 not Allowed</p>";
+          }
+        } else {
+          echo "<p class='help is-info'>Age below 18 not Allowed</p>";
+        }
+        ?>
       </div>
     </div>
     <div class="field">
@@ -80,8 +110,15 @@
             <i class="fa fa-globe"></i>
           </div>
         </div>
-        <input type="tel" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" required />
+        <input type="tel" class="input is-info is-medium" placeholder="Contact No" minlength="10" maxlength="10" name="txtContactNo" id="contactNo" required />
       </div>
+      <?php
+      if (isset($_REQUEST["error"])) {
+        if ($_REQUEST["error"] == "no") {
+          echo "<p class='help is-danger'>No number allowed</p>";
+        }
+      }
+      ?>
     </div>
     <div class="field">
       <label class="label is-size-4">Gender:</label>
@@ -98,6 +135,13 @@
       <label class="label is-size-4">Address</label>
       <div class="control">
         <input type="text" class="input is-info is-medium" placeholder="Flat, House no, Building, Company, Apartment" name="txtAddress1" id="flat" />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "address") {
+            echo "<p class='help is-danger'>Address 1 cannot be Empty</p>";
+          }
+        }
+        ?>
       </div>
       <div class="control mt-2">
         <input type="text" class="input is-info is-medium" placeholder="Area, Street, Sector, Village" name="txtAddress2" id="area" />
@@ -116,9 +160,23 @@
             ?>
           </select>
         </div>
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "city") {
+            echo "<p class='help is-danger'>Invalid city selected!</p>";
+          }
+        }
+        ?>
       </div>
       <div class="control mt-2">
-        <input type="text" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" />
+        <input type="number" maxlength="6" minlength="6" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "pincode") {
+            echo "<p class='help is-danger'>Enter valid Pincode</p>";
+          }
+        }
+        ?>
       </div>
     </div>
     <div class="field">
