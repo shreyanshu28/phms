@@ -130,5 +130,4 @@ if($_SESSION["Role"] != 'A') {
     });
     </script>
 </body>
-
 </html>
