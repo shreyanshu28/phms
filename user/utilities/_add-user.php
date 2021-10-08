@@ -92,25 +92,25 @@ if (isset($_POST["create-pass"])) {
 
                     $user['Pincode'] = $_POST['txtPincode'];
 
-                    // Making gender character uppercase
-                    $gender = strtoupper($user['Gender']);
-                    $gender = $gender == "MALE" || $gender == "FEMALE" ? $gender[0] : 'M';
-                    $user["MName"] = $user["MName"] != "" ? $user["MName"] : NULL;
+                // Making gender character uppercase
+                $gender = strtoupper($user['Gender']);
+                $gender = $gender == "MALE" || $gender == "FEMALE" ? $gender[0] : 'M';
+                $user["MName"] = $user["MName"] != "" ? $user["MName"] : NULL;
 
-                    $ROLE = 'C';
-                    $PHOTO_PATH = NULL;
-                    $STATUS = 1;
+                $ROLE = 'Customer';
+                $PHOTO_PATH = NULL;
+                $STATUS = 1;
 
-                    $sql = "INSERT INTO tblUserMaster "
-                        . "(firstName, middleName, lastName, dob, gender, contactNumber, email, password, role, profilePhoto, status) VALUES "
-                        . "(:fname, :mname, :lname, :dob, :gender, :contactno, :email, :password, :role, :profilePhoto, :status)";
-                    $stmt = $pdo->prepare($sql);
-                    $result = $stmt->execute([
-                        'fname' => $user['FName'], 'mname' => $user['MName'], 'lname' => $user['LName'],
-                        'dob' => $user['dob'], 'gender' => $gender, 'contactno' => $user['ContactNo'],
-                        'email' => $user['Email'], 'password' => password_hash($user['Password'], PASSWORD_DEFAULT),
-                        'role' => $ROLE, 'profilePhoto' => $PHOTO_PATH, 'status' => $STATUS
-                    ]);
+                $sql = "INSERT INTO tblUserMaster "
+                    . "(firstName, middleName, lastName, dob, gender, contactNumber, email, password, role, profilePhoto, status) VALUES "
+                    . "(:fname, :mname, :lname, :dob, :gender, :contactno, :email, :password, :role, :profilePhoto, :status)";
+                $stmt = $pdo->prepare($sql);
+                $result = $stmt->execute([
+                    'fname' => $user['FName'], 'mname' => $user['MName'], 'lname' => $user['LName'],
+                    'dob' => $user['dob'], 'gender' => $gender, 'contactno' => $user['ContactNo'],
+                    'email' => $user['Email'], 'password' => password_hash($user['Password'], PASSWORD_DEFAULT),
+                    'role' => $ROLE, 'profilePhoto' => $PHOTO_PATH, 'status' => $STATUS
+                ]);
 
                     if ($result) {
                         $sql = "INSERT INTO tblUserAddress "
