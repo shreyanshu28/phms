@@ -128,15 +128,7 @@ if($_SESSION["Role"] != 'A') {
     $(document).ready(function() {
       $("#myTable").DataTable();
     });
-  </script>
-  <?php
-  // if (array_key_exists("button1", $_POST)) {
-  //   $_SESSION['pName'] = $_POST['pName'];
-  //   $_SESSION['qty'] = $_POST['qty'];
-  //   $_SESSION['price'] = $_POST['price'];
-  //   $_SESSION['type'] = $_POST['type'];
-  // }
-  ?>
+    </script>
 </body>
 
 </html>
