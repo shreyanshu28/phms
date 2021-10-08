@@ -78,6 +78,3 @@ require_once './utilities/_check-login.php';
 <script src="../scripts/navbar.js"></script>
 
 </html>
-<?php
-echo (date('Y') - 18) . "-" . date('m') . "-" . date('d') . "<br>";
-?>

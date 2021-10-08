@@ -7,7 +7,7 @@ if (!isset($_POST["VerifyOTP"])) {
     header("location: ./login.php?otp=1");
 }
 
-if (!($_COOKIE["otp"] == $_POST["txtUserOTP"])) {
+if (!(password_verify($_POST["txtUserOTP"], $_COOKIE["otp"]))) {
     header("location: ./verify-otp.php?otp=1");
 }
 
