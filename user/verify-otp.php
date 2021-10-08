@@ -1,10 +1,14 @@
 <?php
-session_start();
-session_destroy();
-session_start();
-require_once './utilities/_check-login.php';
-require_once __DIR__ . '/email/function.php';
-require_once __DIR__ . '/email/smtp/PHPMailerAutoload.php';
+if (session_start() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+if (!isset($_SESSION["signup"])) {
+  if (!isset($_SESSION["get-otp"])) {
+    header("location: ./login.php?otp=1");
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +20,7 @@ require_once __DIR__ . '/email/smtp/PHPMailerAutoload.php';
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="./styles/style.css" />
-  <title>Change Password</title>
+  <title>Get OTP</title>
 </head>
 
 <body>
@@ -42,38 +46,24 @@ require_once __DIR__ . '/email/smtp/PHPMailerAutoload.php';
     </div>
   </nav>
 
-  <p class="title mt-3 is-2 has-text-centered">Log In</p>
+  <p class="title mt-3 is-2 has-text-centered">Verify OTP</p>
 
-  <form action="" method="post" class="login-main">
+  <form action="./change-password.php" method="post" class="login-main">
     <div class="field" id="userInput">
-      <label class="label is-size-4">Email</label>
+      <label class="label is-size-4">Enter OTP</label>
       <div class="control">
-        <input type="text" name="txtEmail" class="input is-info is-medium" placeholder="xyz@email.com" id="username" required />
-        <p class="help is-info">If Email is valid OTP will be sent to the entered email</p>
+        <input type="password" name="txtUserOTP" class="input is-info is-medium" placeholder="******" id="username" required />
+        <p class="help is-info" id="otp-seconds"></p>
       </div>
     </div>
     <div class="field">
       <div class="field has-addons">
-        <button type="submit" class="button is-medium is-info" id="otp-btn" name="otp-btn">GET OTP</button>
+        <input type="submit" class="button is-medium is-info" id="verify-otp" name="VerifyOTP" value="Verify">
       </div>
     </div>
   </form>
-  <?php
-  // if (isset($_POST["otp-btn"])) {
-
-  $email = "19bmiit052@gmail.com";
-  $subject  = "HERE tSKE THIS";
-  $html = rand(1111, 9999);
-
-  if (!send_email($email, $html, $subject)) {
-    echo "Mail not sent";
-  } else {
-    // header("location: ./")
-  }
-
-  // }
-  ?>
 </body>
+
 <script src="./scripts/forgotPassword.js"></script>
 <script src="../scripts/navbar.js"></script>
 
