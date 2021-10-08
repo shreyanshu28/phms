@@ -3,7 +3,7 @@ if (session_start() === PHP_SESSION_NONE) {
   session_start();
 }
 
-if (!isset($_POST["signup"])) {
+if (!isset($_POST["btnSubmit"])) {
   if (!isset($_REQUEST["forgot"])) {
     header("location: /ProductionHouse/user/login.php?otp");
   }

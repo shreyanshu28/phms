@@ -22,8 +22,9 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute(["email" => $_SESSION["Email"]]);
     $user = $stmt->fetchAll();
-
+    $_SESSION['user'] = $user;
     foreach ($user as $detail) {
+        $_SESSION['Uid'] = $detail->uid;
         $_SESSION['FName'] = $detail->firstName;
         $_SESSION['MName'] = $detail->middleName;
         $_SESSION['LName'] = $detail->lastName;
@@ -37,7 +38,7 @@ try {
         $_SESSION['Address2'] = $detail->addressline2;
         $_SESSION['City'] = $detail->city;
         $_SESSION['Pincode'] = $detail->pincode;
-        $_SESSION['Role'] = $detail->role;
+        $_SESSION['Role'] = strtoupper($detail->role)[0];
     }
 } catch (Exception $e) {
     echo $e;

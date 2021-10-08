@@ -58,11 +58,11 @@ if (isset($_SESSION['FName'])) {
     <div class="box columns">
       <div class="show-page">
         <img src="./images/jonathan-borba-PGIDs5PKWns-unsplash.jpg" alt="Image by jonathan borba" class="" />
-        <a href="#" class="">Photo Shooting<i class="fa fa-arrow-right"></i></a>
+        <a href="./user/show-images.php" class="">Photo Shooting<i class="fa fa-arrow-right"></i></a>
       </div>
       <div class="show-page">
         <img src="./images/ian-dooley-TLD6iCOlyb0-unsplash.jpg" alt="Image by ian dooley" class="" />
-        <a href="#" class="">Video Making <i class="fa fa-arrow-right"></i></a>
+        <a href="./user/show-images.php" class="">Video Making <i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
