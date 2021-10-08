@@ -21,6 +21,13 @@ class User extends DB {
         $sql = "SELECT distinct(role) from tblUserMaster";
         return $this->select($sql);
     }
+
+    public function updateRole($uid, $role) {
+        $sql = "UPDATE tblUserMaster SET role=:role where uid=:uid";
+        $cond = ['role'=>$role, 'uid'=>$uid];
+       return $this->update($sql, $cond);
+
+    }
 }
 
 /*

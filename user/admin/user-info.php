@@ -6,12 +6,20 @@ if(session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $user = new User();
-$users = $user->selectAllUser();
-if($users){
-   $role = $user->selectRole();
-   $_SESSION['adminUsers'] = $users;
-   $_SESSION['adminRole'] = $role;
+
+if(isset($_SESSION['role'])) {
+    $result = $user->updateRole($_SESSION['uid'], $_SESSION['role']);
+    unset($_SESSION['role']);
+    header('location:./view-user.php');
 }
 else {
-    echo "userError";
+    $users = $user->selectAllUser();
+    if($users){
+    $role = $user->selectRole();
+    $_SESSION['adminUsers'] = $users;
+    $_SESSION['adminRole'] = $role;
+    }
+    else {
+        echo "userError";
+    }
 }
