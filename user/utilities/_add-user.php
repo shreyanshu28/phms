@@ -97,7 +97,7 @@ if (isset($_POST["create-pass"])) {
                     $gender = $gender == "MALE" || $gender == "FEMALE" ? $gender[0] : 'M';
                     $user["MName"] = $user["MName"] != "" ? $user["MName"] : NULL;
 
-                    $ROLE = 'C';
+                    $ROLE = 'Customer';
                     $PHOTO_PATH = NULL;
                     $STATUS = 1;
 
