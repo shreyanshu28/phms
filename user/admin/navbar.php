@@ -36,8 +36,8 @@
         <div class="navbar-end">
           <a href="../home.php" class="navbar-item">Home</a>
           <a href="./../inventory/inventory.php" class="navbar-item">Inventory</a>
-          <a href="../view-user.php" class="navbar-item">View Users</a>
-          <a href="./../inventory/deleted-inventory.php" class="navbar-item">Deleted Products</a>
+          <a href="../view-user.php" class="navbar-item">Users</a>
+          <a href="./../../inventory/deleted-inventory.php" class="navbar-item">Restore Products</a>
           <a href="../login.php" class="navbar-item button is-danger">Log Out</a>
         </div>
       </div>
