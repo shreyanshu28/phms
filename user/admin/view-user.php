@@ -29,7 +29,35 @@ $role = $_SESSION['adminRole'];
         <li><a href="../index.php">Home</a></li>
         <li class="is-active"><a href="#">User</a></li>
       </ul>
+      <div class="navbar-main">
+      <div class="navbar-end"><button class="button is-success" id="modal-click">Add new</button></div>
+    </div>
     </nav>
+    <div class="modal" id="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Add new product</p>
+          <button class="delete" id="close-modal" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <form action="./user-info.php" method="post">
+            <div class="field">
+              <label for="designation" class="label">Designation</label>
+              <div class="control">
+                <input type="text" name="designation" id="designation">
+              </div>
+            </div>
+            <div class="field is-grouped">
+              <div class="control">
+                <input type="submit" value="submit" class="button is-link" id="submit">
+              </div>
+              <div class="control"><input type="reset" value="reset" class="button is-link is-light"></div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
   <table id="myTable" class="table table-responsive-md">
       <thead>
           <tr>
@@ -107,5 +135,6 @@ $role = $_SESSION['adminRole'];
       $("#myTable").DataTable();
   });
   </script>
+  <script src="../../scripts/showModal.js"></script>
   </body>
 </html>  

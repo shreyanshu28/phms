@@ -6,8 +6,12 @@ if(session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $user = new User();
-
-if(isset($_SESSION['role'])) {
+if(isset($_SESSION['newRole'])){
+    $result = $user->addNewRole($_SESSION['newRole']);
+    unset($_SESSION['role']);
+    header('location:./view-user.php');
+}
+else if(isset($_SESSION['role'])) {
     $result = $user->updateRole($_SESSION['uid'], $_SESSION['role']);
     unset($_SESSION['role']);
     header('location:./view-user.php');

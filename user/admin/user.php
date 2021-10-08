@@ -19,6 +19,7 @@ class User extends DB {
 
     public function selectRole() {
         $sql = "SELECT distinct(role) from tblUserMaster";
+        // $sql = "SELECT rname from tblRole";
         return $this->select($sql);
     }
 
@@ -26,7 +27,12 @@ class User extends DB {
         $sql = "UPDATE tblUserMaster SET role=:role where uid=:uid";
         $cond = ['role'=>$role, 'uid'=>$uid];
        return $this->update($sql, $cond);
+    }
 
+    public function addNewRole($role) {
+        $sql = "INSERT into tblRole(rname) VALUES (:role)";
+        $cond = ['role'=>$role];
+        return $this->update($sql, $cond);
     }
 }
 
