@@ -4,7 +4,7 @@ if (session_start() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION["Email"])) {
-  header("location: /ProductionHouse/user/login.php?no=TRUE");
+  header("location: /ProductionHouse/user/login.php?no=1");
 }
 
 ?>
@@ -16,100 +16,94 @@ if (!isset($_SESSION["Email"])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
   <link rel="stylesheet" href="./styles/style.css">
   <title>Cart</title>
 </head>
 
 <body>
-  <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a href="../user/home.php" class="navbar-item">
-        <h1 class="title is-4">Apricus Productions</h1>
-      </a>
 
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-taget="navbarMain" id="navbar-burger">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
+  <main>
 
-    <div class="navbar-menu" id="navbar-main">
-      <div class="navbar-end">
-        <a href="../user/home.php" class="navbar-item is-active">Home</a>
-        <hr class="navbar-divider">
-        <?php
-        if (isset($_SESSION["Email"]) && $_SESSION["Role"] == "C") {
-          echo "
-                <div class='navbar-item has-dropdown is-hoverable mr-2'>
-                    <a class='navbar-link'>
-                        <div class='icon is-small is-left'>
-                            <i class='fa fa-user'></i>
-                        </div>
-                        <span>
-                            Hello, ${_SESSION['FName']}
-                        </span>
-                    </a>
-                    <div class='navbar-dropdown'>
-                        <a href='../user/user-detail.php' class='navbar-item'>
-                            <div class='icon is-small is-left'>
-                                <i class='fa fa-edit'></i>
-                            </div>
-                            <span>
-                                Edit Profile
-                            </span>
-                        </a>
-                        <a href='#' class='navbar-item'>
-                            <div class='icon is-small is-left'>
-                                <i class='fa fa-lock'></i>
-                            </div>
-                            <span>
-                                Privacy & Security
-                            </span>
-                        </a>
-                        <a href='#' class='navbar-item'>
-                            <div class='icon is-small is-left'>
-                                <i class='fa fa-gear'></i>
-                            </div>
-                            <span>
-                                Settings
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <a href='/ProductionHouse/user/utilities/_log-out.php' class='navbar-item button is-danger'>Logout</a>";
-        } else {
-          echo "
-                <a href='/ProductionHouse/user/login.php' class='navbar-item button is-light mr-2'>Login</a>
-                <a href='/ProductionHouse/user/signup.php' class='navbar-item button is-info'>Sign Up</a>";
-        }
-        ?>
-      </div>
-    </div>
-  </nav>
-  <main class="main-cart">
-    <?php
-    if (isset($_REQUEST["cart"])) {
-      $_SESSION["cart"] = isset($_SESSION["cart"]) ? $_SESSION["cart"] . "," . $_REQUEST["cart"] : $_REQUEST["cart"];
-      $cart = explode(",", $_SESSION["cart"]);
-      foreach ($cart as $item) {
-        if ($item == "A") {
-          echo "A";
-        }
-        if ($item == "B") {
-          echo "B";
-        }
-        if ($item == "C") {
-          echo "C";
-        }
-      }
-    } else {
-      echo "<h1 class='title is-1'>No Orders</h1>";
-    }
-    ?>
   </main>
+
+  <?php
+  require_once "./../user/utilities/_fetch-packages.php";
+  include "navbar.php";
+  ?>
+  <main class="main-cart">
+    <form action="../payment/payment.php" method="POST">
+      <!-- <form action="../user/home.php" method="post"></form> -->
+      <table id="myTable" class="table table-responsive-md">
+        <thead>
+          <tr>
+            <td>Package Name</td>
+            <td>Photo Count</td>
+            <td>Video Count</td>
+            <td>Price</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          if (isset($_REQUEST["cart"])) {
+            // unset($_SESSION["cart"]);
+            if (isset($_SESSION["cart"])) {
+              $cart = explode(",", $_SESSION["cart"]);
+
+              if ($_REQUEST["cart"] != $cart[sizeof($cart) - 1]) {
+                $_SESSION["cart"] = isset($_SESSION["cart"]) ? $_SESSION["cart"] . "," . $_REQUEST["cart"] : $_REQUEST["cart"];
+              }
+
+              $cart = explode(",", $_SESSION["cart"]);
+
+              $_SESSION["amtTotal"] = 0;
+              foreach ($cart as $item) {
+                foreach ($packages as $package) {
+                  echo "<tr>";
+                  if ($item == $package->pid) {
+                    echo "
+                      <td>$package->packageName</td>
+                      <td>$package->photoCount</td>
+                      <td>$package->videoCount</td>
+                      <td>$package->price</td>
+                ";
+                    $_SESSION["amtTotal"] += $package->price;
+                    echo "
+                    <td>
+                      <a class='button is-danger' href='./deletePackage.php?id=$package->pid' id='btn'>Remove</a>
+                    </td>";
+                  }
+                  echo "</tr>";
+                }
+              }
+            } else {
+              $_SESSION["cart"] = isset($_REQUEST["cart"]) ? $_REQUEST["cart"] : null;
+              header("location: cart.php?cart=${_REQUEST['cart']}");
+            }
+          }
+          ?>
+        </tbody>
+      </table>
+
+      <div class='field'>
+        <div class='control'>
+          <input type='submit' class='button is-info m-2 is-medium' name='btnSubmit' value='Next' />
+        </div>
+      </div>
+    </form>
+  </main>
+  <script src=" //cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      $("#myTable").DataTable();
+    });
+  </script>
 </body>
 
 </html>

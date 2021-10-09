@@ -85,7 +85,7 @@
     <div class="field">
       <label class="label is-size-4">Data of Birth</label>
       <div class="control">
-        <input type="date" name="dob" id="dob" class="input is-info is-medium" />
+        <input type="date" name="dob" id="dob" max="<?php echo (date("Y") - 18) . "-" . date("m") . "-" . date("d") ?>" class="input is-info is-medium" />
         <?php
         if (isset($_REQUEST["error"])) {
           if ($_REQUEST["error"] == "dob") {
@@ -160,14 +160,14 @@
             ?>
           </select>
         </div>
-        <?php
-        if (isset($_REQUEST["error"])) {
-          if ($_REQUEST["error"] == "city") {
-            echo "<p class='help is-danger'>Invalid city selected!</p>";
-          }
-        }
-        ?>
       </div>
+      <?php
+      if (isset($_REQUEST["error"])) {
+        if ($_REQUEST["error"] == "city") {
+          echo "<p class='help is-danger'>Invalid city selected!</p>";
+        }
+      }
+      ?>
       <div class="control mt-2">
         <input type="number" maxlength="6" minlength="6" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" />
         <?php

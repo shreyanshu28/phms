@@ -12,12 +12,12 @@
 
 <body class="container">
   <?php
- if (session_status() === PHP_SESSION_NONE) {
-  session_start();
-}
-if($_SESSION["Role"] != 'A') {
-  header("location: ../index.php");
-}
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }
+  if ($_SESSION["Role"] != 'A') {
+    header("location: ../index.php");
+  }
   require_once './utilities/fetchProducts.php';
   require_once './utilities/_fetchType.php';
   require_once './navbar.php';
@@ -100,10 +100,9 @@ if($_SESSION["Role"] != 'A') {
     <tbody>
       <?php
       foreach ($products as $inventory) {
-        if(!$inventory->qty) {
+        if (!$inventory->qty) {
           continue;
-        }
-        else{
+        } else {
           echo "<tr>";
           echo "<td>" . $inventory->pid . "</td>";
           echo "<td>" . $inventory->productName . "</td>";
@@ -128,6 +127,7 @@ if($_SESSION["Role"] != 'A') {
     $(document).ready(function() {
       $("#myTable").DataTable();
     });
-    </script>
+  </script>
 </body>
+
 </html>

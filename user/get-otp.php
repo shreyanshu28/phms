@@ -6,7 +6,9 @@ if (session_start() === PHP_SESSION_NONE) {
 if (!isset($_POST["btnSubmit"])) {
   if (!isset($_REQUEST["forgot"])) {
     if (!isset($_REQUEST["error"])) {
-      header("location: /ProductionHouse/user/login.php?otp");
+      if (!isset($_REQUEST["change"])) {
+        header("location: /ProductionHouse/user/login.php?otp");
+      }
     }
   }
 }
@@ -69,8 +71,6 @@ if (isset($_POST["btnSubmit"])) {
   $_SESSION['gender'] = $gender == "MALE" || $gender == "FEMALE"  ? $gender[0] : "M";
   $_SESSION['address1'] = $_POST['txtAddress1'];
   $_SESSION['address2'] = isset($_POST['txtAddress2']) ? $_POST["txtAddress2"] : "";
-
-
 
   $_SESSION['city'] = isset($_POST["txtCity"]) ? $_POST['txtCity'] : $_POST["cbCity"];
   $_SESSION['pincode'] = $_POST['txtPincode'];
