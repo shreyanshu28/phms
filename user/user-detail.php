@@ -97,24 +97,54 @@ if (!isset($_SESSION['Email'])) {
       <div class="label is-size-4">First Name</div>
       <div class="control">
         <input type="text" class="input is-info is-medium" placeholder="First Name" name="txtFName" id="firstname" value="<?php echo $_SESSION['FName']; ?>" required />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "fname") {
+            echo "<p class='help is-danger'>No number allowed</p>";
+          }
+        }
+        ?>
       </div>
     </div>
     <div class=" field">
       <div class="label is-size-4">Middle Name</div>
       <div class="control">
         <input type="text" class="input is-info is-medium" placeholder="Middle Name" name="txtMName" id="middlename" value="<?php echo $_SESSION['MName']; ?>" />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "mname") {
+            echo "<p class='help is-danger'>No number allowed</p>";
+          }
+        }
+        ?>
       </div>
     </div>
     <div class="field">
       <label class="label is-size-4">Last Name</label>
       <div class="control">
         <input type="text" class="input is-info is-medium" placeholder="Last Name" name="txtLName" id="lastname" value="<?php echo $_SESSION['LName']; ?>" required />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "lname") {
+            echo "<p class='help is-danger'>No number allowed</p>";
+          }
+        }
+        ?>
       </div>
     </div>
     <div class="field">
       <label class="label is-size-4">Data of Birth</label>
       <div class="control">
         <input type="date" name="dob" id="dob" class="input is-info is-medium" value="<?php echo $_SESSION['DOB']; ?>" disabled />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "dob") {
+            echo "<p class='help is-danger'>Age below 18 not Allowed</p>";
+          }
+        } else {
+          echo "<p class='help is-info'>Age below 18 not Allowed</p>";
+        }
+        ?>
       </div>
     </div>
     <div class="field">
@@ -131,6 +161,13 @@ if (!isset($_SESSION['Email'])) {
           </div>
         </div>
         <input type="tel" class="input is-info is-medium" placeholder="Contact No" maxlength="10" name="txtContactNo" id="contactNo" value="<?php echo substr($_SESSION['ContactNo'], 2); ?>" required />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "no") {
+            echo "<p class='help is-danger'>No number allowed</p>";
+          }
+        }
+        ?>
       </div>
     </div>
     <div class=" field">
@@ -160,6 +197,13 @@ if (!isset($_SESSION['Email'])) {
       <label class="label is-size-4">Address</label>
       <div class="control">
         <input type="text" class="input is-info is-medium" placeholder="Flat, House no, Building, Company, Apartment" name="txtAddress1" id="flat" value="<?php echo $_SESSION['Address1']; ?>" />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "address") {
+            echo "<p class='help is-danger'>Address 1 cannot be Empty</p>";
+          }
+        }
+        ?>
       </div>
       <div class=" control mt-2">
         <input type="text" class="input is-info is-medium" placeholder="Area, Street, Sector, Village" name="txtAddress2" id="area" value="<?php echo $_SESSION['Address2']; ?>" />
@@ -180,21 +224,29 @@ if (!isset($_SESSION['Email'])) {
             ?>
           </select>
         </div>
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "city") {
+            echo "<p class='help is-danger'>Invalid city selected!</p>";
+          }
+        }
+        ?>
       </div>
       <div class="control mt-2">
-        <input type="text" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" value="<?php echo $_SESSION['Pincode']; ?>" />
+        <input type="tel" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" value="<?php echo $_SESSION['Pincode']; ?>" />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "pincode") {
+            echo "<p class='help is-danger'>Enter valid Pincode</p>";
+          }
+        }
+        ?>
       </div>
     </div>
-    <div class=" field">
-      <div class="label is-size-4">Email</div>
-      <div class="control">
-        <input type="text" class="input is-info is-medium" placeholder="Email" name="txtEmail" id="email" value="<?php echo $_SESSION['Email']; ?>" />
-      </div>
-    </div>
-    <div class=" field">
+    <div class="field">
       <div class="label is-size-4">Password</div>
       <div class="control">
-        <input type="password" name="txtPassword" class="input is-info is-medium" placeholder="Password" id="password" minlength="8" value="password" disabled />
+        <a href="./get-otp.php?change=1" class="title">Change Password</a>
       </div>
     </div>
     <div class="field">

@@ -1,0 +1,114 @@
+html {
+    box-sizing: border-box;
+}
+
+*, 
+*::before, 
+*::after {
+box-sizing: border-box;
+}
+
+body {
+    font-family: DM Sans, serif;
+    margin: 0;
+    padding: 0;
+}
+
+.card-container {
+    width: 90%;
+    margin: 30px auto 30px;
+}
+
+.card {
+    width: 30%;
+    display: inline-block;
+    border: 1px solid #BBBBBB;
+    margin-top: 10px;
+    margin-right: 55px;
+}
+
+.card:nth-child(3n + 3) {
+    margin-right: 0;
+}
+
+.card-content {
+    padding: 20px 20px 40px 20px;
+}
+
+.card-content .plan-type {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-content .plan-monthly-cost {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.card-content .plan-annual-cost {
+    font-size: 14px;
+    color: #A1A1A1;
+}
+
+.card-content .indexing-button {
+    display: block;
+    width: 100%;
+    background-color: #410FF8;
+    color: #FFFFFF;
+    padding: 15px 25px;
+    margin: 10px 0px;
+    font: inherit;
+    font-weight: bold;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+}
+
+.card-content .plan-details {
+    list-style: none;
+    padding: 0px;
+}
+
+.card-content .plan-details .plan-detail {
+    font-size: 14px;
+    background: url(../Checkmark.png) no-repeat left top; /* <-- change `left` & `top` too for extra control */
+    padding: 3px 0px 3px 25px;
+    margin-top: 15px;
+}
+
+.card:hover {
+    background: #410FF8;
+    color: white;
+    transition: 0.35s;
+}
+
+.card .plan-detail:hover {
+    background: #410FF8;
+    color: white;
+    transition: 0.35s;
+}
+
+.card-content:hover .plan-annual-cost {
+    font-size: 14px;
+    color: #AB94FF;
+}
+
+.card-content:hover .indexing-button {
+    background: #FFFFFF;
+    color: #410FF8;
+}
+
+.card-content:hover .plan-details .plan-detail {
+    font-size: 14px;
+    background: url(../Checkmark-1.png) no-repeat left top; 
+    padding: 3px 0px 3px 25px;
+}
+
+@media only screen and (max-width: 920px)  {
+    .card {
+        width: 100%;
+        border: 1px solid #BBBBBB;
+        margin-top: 10px;
+    }
+
+}
