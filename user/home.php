@@ -117,24 +117,28 @@ if (!isset($_SESSION["Email"])) {
       <?php
       if ($_SESSION["Role"] == "C") {
         require_once "./utilities/_fetch-packages.php";
-        foreach ($packages as $p) {
+        foreach ($packages as $package) {
+          if (!$package->status) {
+            continue;
+          }
           echo "
           <div class='card'>
             <div class='card-content'>
               <div class='plan-type'>
-                $p->packageName
+                $package->packageName
               </div>
               <div class='plan-monthly-cost'>
-                ₹$p->price
+                ₹$package->price
               </div>
-              <a href='../order/cart.php?cart=$p->pid'>
+              <a href='../order/cart.php?cart=$package->pid'>
                 <button class='indexing-button'>
                   Buy Now →
                 </button>
               </a>
               <ul class='plan-details'>
-                <li class='plan-detail'>Photo Count: $p->photoCount</li>
-                <li class='plan-detail'>Video Count: $p->videoCount</li>
+                <li class='plan-detail'>Photo Count: $package->photoCount</li>
+                <li class='plan-detail'>Video Count: $package->videoCount</li>
+                <li class='plan-detail'>$package->description</li>
               </ul>
             </div>
           </div>";

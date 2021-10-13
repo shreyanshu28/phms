@@ -26,7 +26,7 @@ require_once "./utilities/fetch-types.php";
   <nav class="breadcrumb navbar">
     <ul>
       <li><a href="../index.php">Home</a></li>
-      <li class="is-active"><a href="#">Packages Dashboard</a></li>
+      <li class="is-active"><a href="#">Packages</a></li>
     </ul>
     <div class="navbar-main">
       <div class="navbar-end"><button class="button is-success" id="modal-click">Add new</button></div>
