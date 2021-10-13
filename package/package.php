@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once "./utilities/fetch-packages.php";
+require_once "./utilities/fetch-types.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +19,14 @@ require_once "./utilities/fetch-packages.php";
   <title>Packages</title>
 </head>
 
-<body>
+<body class="m-5">
   <?php
   require_once "./navbar.php";
   ?>
   <nav class="breadcrumb navbar">
     <ul>
       <li><a href="../index.php">Home</a></li>
-      <li class="is-active"><a href="#">Packages</a></li>
+      <li class="is-active"><a href="#">Packages Dashboard</a></li>
     </ul>
     <div class="navbar-main">
       <div class="navbar-end"><button class="button is-success" id="modal-click">Add new</button></div>
@@ -39,21 +40,21 @@ require_once "./utilities/fetch-packages.php";
         <button class="delete" id="close-modal" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
-        <form action="./utilities/addProducts.php" method="post">
+        <form action="./utilities/add-package.php" method="post">
           <div class="field">
-            <label class="label" for="pName">Package Name</label>
+            <label class="label" for="packageName">Package Name</label>
             <div class="control">
               <input class="input is-success" type="text" name="packageName" id="packageName">
             </div>
           </div>
           <div class="field">
-            <label class="label" for="qty">Photo Count</label>
+            <label class="label" for="photoCount">Photo Count</label>
             <div class="control">
               <input type="number" class="is-success" name="photoCount" id="photoCount">
             </div>
           </div>
           <div class="field">
-            <label class="label" for="price">Video Count</label>
+            <label class="label" for="videoCount">Video Count</label>
             <div class="control">
               <input type="number" class="is-success" name="videoCount" id="videoCount">
             </div>
@@ -65,6 +66,12 @@ require_once "./utilities/fetch-packages.php";
             </div>
           </div>
           <div class="field">
+            <label class="label" for="description">Description</label>
+            <div class="control">
+              <textarea name="description" id="description" cols="30" rows="3" placeholder="This is Package Description">This is Package Description</textarea>
+            </div>
+          </div>
+          <div class="field">
             <label class="label" for="type">Type</label>
             <div class="field control has-addons">
               <div class="select">
@@ -72,9 +79,10 @@ require_once "./utilities/fetch-packages.php";
                   <option value="-1">Types</option>
                   <option value="1">Add New</option>
                   <?php
-                  foreach ($type as $t) {
-                    echo "<option>" . $t->type . "</option>";
-                  } ?>
+                  foreach ($types as $types) {
+                    echo "<option>" . $types->type . "</option>";
+                  }
+                  ?>
                 </select>
               </div>
             </div>
@@ -82,7 +90,6 @@ require_once "./utilities/fetch-packages.php";
           <div class="field is-grouped">
             <div class="control">
               <input type="submit" value="Submit" class="button is-link" name="submit" id="submit"></input>
-              <!-- <button type="submit" name="button1" class="button is-link">Submit</button> -->
             </div>
             <div class="control">
               <input type="reset" class="button is-link is-light"></input>
@@ -118,6 +125,7 @@ require_once "./utilities/fetch-packages.php";
             echo "<td>" . $package->photoCount . "</td>";
             echo "<td>" . $package->videoCount . "</td>";
             echo "<td>" . $package->price . "</td>";
+            echo "<td>" . $package->description . "</td>";
             echo "<td>" . $package->type . "</td>";
             echo "<td><a class='button is-warning' href='./utilities/delete-package.php?id=$package->pid&restore=1' id='btn'>Restore</a></td>";
             echo "</tr>";
@@ -132,8 +140,9 @@ require_once "./utilities/fetch-packages.php";
           echo "<td>" . $package->photoCount . "</td>";
           echo "<td>" . $package->videoCount . "</td>";
           echo "<td>" . $package->price . "</td>";
+          echo "<td>" . $package->description . "</td>";
           echo "<td>" . $package->type . "</td>";
-          echo "<td><a class='button is-dark' href='./utilities/fetch-package.php?id=$package->pid' id='btn'>Edit</a>&nbsp";
+          echo "<td><a class='button is-dark' href='./utilities/fetch-packages.php?id=$package->pid' id='btn'>Edit</a>&nbsp";
           echo "<a class='button is-danger' href='./utilities/delete-package.php?id=$package->pid' id='btn'>Delete</a></td>";
           echo "</tr>";
         }
