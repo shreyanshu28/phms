@@ -19,7 +19,7 @@ require_once "./utilities/fetch-types.php";
   <title>Packages</title>
 </head>
 
-<body>
+<body class="m-5">
   <?php
   require_once "./navbar.php";
   ?>
@@ -40,7 +40,7 @@ require_once "./utilities/fetch-types.php";
         <button class="delete" id="close-modal" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
-        <form action="./utilities/add-products.php" method="post">
+        <form action="./utilities/add-package.php" method="post">
           <div class="field">
             <label class="label" for="packageName">Package Name</label>
             <div class="control">
@@ -142,7 +142,7 @@ require_once "./utilities/fetch-types.php";
           echo "<td>" . $package->price . "</td>";
           echo "<td>" . $package->description . "</td>";
           echo "<td>" . $package->type . "</td>";
-          echo "<td><a class='button is-dark' href='./utilities/fetch-package.php?id=$package->pid' id='btn'>Edit</a>&nbsp";
+          echo "<td><a class='button is-dark' href='./utilities/fetch-packages.php?id=$package->pid' id='btn'>Edit</a>&nbsp";
           echo "<a class='button is-danger' href='./utilities/delete-package.php?id=$package->pid' id='btn'>Delete</a></td>";
           echo "</tr>";
         }
