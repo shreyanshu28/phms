@@ -49,7 +49,6 @@ if (!isset($_SESSION["Email"])) {
         <tbody>
           <?php
           if (isset($_REQUEST["cart"])) {
-            // unset($_SESSION["cart"]);
             if (isset($_SESSION["cart"])) {
               $cart = explode(",", $_SESSION["cart"]);
 
@@ -69,7 +68,7 @@ if (!isset($_SESSION["Email"])) {
                       <td>$package->photoCount</td>
                       <td>$package->videoCount</td>
                       <td>$package->price</td>
-                ";
+                    ";
                     $_SESSION["amtTotal"] += $package->price;
                     echo "
                     <td>
@@ -87,7 +86,6 @@ if (!isset($_SESSION["Email"])) {
           ?>
         </tbody>
       </table>
-
       <div class='field'>
         <div class='control'>
           <input type='submit' class='button is-info m-2 is-medium' name='btnSubmit' value='Next' />

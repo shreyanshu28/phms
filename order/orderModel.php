@@ -1,30 +1,36 @@
 <?php
 require_once '../make-connection.php';
 
-class Order extends DB{
-    public function selectAllOrder() {
+class Order extends DB
+{
+    public function selectAllOrder()
+    {
         $sql = ""; #ADD YOUR QUERY
         return $this->select($sql);
     }
 
-    public function addOrder($params) {
+    public function addOrder($params)
+    {
         $sql = "";
         $cond = [];
         return $this->update($sql, $cond);
     }
 
-    public function updateOrder($uid, $details) {
-        $sql = "UPDATE tblMaster SET " ;//FETCH EVERYTHING FROM THE FORM, AND UPDATE
+    public function updateOrder($uid, $details)
+    {
+        $sql = "UPDATE tblMaster SET "; //FETCH EVERYTHING FROM THE FORM, AND UPDATE
         $cond = [];
         return  $this->update($sql, $cond);
     }
 
-    public function selectCustomerOrder() {
+    public function selectCustomerOrder()
+    {
         $sql = ""; #ADD YOUR QUERY
         return $this->select($sql);
     }
 
-    public function countOrders() {
+    public function countOrders()
+    {
         $sql = "select count(*) from tblOrderMaster where odate>today()";
         return $this->select($sql);
     }
@@ -33,5 +39,5 @@ class Order extends DB{
     //select pending orders
     //select unpaid orders
     //select halfway done orders
-    public function
+    // public function
 }
