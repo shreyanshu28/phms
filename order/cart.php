@@ -39,11 +39,10 @@ require_once "./utilities/fetch-cart.php";
   include "navbar.php";
   ?>
   <main class="main-cart">
-    <form action="../payment/payment.php" method="POST">
+    <form action="./order-address.php" method="POST">
       <table id="myTable" class="table table-responsive-md">
         <thead>
           <tr>
-            <td>Id</td>
             <td>Package Name</td>
             <td>Photo Count</td>
             <td>Video Count</td>
@@ -63,7 +62,6 @@ require_once "./utilities/fetch-cart.php";
                 continue;
               }
               echo "<tr>
-                      <td id='cartId'>$cart->cartid</td>
                       <td>$cart->packageName</td>
                       <td>$cart->photoCount</td>
                       <td>$cart->videoCount</td>

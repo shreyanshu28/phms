@@ -7,8 +7,6 @@ if (session_status() === PHP_SESSION_NONE) {
 if (!isset($_SESSION['Email'])) {
   header("location: ./login.php");
 } else {
-  // the path of _make-connection must be relative to the file for which it must be used
-  // include doesn't change the path of the location
   require_once "./utilities/_fetch-user.php";
   require_once "./utilities/_fetch-cities.php";
 }

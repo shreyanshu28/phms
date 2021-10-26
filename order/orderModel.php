@@ -27,6 +27,13 @@ class Order extends DB
         return $this->update($sql, $cond);
     }
 
+    public function addOrderAddress($address1, $address2, $city, $pincode, $email)
+    {
+        $sql = "INSERT INTO tblOrderAddress1 (addressline1, addressline2, city, pincode, cid) VALUES (:address1, :address2, :city, :pincode, (SELECT uid FROM tblUserMaster WHERE email = :email))";
+        $cond = ["address1" => $address1, "address2" => $address2, "city" => $city, "pincode" => $pincode, "email" => $email];
+        return $this->update($sql, $cond);
+    }
+
     public function updateOrder($uid, $details)
     {
         $sql = "UPDATE tblMaster SET "; //FETCH EVERYTHING FROM THE FORM, AND UPDATE

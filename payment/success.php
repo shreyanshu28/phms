@@ -13,7 +13,7 @@ $payment = new Payment();
 $url = $_SERVER['HTTP_REFERER'];
 $checkUrl = "http://localhost/ProductionHouse/payment/payment.php";
 
-if (!strcmp($url, $checkUrl)) {
+if (strcmp($url, $checkUrl)) {
   $method = strtoupper("ONLINE");
   $refid = "";
   $date = date("Y/m/d");
@@ -38,11 +38,22 @@ if (!strcmp($url, $checkUrl)) {
 
   $packages = $stmt->fetchAll();
 
-  foreach ($packages as $pac) {
-    $payment->addPackagePaymentOrder($pac->pid, $poid, $pac->qty);
+  foreach ($packages as $package) {
+    $payment->addPackagePaymentOrder($package->pid, $poid, $package->qty);
   }
 
-  $order->addOrder($date, $time, $cid, $poid);
+  $order->addOrder($_SESSION["order-date"], $_SESSION["order-time"], $cid, $poid);
+
+  $newStatus = 0;
+  $status = 1;
+  $sql = "UPDATE tblCart SET status = :newStatus WHERE cid = :cid AND status = :status";
+  $stmt = $pdo->prepare($sql);
+
+  $stmt->execute([
+    "newStatus" => $newStatus, "cid" => $cid, "status" => $status
+  ]);
+
+  header("location: /ProductionHouse/user/home.php?pay=1");
 } else {
   header("location: /ProductionHouse/user/home.php?pay=0");
 }

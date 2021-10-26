@@ -1,13 +1,13 @@
 <?php
-// If session already started gives
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-if (!isset($_SESSION["Email"])) {
-  header("location: ./login.php?no=TRUE");
+if (!isset($_SESSION['Email'])) {
+  header("location: ./login.php");
 } else {
-  require_once "./utilities/_fetch-user.php";
+  // require_once "./utilities/_fetch-user.php";
+  require_once __DIR__ . "/../user/utilities/_fetch-cities.php";
 }
 
 ?>
@@ -18,11 +18,10 @@ if (!isset($_SESSION["Email"])) {
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./styles/style.css" />
-  <link rel="stylesheet" href="./styles/package-style.css" /> <!-- for packages view -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
-  <title>Home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <title>Order Details</title>
 </head>
 
 <body>
@@ -107,43 +106,71 @@ if (!isset($_SESSION["Email"])) {
       </div>
     </div>
   </nav>
-  <div class="row">
-    <div class="card-container">
-      <?php
-      if ($_SESSION["Role"] == "C") {
-        require_once "./utilities/_fetch-packages.php";
-        foreach ($packages as $package) {
-          if (!$package->status) {
-            continue;
+
+  <p class="title mt-3 is-2 has-text-centered">Order Details</p>
+
+  <form action="./add-address.php" method="post" class="order-address-main">
+    <div class='field'>
+      <div class='control'>
+        <input type="date" name="date" min="<?php echo date("Y") . "-" . date("m") . "-" . date("d") ?>" max="<?php echo date("Y") . "-" . (date("m") + 6) . "-" . date("d") ?>" class="input is-info is-medium" />
+        <input type="time" name="time" min="<?php echo time() ?>" class="input is-info is-medium" />
+      </div>
+    </div>
+    <div class="field" id="field">
+      <label class="label is-size-4">Address</label>
+      <div class="control">
+        <input type="text" class="input is-info is-medium" placeholder="Flat, House no, Building, Company, Apartment" name="txtAddress1" id="flat" />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "address") {
+            echo "<p class='help is-danger'>Address 1 cannot be Empty</p>";
           }
-          echo "
-          <div class='card'>
-            <div class='card-content'>
-              <div class='plan-type'>
-                $package->packageName
-              </div>
-              <div class='plan-monthly-cost'>
-                ₹$package->price
-              </div>
-              <a href='../order/utilities/add-cart.php?cart=$package->pid'>
-                <button class='indexing-button'>
-                  Add to Cart →
-                </button>
-              </a>
-              <ul class='plan-details'>
-                <li class='plan-detail'>Photo Count: $package->photoCount</li>
-                <li class='plan-detail'>Video Count: $package->videoCount</li>
-                <li class='plan-detail'>$package->description</li>
-              </ul>
-            </div>
-          </div>";
+        }
+        ?>
+      </div>
+      <div class="control mt-2">
+        <input type="text" class="input is-info is-medium" placeholder="Area, Street, Sector, Village" name="txtAddress2" id="area" />
+      </div>
+      <div class="control mt-2 field has-addons">
+        <div class="select is-medium is-info">
+          <select name="cbCity" id="select-city">
+            <option value="-1">City</option>
+            <option value="1">Add New</option>
+            <?php
+            foreach ($_SESSION['AllCities'] as $city) {
+              echo "<option value=$city->city>" . $city->city . "</option>";
+            }
+            ?>
+          </select>
+        </div>
+      </div>
+      <?php
+      if (isset($_REQUEST["error"])) {
+        if ($_REQUEST["error"] == "city") {
+          echo "<p class='help is-danger'>Invalid city selected!</p>";
         }
       }
       ?>
+      <div class="control mt-2">
+        <input type="number" maxlength="6" minlength="6" class="input is-info is-medium" name="txtPincode" id="pincode" placeholder="Pincode" />
+        <?php
+        if (isset($_REQUEST["error"])) {
+          if ($_REQUEST["error"] == "pincode") {
+            echo "<p class='help is-danger'>Enter valid Pincode</p>";
+          }
+        }
+        ?>
+      </div>
     </div>
-  </div>
+    <div class='field'>
+      <div class='control'>
+        <input type='submit' class='button is-info m-2 is-medium' name='btnSubmit' value='Next' />
+      </div>
+    </div>
+  </form>
 </body>
-<script src="./scripts/login.js"></script>
+
+<script src="./scripts/orderAddress.js"></script>
 <script src="../scripts/navbar.js"></script>
 
 </html>
