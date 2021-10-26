@@ -29,11 +29,6 @@ require_once "./utilities/fetch-cart.php";
 </head>
 
 <body>
-
-  <main>
-
-  </main>
-
   <?php
   require_once "./../user/utilities/_fetch-packages.php";
   include "navbar.php";
@@ -94,31 +89,6 @@ require_once "./utilities/fetch-cart.php";
       const qtys = document.querySelectorAll("#cartQty");
       const ids = document.querySelectorAll("#cartId");
       $("#myTable").DataTable();
-
-      // qtys.forEach(function(q) {
-      //   q.addEventListener("change", function() {
-      //     if (q.value < 1) {
-      //       q.value = 1;
-      //     } else {
-
-      //     }
-      //   })
-
-      // let qty = $("#cartQty").val();
-      //   // let id = $("#cartId").text();
-
-      //   // console.log(document.getElementById("cartId").innerText);
-      //   // console.log(id);
-      //   if (qty >= 1) {
-      //     // let id = $("#cartId").val();
-
-      //     // $.post("./utilities/update-qty.php", {
-
-      //     // }, );
-      //   } else {
-      //     $("#cartQty").val("1");
-      //   }
-      // })
     });
   </script>
 </body>
