@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once __DIR__ . "../../_make-connection.php";
 require_once __DIR__ . "/../order/orderModel.php";
-require_once __DIR__ . "/../payment/paymentModel.php";
+require_once __DIR__ . "/paymentModel.php";
 
 $order = new Order();
 $payment = new Payment();
@@ -13,7 +13,7 @@ $payment = new Payment();
 $url = $_SERVER['HTTP_REFERER'];
 $checkUrl = "http://localhost/ProductionHouse/payment/payment.php";
 
-if (strcmp($url, $checkUrl)) {
+if (!strcmp($url, $checkUrl)) {
   $method = strtoupper("ONLINE");
   $refid = "";
   $date = date("Y/m/d");
