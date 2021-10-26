@@ -1,11 +1,14 @@
 <?php
-if (session_start() === PHP_SESSION_NONE) {
+if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
+$_SESSION["amtTotal"] = 0;
 
 if (!isset($_SESSION["Email"])) {
   header("location: /ProductionHouse/user/login.php?no=1");
 }
+
+require_once "./utilities/fetch-cart.php";
 
 ?>
 
@@ -18,7 +21,9 @@ if (!isset($_SESSION["Email"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" />
+
   <link rel="stylesheet" href="./styles/style.css">
   <title>Cart</title>
 </head>
@@ -35,52 +40,39 @@ if (!isset($_SESSION["Email"])) {
   ?>
   <main class="main-cart">
     <form action="../payment/payment.php" method="POST">
-      <!-- <form action="../user/home.php" method="post"></form> -->
       <table id="myTable" class="table table-responsive-md">
         <thead>
           <tr>
+            <td>Id</td>
             <td>Package Name</td>
             <td>Photo Count</td>
             <td>Video Count</td>
             <td>Price</td>
+            <td>Type</td>
+            <td>Description</td>
+            <td>Quantity</td>
             <td>Actions</td>
           </tr>
         </thead>
         <tbody>
           <?php
-          if (isset($_REQUEST["cart"])) {
-            if (isset($_SESSION["cart"])) {
-              $cart = explode(",", $_SESSION["cart"]);
-
-              if ($_REQUEST["cart"] != $cart[sizeof($cart) - 1]) {
-                $_SESSION["cart"] = isset($_SESSION["cart"]) ? $_SESSION["cart"] . "," . $_REQUEST["cart"] : $_REQUEST["cart"];
+          if (isset($carts)) {
+            foreach ($carts as $cart) {
+              if (!$cart->status) {
+                continue;
               }
-
-              $cart = explode(",", $_SESSION["cart"]);
-
-              $_SESSION["amtTotal"] = 0;
-              foreach ($cart as $item) {
-                foreach ($packages as $package) {
-                  echo "<tr>";
-                  if ($item == $package->pid) {
-                    echo "
-                      <td>$package->packageName</td>
-                      <td>$package->photoCount</td>
-                      <td>$package->videoCount</td>
-                      <td>$package->price</td>
-                    ";
-                    $_SESSION["amtTotal"] += $package->price;
-                    echo "
-                    <td>
-                      <a class='button is-danger' href='./deletePackage.php?id=$package->pid' id='btn'>Remove</a>
-                    </td>";
-                  }
-                  echo "</tr>";
-                }
-              }
-            } else {
-              $_SESSION["cart"] = isset($_REQUEST["cart"]) ? $_REQUEST["cart"] : null;
-              header("location: cart.php?cart=${_REQUEST['cart']}");
+              echo "<tr>
+                      <td id='cartId'>$cart->cartid</td>
+                      <td>$cart->packageName</td>
+                      <td>$cart->photoCount</td>
+                      <td>$cart->videoCount</td>
+                      <td>$cart->price</td>
+                      <td>$cart->type</td>
+                      <td>$cart->description</td>
+                      <td><input type='text' id='cartQty' name='cart-qty' value='$cart->qty' class='input is-small' readonly></td>
+                      <td><a class='button is-danger m-2 is-small' href='./utilities/remove-cart.php?cart=$cart->cartid'>Remove</a></td>
+                    </tr>";
+              $_SESSION["amtTotal"] += $cart->qty * $cart->price;
             }
           }
           ?>
@@ -99,7 +91,34 @@ if (!isset($_SESSION["Email"])) {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script>
     $(document).ready(function() {
+      const qtys = document.querySelectorAll("#cartQty");
+      const ids = document.querySelectorAll("#cartId");
       $("#myTable").DataTable();
+
+      // qtys.forEach(function(q) {
+      //   q.addEventListener("change", function() {
+      //     if (q.value < 1) {
+      //       q.value = 1;
+      //     } else {
+
+      //     }
+      //   })
+
+      // let qty = $("#cartQty").val();
+      //   // let id = $("#cartId").text();
+
+      //   // console.log(document.getElementById("cartId").innerText);
+      //   // console.log(id);
+      //   if (qty >= 1) {
+      //     // let id = $("#cartId").val();
+
+      //     // $.post("./utilities/update-qty.php", {
+
+      //     // }, );
+      //   } else {
+      //     $("#cartQty").val("1");
+      //   }
+      // })
     });
   </script>
 </body>

@@ -124,7 +124,7 @@ if (!isset($_SESSION["Email"])) {
               <div class='plan-monthly-cost'>
                 ₹$package->price
               </div>
-              <a href='../order/cart.php?cart=$package->pid'>
+              <a href='../order/utilities/add-cart.php?cart=$package->pid'>
                 <button class='indexing-button'>
                   Buy Now →
                 </button>
