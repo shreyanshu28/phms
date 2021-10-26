@@ -10,7 +10,7 @@ class Order extends DB
 
     public function selectAllOrder()
     {
-        $sql = ""; #ADD YOUR QUERY
+        $sql = "SELECT o.*, c.email FROM tblOrderMaster o INNER JOIN tblUserMaster c on c.uid = o.cid";
         return $this->select($sql);
     }
 
