@@ -57,6 +57,7 @@ require_once "./utilities/fetch-cart.php";
         <tbody>
           <?php
           if (isset($carts)) {
+            $_SESSION["pid"] = array();
             foreach ($carts as $cart) {
               if (!$cart->status) {
                 continue;
@@ -72,6 +73,7 @@ require_once "./utilities/fetch-cart.php";
                       <td><input type='text' id='cartQty' name='cart-qty' value='$cart->qty' class='input is-small' readonly></td>
                       <td><a class='button is-danger m-2 is-small' href='./utilities/remove-cart.php?cart=$cart->cartid'>Remove</a></td>
                     </tr>";
+              $_SESSION["cid"] = $cart->cid;
               $_SESSION["amtTotal"] += $cart->qty * $cart->price;
             }
           }

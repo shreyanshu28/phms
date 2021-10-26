@@ -9,6 +9,7 @@ if (!isset($_SESSION["Email"])) {
 } else {
   require_once "./utilities/_fetch-user.php";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
