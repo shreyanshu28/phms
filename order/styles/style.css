@@ -13,3 +13,27 @@
   min-width: 60vw;
   max-width: 60vw;
 }
+
+#title {
+  text-align: center;
+}
+
+.image-gallery .image {
+  margin: 0.25rem;
+  height: 50vh;
+  width: auto;
+}
+
+.image-gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}

@@ -15,6 +15,7 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+
     if ($_SESSION["Role"] == 'C') {
         header("location: ../index.php");
     }

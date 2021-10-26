@@ -83,6 +83,15 @@ if (!isset($_SESSION["Email"])) {
                                         Your Cart
                                     </span>
                                 </a>";
+              echo "
+                                <a href='../order/orders.php' class='navbar-item'>
+                                    <div class='icon is-small is-left'>
+                                        <i class='fa fa-photo'></i>
+                                    </div>
+                                    <span>
+                                        Your Orders
+                                    </span>
+                                </a>";
             }
             ?>
             <a href="#" class="navbar-item">

@@ -14,10 +14,13 @@ class Order extends DB
         return $this->select($sql);
     }
 
-    public function selectSpecificOrder($date, $time)
+    public function selectCustomerOrder($email)
     {
-        $sql = "SELECT oid FROM tblOrderMaster WHERE date = :date AND time = :time";
-        return $this->selectColumn($sql);
+        $sql = "SELECT oid FROM tblOrderMaster WHERE cid = (SELECT uid FROM tblUserMaster WHERE email = :email) ";
+
+        $cond = ["email" => $email];
+
+        return $this->select($sql, $cond);
     }
 
     public function addOrder($date, $time, $cid, $poid)
@@ -41,11 +44,11 @@ class Order extends DB
         return  $this->update($sql, $cond);
     }
 
-    public function selectCustomerOrder()
-    {
-        $sql = ""; #ADD YOUR QUERY
-        return $this->select($sql);
-    }
+    // public function selectCustomerOrder()
+    // {
+    //     $sql = ""; #ADD YOUR QUERY
+    //     return $this->select($sql);
+    // }
 
     public function countOrders()
     {
