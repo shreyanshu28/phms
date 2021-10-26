@@ -43,6 +43,8 @@ if (!strcmp($url, $checkUrl)) {
   }
 
   $order->addOrder($date, $time, $cid, $poid);
+  $_SESSION['payment'] = true;
+  header("location: /ProductionHouse/user/home.php");
 } else {
   header("location: /ProductionHouse/user/home.php?pay=0");
 }

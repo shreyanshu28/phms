@@ -8,6 +8,7 @@ if (!isset($_SESSION["Email"])) {
   header("location: ./login.php?no=TRUE");
 } else {
   require_once "./utilities/_fetch-user.php";
+  
 }
 
 ?>
@@ -73,16 +74,34 @@ if (!isset($_SESSION["Email"])) {
                                         Manage Inventory
                                     </span>
                                 </a>";
+              echo "
+                <a href='../order/order.php' class='navbar-item'>
+                  <div class='icon is-small is-left'>
+                    <i class='fas fa-shopping-bag'></i>
+                  </div>
+                  <span>
+                    Manage Orders
+                  </span>
+                </a>
+              ";
             } else if ($_SESSION["Role"] == "C") {
               echo "
-                                <a href='../order/cart.php?cart=-1' class='navbar-item'>
-                                    <div class='icon is-small is-left'>
-                                        <i class='fa fa-shopping-cart'></i>
-                                    </div>
-                                    <span>
-                                        Your Cart
-                                    </span>
-                                </a>";
+                  <a href='../order/cart.php?cart=-1' class='navbar-item'>
+                      <div class='icon is-small is-left'>
+                          <i class='fa fa-shopping-cart'></i>
+                      </div>
+                      <span>
+                          Your Cart
+                      </span>
+                  </a>
+                  <a href='../order/user-order.php' class='navbar-item'>
+                  <div class='icon is-small is-left'>
+                    <i class='fas fa-shopping-bag'></i>
+                  </div>
+                  <span>
+                    View Orders
+                  </span>
+                </a>";
             }
             ?>
             <a href="#" class="navbar-item">
@@ -107,6 +126,15 @@ if (!isset($_SESSION["Email"])) {
       </div>
     </div>
   </nav>
+  <div>
+    <?php 
+    if(isset($_SESSION['payment'])) {
+      echo "<div class=notification is-info>";
+      echo "Your order has been confirmed";
+      echo "</div>";
+    }
+    ?>
+  </div>
   <div class="row">
     <div class="card-container">
       <?php

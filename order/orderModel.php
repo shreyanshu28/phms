@@ -10,7 +10,12 @@ class Order extends DB
 
     public function selectAllOrder()
     {
-        $sql = ""; #ADD YOUR QUERY
+        $sql = "SELECT o.oid, o.status, o.date, o.time, u.email from tblOrderMaster o inner join tblUserMaster u on o.cid=u.uid"; 
+        return $this->select($sql);
+    }
+
+    public function selectOrderStatus() {
+        $sql = "SELECT DISTINCT(status) FROM tblOrderMaster";
         return $this->select($sql);
     }
 
@@ -29,8 +34,8 @@ class Order extends DB
 
     public function updateOrder($uid, $details)
     {
-        $sql = "UPDATE tblMaster SET "; //FETCH EVERYTHING FROM THE FORM, AND UPDATE
-        $cond = [];
+        $sql = "UPDATE tblOrderMaster SET status=:status WHERE oid=:oid"; //FETCH EVERYTHING FROM THE FORM, AND UPDATE
+        $cond = ["status" => $details, "oid" => $uid];
         return  $this->update($sql, $cond);
     }
 
