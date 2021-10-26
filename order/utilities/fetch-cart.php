@@ -13,7 +13,7 @@ $email = $_SESSION["Email"];
 $status = TRUE;
 
 try {
-  $sql = "SELECT c.cartid, p.packageName, p.photoCount, p.videoCount, p.price, p.type, p.description, c.status, c.qty "
+  $sql = "SELECT c.cartid, c.cid, p.packageName, p.photoCount, p.videoCount, p.price, p.type, p.description, c.status, c.qty "
     . "FROM tblCart c "
     . "INNER JOIN tblPackageMaster p "
     . "on c.pid = p.pid "
