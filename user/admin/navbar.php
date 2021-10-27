@@ -26,7 +26,8 @@
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
         <a href="../home.php" class="navbar-item">Home</a>
-        <a href="./../inventory/inventory.php" class="navbar-item">Inventory</a>
+        <a href="../../inventory/inventory.php" class="navbar-item">Inventory</a>
+        <a href="../../package/package.php">packages</a>
         <a href="../view-user.php" class="navbar-item">Users</a>
         <a href="./../../inventory/deleted-inventory.php" class="navbar-item">Restore Products</a>
         <a href="../login.php" class="navbar-item button is-danger">Log Out</a>

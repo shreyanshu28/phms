@@ -2,6 +2,104 @@
   max-width: 50px;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.photo-title {
+  text-align: center;
+}
+
+.photo-type {
+  /* display: flex; */
+  /* padding-left: 45%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-type img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 65vh;
+  margin: 5px;
+}
+
+.photo-type a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  width: auto;
+  height: auto;
+  margin: 5px;
+  padding: 10px;
+}
+
+.box {
+  padding: 10px;
+}
+
+.page-logo {
+  text-align: center;
+  font-size: 30px;
+}
+
+.input-icon > img {
+  width: 30px;
+  height: 30px;
+  margin: 10px 0px 0px 0px;
+}
+
+.signup-main,
+.login-main {
+  align-self: center;
+  width: 50%;
+}
+
+/* signup.html */
+.registration-progress {
+  margin-top: auto;
+  position: sticky;
+}
+
+.select-seperator {
+  border-bottom: 2px solid black;
+}
+
+/* breakpoint in bulma for desktop devices 1024px */
+@media only screen and (max-width: 1024px) {
+  .signup-main,
+  .login-main {
+    align-self: center;
+    width: 90%;
+  }
+
+  .navbar-end {
+    padding: 10px;
+  }
+
+  .navbar-item {
+    margin-top: 2%;
+    margin-right: 0px !important;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
 .order-address-main {
   display: flex;
   justify-content: center;

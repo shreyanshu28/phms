@@ -49,11 +49,13 @@ class Order extends DB
         return  $this->update($sql, $cond);
     }
 
-    // public function selectCustomerOrder()
-    // {
-    //     $sql = ""; #ADD YOUR QUERY
-    //     return $this->select($sql);
-    // }
+    public function selectCustomOrder($cid)
+    {
+        $sql = "SELECT oid, date, time FROM tblordermaster WHERE cid=:cid"; #ADD YOUR QUERY
+        $cond = ["cid"=>$cid];
+        return $this->select($sql, $cond);
+    }
+
 
     public function countOrders()
     {
