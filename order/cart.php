@@ -34,11 +34,10 @@ require_once "./utilities/fetch-cart.php";
   include "navbar.php";
   ?>
   <main class="main-cart">
-    <form action="../payment/payment.php" method="POST">
+    <form action="./order-address.php" method="POST">
       <table id="myTable" class="table table-responsive-md">
         <thead>
           <tr>
-            <td>Id</td>
             <td>Package Name</td>
             <td>Photo Count</td>
             <td>Video Count</td>
@@ -58,7 +57,6 @@ require_once "./utilities/fetch-cart.php";
                 continue;
               }
               echo "<tr>
-                      <td id='cartId'>$cart->cartid</td>
                       <td>$cart->packageName</td>
                       <td>$cart->photoCount</td>
                       <td>$cart->videoCount</td>
@@ -82,8 +80,7 @@ require_once "./utilities/fetch-cart.php";
       </div>
     </form>
   </main>
-  <script src=" //cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js">
-  </script>
+  <script src=" //cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script>

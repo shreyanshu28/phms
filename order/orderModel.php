@@ -19,16 +19,26 @@ class Order extends DB
         return $this->select($sql);
     }
 
-    public function selectSpecificOrder($date, $time)
+    public function selectCustomerOrder($email)
     {
-        $sql = "SELECT oid FROM tblOrderMaster WHERE date = :date AND time = :time";
-        return $this->selectColumn($sql);
+        $sql = "SELECT oid FROM tblOrderMaster WHERE cid = (SELECT uid FROM tblUserMaster WHERE email = :email) ";
+
+        $cond = ["email" => $email];
+
+        return $this->select($sql, $cond);
     }
 
     public function addOrder($date, $time, $cid, $poid)
     {
         $sql = "INSERT INTO tblOrderMaster (date, time, cid, poid) VALUES (:date, :time, :cid, :poid)";
         $cond = ["date" => $date, "time" => $time, "cid" => $cid, "poid" => $poid];
+        return $this->update($sql, $cond);
+    }
+
+    public function addOrderAddress($address1, $address2, $city, $pincode, $email)
+    {
+        $sql = "INSERT INTO tblOrderAddress1 (addressline1, addressline2, city, pincode, cid) VALUES (:address1, :address2, :city, :pincode, (SELECT uid FROM tblUserMaster WHERE email = :email))";
+        $cond = ["address1" => $address1, "address2" => $address2, "city" => $city, "pincode" => $pincode, "email" => $email];
         return $this->update($sql, $cond);
     }
 
@@ -39,12 +49,13 @@ class Order extends DB
         return  $this->update($sql, $cond);
     }
 
-    public function selectCustomerOrder($cid)
+    public function selectCustomOrder($cid)
     {
         $sql = "SELECT oid, date, time FROM tblordermaster WHERE cid=:cid"; #ADD YOUR QUERY
         $cond = ["cid"=>$cid];
         return $this->select($sql, $cond);
     }
+
 
     public function countOrders()
     {
