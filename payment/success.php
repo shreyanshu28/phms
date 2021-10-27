@@ -42,18 +42,9 @@ if (strcmp($url, $checkUrl)) {
     $payment->addPackagePaymentOrder($package->pid, $poid, $package->qty);
   }
 
-  $order->addOrder($_SESSION["order-date"], $_SESSION["order-time"], $cid, $poid);
-
-  $newStatus = 0;
-  $status = 1;
-  $sql = "UPDATE tblCart SET status = :newStatus WHERE cid = :cid AND status = :status";
-  $stmt = $pdo->prepare($sql);
-
-  $stmt->execute([
-    "newStatus" => $newStatus, "cid" => $cid, "status" => $status
-  ]);
-
-  header("location: /ProductionHouse/user/home.php?pay=1");
+  $order->addOrder($date, $time, $cid, $poid);
+  $_SESSION['payment'] = true;
+  header("location: /ProductionHouse/user/home.php");
 } else {
   header("location: /ProductionHouse/user/home.php?pay=0");
 }

@@ -4,6 +4,9 @@ include __DIR__ . "./user.php";
 // include __DIR__ . "/../../_make-connection.php";
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+    if ($_SESSION["Role"] != 'A') {
+        header("location: ../../index.php");
+      }
 }
 $user = new User();
 if (isset($_SESSION['newRole'])) {
