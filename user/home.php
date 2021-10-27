@@ -86,6 +86,7 @@ if (!isset($_SESSION["Email"])) {
               ";
             } else if ($_SESSION["Role"] == "C") {
               echo "
+
                   <a href='../order/cart.php?cart=-1' class='navbar-item'>
                       <div class='icon is-small is-left'>
                           <i class='fa fa-shopping-cart'></i>
@@ -155,7 +156,7 @@ if (!isset($_SESSION["Email"])) {
               </div>
               <a href='../order/utilities/add-cart.php?cart=$package->pid'>
                 <button class='indexing-button'>
-                  Buy Now →
+                  Add to Cart →
                 </button>
               </a>
               <ul class='plan-details'>

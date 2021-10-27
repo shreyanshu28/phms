@@ -30,6 +30,7 @@
         <a href="../package/package.php" class="navbar-item">Packages</a>
         <a href="../order/order.php" class="navbar-item">Orders</a>
         <a href="../user/admin/view-user.php" class="navbar-item">Users</a>
+        <a href="../order/order.php" class="navbar-item">Orders</a>
         <a href="./deleted-inventory.php" class="navbar-item">Restore Products</a>
         <a href="../user/login.php" class="navbar-item button is-danger">Log Out</a>
       </div>
