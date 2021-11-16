@@ -13,7 +13,7 @@ $payment = new Payment();
 $url = $_SERVER['HTTP_REFERER'];
 $checkUrl = "http://localhost/ProductionHouse/payment/payment.php";
 
-if (strcmp($url, $checkUrl)) {
+if (!strcmp($url, $checkUrl)) {
   $method = strtoupper("ONLINE");
   $refid = "";
   $date = date("Y/m/d");
