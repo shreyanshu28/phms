@@ -57,9 +57,14 @@
 
                                 $pvid = $photo->insertPhotos("/ProductionHouse/photos/" . $targetFilePath);
 
+                                $cnt = 0;
                                 foreach ($pvid as $p) {
+                                    if ($cnt == 1) {
+                                        break;
+                                    }
                                     $photo->insertPhotoOrder($p->pvid, $oid);
                                     echo "<img src = '$targetFilePath' class='image' />";
+                                    $cnt++;
                                 }
 
                                 $insertValuesSQL .= "('" . $fileName . "', NOW()),";

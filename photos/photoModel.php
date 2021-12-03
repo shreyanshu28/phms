@@ -26,6 +26,13 @@ class Photos extends DB
         return $this->select($sql, $cond);
     }
 
+    public function getDistinctPath($fileName)
+    {
+        $sql = "SELECT DISTINCT(path) FROM tblphotovideomaster WHERE path = :fileName";
+        $cond = ["fileName" => $fileName];
+        return $this->select($sql, $cond);
+    }
+
     //oid will come from query string 
     public function insertPhotoOrder($pvid, $oid)
     {
