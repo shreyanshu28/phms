@@ -26,12 +26,12 @@
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
         <a href="../user/home.php" class="navbar-item">Home</a>
-        <a href="./inventory.php" class="navbar-item">Inventory</a>
+        <a href="../inventory/inventory.php" class="navbar-item">Inventory</a>
         <a href="../package/package.php" class="navbar-item">Packages</a>
         <a href="../user/admin/view-user.php" class="navbar-item">Users</a>
-        <a href="../order/order.php" class="navbar-item">Orders</a>
+        <a href="../order/order.php" class="navbar-item is-active">Orders</a>
         <a href="../inventory/deleted-inventory.php" class="navbar-item">Restore Products</a>
-        <a href="/ProductionHouse/user/login.php" class="navbar-item button is-danger">Log Out</a>
+        <a href="../user/login.php" class="navbar-item button is-danger">Log Out</a>
       </div>
     </div>
   </nav>
