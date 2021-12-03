@@ -26,7 +26,15 @@ if (!isset($_SESSION["Email"])) {
 </head>
 
 <body>
-  <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
+  <?php
+  if ($_SESSION["Role"] == "A") {
+    include "./admin-nav.php";
+  } else if ($_SESSION["Role"] == "C") {
+    include "./user-nav.php";
+  }
+  ?>
+
+  <!-- <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
       <a href="../index.php" class="navbar-item">
         <h1 class="title is-4">Apricus Productions</h1>
@@ -48,7 +56,7 @@ if (!isset($_SESSION["Email"])) {
             </div>
             <span>
               Hello, <?php
-                      echo $_SESSION["FName"];
+                      // echo $_SESSION["FName"];
                       ?>
             </span>
           </a>
@@ -63,46 +71,45 @@ if (!isset($_SESSION["Email"])) {
             </a>
 
             <?php
-            if ($_SESSION["Role"] == "A") {
-              echo "
-                                <a href='../inventory/inventory.php' class='navbar-item'>
-                                    <div class='icon is-small is-left'>
-                                        <i class='fa fa-edit'></i>
-                                    </div>
-                                    <span>
-                                        Manage Inventory
-                                    </span>
-                                </a>";
-              echo "
-                <a href='../order/order.php' class='navbar-item'>
-                  <div class='icon is-small is-left'>
-                    <i class='fas fa-shopping-bag'></i>
-                  </div>
-                  <span>
-                    Manage Orders
-                  </span>
-                </a>
-              ";
-            } else if ($_SESSION["Role"] == "C") {
-              echo "
-
-                  <a href='../order/cart.php?cart=-1' class='navbar-item'>
-                      <div class='icon is-small is-left'>
-                          <i class='fa fa-shopping-cart'></i>
-                      </div>
-                      <span>
-                          Your Cart
-                      </span>
-                  </a>
-                  <a href='../order/orders.php' class='navbar-item'>
-                  <div class='icon is-small is-left'>
-                    <i class='fas fa-shopping-bag'></i>
-                  </div>
-                  <span>
-                    View Orders
-                  </span>
-                </a>";
-            }
+            // if ($_SESSION["Role"] == "A") {
+            //   echo "
+            //     <a href='../inventory/inventory.php' class='navbar-item'>
+            //         <div class='icon is-small is-left'>
+            //             <i class='fa fa-edit'></i>
+            //         </div>
+            //         <span>
+            //             Manage Inventory
+            //         </span>
+            //     </a>";
+            //   echo "
+            //     <a href='../order/order.php' class='navbar-item'>
+            //       <div class='icon is-small is-left'>
+            //         <i class='fas fa-shopping-bag'></i>
+            //       </div>
+            //       <span>
+            //         Manage Orders
+            //       </span>
+            //     </a>
+            //   ";
+            // } else if ($_SESSION["Role"] == "C") {
+            //   echo "
+            //       <a href='../order/cart.php?cart=-1' class='navbar-item'>
+            //           <div class='icon is-small is-left'>
+            //               <i class='fa fa-shopping-cart'></i>
+            //           </div>
+            //           <span>
+            //               Your Cart
+            //           </span>
+            //       </a>
+            //       <a href='../order/orders.php' class='navbar-item'>
+            //       <div class='icon is-small is-left'>
+            //         <i class='fas fa-shopping-bag'></i>
+            //       </div>
+            //       <span>
+            //         View Orders
+            //       </span>
+            //     </a>";
+            // }
             ?>
             <a href="#" class="navbar-item">
               <div class="icon is-small is-left">
@@ -125,7 +132,7 @@ if (!isset($_SESSION["Email"])) {
         <a href="./utilities/_log-out.php" class="navbar-item button is-danger">Logout</a>
       </div>
     </div>
-  </nav>
+  </nav> -->
   <div>
     <?php
     if (isset($_SESSION['payment'])) {

@@ -12,7 +12,7 @@
 <body>
   <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
-      <a href="../../index.php" class="navbar-item">
+      <a href="../index.php" class="navbar-item">
         <h1 class="title is-4">Apricus Productions</h1>
       </a>
 
@@ -25,16 +25,16 @@
 
     <div class="navbar-menu" id="navbar-main">
       <div class="navbar-end">
-        <a href="../home.php" class="navbar-item">Home</a>
-        <a href="../../inventory/inventory.php" class="navbar-item">Inventory</a>
-        <a href="../../package/package.php" class="navbar-item">Packages</a>
-        <a href="../../order/order.php" class="navbar-item">Orders</a>
-        <a href="./view-user.php" class="navbar-item">Users</a>
-        <a href="../login.php" class="navbar-item button is-danger">Log Out</a>
+        <a href="./home.php" class="navbar-item">Home</a>
+        <a href="../inventory/inventory.php" class="navbar-item">Inventory</a>
+        <a href="../package/package.php" class="navbar-item">Packages</a>
+        <a href="../order/order.php" class="navbar-item">Orders</a>
+        <a href="./admin/view-user.php" class="navbar-item">Users</a>
+        <a href="./login.php" class="navbar-item button is-danger">Log Out</a>
       </div>
     </div>
   </nav>
-  <script src="../../scripts/navbar.js"></script>
+  <script src="../scripts/navbar.js"></script>
 </body>
 
 </html>

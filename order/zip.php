@@ -18,7 +18,7 @@ foreach ($orders as $order) {
       $name = explode("/", $path->path);
       $realName = $name[count($name) - 1];
       // $file = fopen(__DIR__ . "/../photos/uploads/" . $realName, "r");
-      $zip->addFile("../photos/uploads/$realName");
+      $zip->addFile(__DIR__ . "/../photos/uploads/" . $realName, "../photos/uploads/" . $realName);
     }
 
     echo $zip->close() ? "done" : "not";

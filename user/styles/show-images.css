@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+
+i{
+  padding-right: 10px;
+}
+
 body {
   padding: 0.5rem;
 }

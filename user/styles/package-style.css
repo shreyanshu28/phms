@@ -2,6 +2,11 @@ html {
     box-sizing: border-box;
 }
 
+
+i{
+    padding-right: 10px;
+  }
+
 *, 
 *::before, 
 *::after {
