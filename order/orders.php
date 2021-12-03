@@ -11,7 +11,7 @@
   <title>Orders Dashboard</title>
 </head>
 
-<body class="container">
+<body>
   <?php
   if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -25,7 +25,7 @@
   require_once './orderModel.php';
   require_once './user-nav.php';
   ?>
-  <div class="title is-1 is-centered" id="title">Your Orders</div>
+  <div class="title is-1" id="title">Your Orders</div>
   <main class="image-gallery">
     <?php
     $o = new Order();
@@ -33,12 +33,24 @@
     $orders = $o->selectCustomerOrder($_SESSION["Email"]);
     foreach ($orders as $order) {
       // echo "<div class='card' id='card'>";
+      echo "
+          <section class='hero'>
+            <div class='hero-body'>
+              <div class='container'>
+                <h1 class='title'>Order $order->oid</h1>
+                <h2 class='subtitle'>Order Date&Time:<br />$order->date & $order->time</h2>
+              </div>
+              <div class='image-gallery'>";
       $paths = $p->selectPhotos($order->oid);
       foreach ($paths as $path) {
-        // $photo->insertPhotoOrder($p->pvid, $oid);
-        echo "<img src = '$path->path' class='image' />";
+        echo "  <a href='$path->path'>
+                  <img src = '$path->path' class='image' />
+                </a>";
       }
-      // echo "</div>";
+      echo "
+              </div>
+            </div>
+          </section>";
     }
 
     ?>

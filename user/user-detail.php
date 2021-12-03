@@ -25,7 +25,7 @@ if (!isset($_SESSION['Email'])) {
 </head>
 
 <body>
-  <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
+  <!-- <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
       <a href="../index.php" class="navbar-item">
         <h1 class="title is-4">Apricus Productions</h1>
@@ -80,7 +80,10 @@ if (!isset($_SESSION['Email'])) {
         <a href="./utilities/_log-out.php" class="navbar-item button is-danger">Logout</a>
       </div>
     </div>
-  </nav>
+  </nav> -->
+  <?php
+  include './user-nav.php';
+  ?>
 
   <h1 class="title mt-3 is-2 has-text-centered">Edit Profile</h1>
 

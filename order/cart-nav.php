@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 if (!isset($_SESSION["Email"])) {
   header("location: ./login.php?no=TRUE");
 } else {
-  require_once "./utilities/_fetch-user.php";
+  require_once __DIR__ . "/../user/utilities/_fetch-user.php";
 }
 
 ?>
@@ -19,7 +19,6 @@ if (!isset($_SESSION["Email"])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles/style.css" />
-  <link rel="stylesheet" href="./styles/package-style.css" /> <!-- for packages view -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
   <title>Home</title>
@@ -94,7 +93,7 @@ if (!isset($_SESSION["Email"])) {
                           Your Cart
                       </span>
                   </a>
-                  <a href='../order/orders.php' class='navbar-item'>
+                  <a href='../order/user-order.php' class='navbar-item'>
                   <div class='icon is-small is-left'>
                     <i class='fas fa-shopping-bag'></i>
                   </div>
@@ -126,52 +125,8 @@ if (!isset($_SESSION["Email"])) {
       </div>
     </div>
   </nav>
-  <div>
-    <?php
-    if (isset($_SESSION['payment'])) {
-      echo "<div class=notification is-info>";
-      echo "Your order has been confirmed";
-      echo "</div>";
-    }
-    ?>
-  </div>
-  <div class="row">
-    <div class="card-container">
-      <?php
-      if ($_SESSION["Role"] == "C") {
-        require_once "./utilities/_fetch-packages.php";
-        foreach ($packages as $package) {
-          if (!$package->status) {
-            continue;
-          }
-          echo "
-          <div class='card'>
-            <div class='card-content'>
-              <div class='plan-type'>
-                $package->packageName
-              </div>
-              <div class='plan-monthly-cost'>
-                ₹$package->price
-              </div>
-              <a href='../order/utilities/add-cart.php?cart=$package->pid'>
-                <button class='indexing-button'>
-                  Add to Cart →
-                </button>
-              </a>
-              <ul class='plan-details'>
-                <li class='plan-detail'>Photo Count: $package->photoCount</li>
-                <li class='plan-detail'>Video Count: $package->videoCount</li>
-                <li class='plan-detail'>$package->description</li>
-              </ul>
-            </div>
-          </div>";
-        }
-      }
-      ?>
-    </div>
-  </div>
 </body>
-<script src="./scripts/login.js"></script>
+<!-- <script src="./scripts/login.js"></script> -->
 <script src="../scripts/navbar.js"></script>
 
 </html>

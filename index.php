@@ -1,7 +1,7 @@
 <?php
 session_start();
-#session_destroy();
-#session_start();
+// session_destroy();
+// session_start();
 if (isset($_SESSION['userstring'])) {
   echo "SESSION: " . $_SESSION['userstring'];
 }
@@ -65,7 +65,6 @@ if (isset($_SESSION['FName'])) {
         <a href="./user/show-images.php" class="">Video Making <i class="fa fa-arrow-right"></i></a>
       </div>
     </div>
-
   </div>
   <div class="row">
     <div class="card-container">

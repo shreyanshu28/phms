@@ -38,7 +38,7 @@
             </span>
           </a>
           <div class="navbar-dropdown">
-            <a href="../user/user-detail.php" class="navbar-item">
+            <a href="./user-detail.php" class="navbar-item">
               <div class="icon is-small is-left">
                 <i class="fa fa-edit"></i>
               </div>
@@ -60,7 +60,7 @@
                                 </a>";
             } else if ($_SESSION["Role"] == "C") {
               echo "
-                                <a href='./cart.php?cart=-1' class='navbar-item'>
+                                <a href='../order/cart.php?cart=-1' class='navbar-item'>
                                     <div class='icon is-small is-left'>
                                         <i class='fa fa-shopping-cart'></i>
                                     </div>
@@ -69,7 +69,7 @@
                                     </span>
                                 </a>";
               echo "
-                                <a href='./orders.php' class='navbar-item'>
+                                <a href='../order/orders.php' class='navbar-item'>
                                     <div class='icon is-small is-left'>
                                         <i class='fa fa-photo'></i>
                                     </div>
