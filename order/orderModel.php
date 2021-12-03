@@ -10,20 +10,22 @@ class Order extends DB
 
     public function selectAllOrder()
     {
-        $sql = "SELECT o.oid, o.status, o.date, o.time, u.email from tblOrderMaster o inner join tblUserMaster u on o.cid=u.uid"; 
+        $sql = "SELECT o.oid, o.status, o.date, o.time, u.email from tblOrderMaster o inner join tblUserMaster u on o.cid = u.uid";
         return $this->select($sql);
     }
 
-    public function selectOrderStatus() {
+    public function selectOrderStatus()
+    {
         $sql = "SELECT DISTINCT(status) FROM tblOrderMaster";
         return $this->select($sql);
     }
 
     public function selectCustomerOrder($email)
     {
-        $sql = "SELECT oid FROM tblOrderMaster WHERE cid = (SELECT uid FROM tblUserMaster WHERE email = :email) ";
+        $status = 'Completed';
+        $sql = "SELECT oid, date, time FROM tblOrderMaster WHERE cid = (SELECT uid FROM tblUserMaster WHERE email = :email) AND status = :status";
 
-        $cond = ["email" => $email];
+        $cond = ["email" => $email, "status" => $status];
 
         return $this->select($sql, $cond);
     }
@@ -52,10 +54,9 @@ class Order extends DB
     public function selectCustomOrder($cid)
     {
         $sql = "SELECT oid, date, time FROM tblordermaster WHERE cid=:cid"; #ADD YOUR QUERY
-        $cond = ["cid"=>$cid];
+        $cond = ["cid" => $cid];
         return $this->select($sql, $cond);
     }
-
 
     public function countOrders()
     {

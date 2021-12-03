@@ -31,8 +31,9 @@ require_once "./utilities/fetch-cart.php";
 <body>
   <?php
   require_once "./../user/utilities/_fetch-packages.php";
-  include "navbar.php";
+  require_once "./user-nav.php";
   ?>
+
   <main class="main-cart">
     <form action="./order-address.php" method="POST">
       <table id="myTable" class="table table-responsive-md">
@@ -75,6 +76,9 @@ require_once "./utilities/fetch-cart.php";
       </table>
       <div class='field'>
         <div class='control'>
+          <?php
+
+          ?>
           <input type='submit' class='button is-info m-2 is-medium' name='btnSubmit' value='Next' />
         </div>
       </div>

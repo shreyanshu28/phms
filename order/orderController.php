@@ -3,14 +3,16 @@ include __DIR__ . './orderModel.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-    if($_SESSION["Role"] != 'A') {
-        header("location: ../index.php");
-    }
 }
+
+if ($_SESSION["Role"] != 'A') {
+    header("location: ../index.php");
+}
+
 $order = new Order();
 
 //UPDATE
-if (isset( $_REQUEST['oid'])) {
+if (isset($_REQUEST['oid'])) {
     $result = $order->updateOrder($_REQUEST['oid'], $_SESSION['newStatus']);
     unset($_SESSION['newStatus']);
     header('location:./order.php');
