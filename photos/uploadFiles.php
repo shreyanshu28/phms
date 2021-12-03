@@ -32,6 +32,7 @@
             }
 
             if (isset($_POST['submit'])) {
+
                 // File upload configuration 
                 $targetDir = "uploads/";    //uploads and query string and order id
                 $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
@@ -40,6 +41,7 @@
                 $fileNames = array_filter($_FILES['files']['name']);
                 if (!empty($fileNames)) {
                     foreach ($_FILES['files']['name'] as $key => $val) {
+
                         // File upload path 
                         $fileName = basename($_FILES['files']['name'][$key]);
                         $targetFilePath = $targetDir . $fileName;
@@ -54,6 +56,7 @@
                                 $photo = new Photos();
 
                                 $pvid = $photo->insertPhotos("/ProductionHouse/photos/" . $targetFilePath);
+
                                 foreach ($pvid as $p) {
                                     $photo->insertPhotoOrder($p->pvid, $oid);
                                     echo "<img src = '$targetFilePath' class='image' />";
