@@ -28,7 +28,7 @@ require_once './navbar.php';
   $users = $_SESSION['adminUsers'];
   $role = $_SESSION['adminRole'];
   ?>
-  <div class="container">
+  <div class="container" style="overflow-x: scroll">
     <nav class="breadcrumb navbar">
       <ul>
         <li><a href="../index.php">Home</a></li>

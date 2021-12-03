@@ -23,7 +23,7 @@ require_once "./utilities/fetch-types.php";
   <?php
   require_once "./navbar.php";
   ?>
-  <div class="m-5">
+  <div class="container">
     <nav class="breadcrumb navbar">
       <ul>
         <li><a href="../index.php">Home</a></li>
