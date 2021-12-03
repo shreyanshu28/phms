@@ -28,16 +28,30 @@
   <div class="title is-1" id="title">Your Orders</div>
   <main class="image-gallery">
     <?php
+    // $zip = new ZipArchive;
+
     $o = new Order();
     $p = new Photos();
     $orders = $o->selectCustomerOrder($_SESSION["Email"]);
     foreach ($orders as $order) {
+
+      // if ($zip->open("./order" . $order->oid . ".zip", ZipArchive::CREATE) === TRUE) {
+      //   $paths = $p->selectPhotos($order->oid);
+      //   foreach ($paths as $path) {
+      //     $name = explode("/", $path->path);
+      //     $realName = $name[count($name) - 1];
+      //     $file = fopen(__DIR__ . "/../photos/uploads/" . $realName, "r");
+      //   }
+
+      //   echo $zip->close() ? "done" : "not";
+      // }
+      // echo "<script>alert('hrer')</script>";
       // echo "<div class='card' id='card'>";
       echo "
           <section class='hero'>
             <div class='hero-body'>
               <div class='container'>
-                <h1 class='title'>Order $order->oid</h1>
+                <h1 class='title'>Order $order->oid <a href='./zip.php?zip=$order->oid' class='button'>Download Zip</a></h1>
                 <h2 class='subtitle'>Order Date&Time:<br />$order->date & $order->time</h2>
               </div>
               <div class='image-gallery'>";
@@ -53,9 +67,9 @@
           </section>";
     }
 
+
     ?>
   </main>
-
   <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

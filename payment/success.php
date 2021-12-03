@@ -15,7 +15,11 @@ $checkUrl = "http://localhost/ProductionHouse/payment/payment.php";
 
 if (!strcmp($url, $checkUrl)) {
   $method = strtoupper("ONLINE");
-  $refid = "";
+
+  if (isset($_SESSION["refId"])) {
+    $refid = $_SESSION["refId"];
+  }
+
   $date = date("Y/m/d");
   $time = date("h:i:sa");
   $amount = $_SESSION["amtTotal"];
@@ -43,6 +47,15 @@ if (!strcmp($url, $checkUrl)) {
   }
 
   $order->addOrder($date, $time, $cid, $poid);
+
+  $sql = "UPDATE tblCart SET status = :newStatus WHERE cartid = :cid";
+
+  $newStatus = 0;
+  $stmt = $pdo->prepare($sql);
+  $result = $stmt->execute([
+    "newStatus" => $newStatus, "cid" => $cid
+  ]);
+
   $_SESSION['payment'] = true;
   header("location: /ProductionHouse/user/home.php");
 } else {

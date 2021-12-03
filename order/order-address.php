@@ -112,8 +112,13 @@ if (!isset($_SESSION['Email'])) {
   <form action="./add-address.php" method="post" class="order-address-main">
     <div class='field'>
       <div class='control'>
-        <input type="date" name="date" min="<?php echo date("Y") . "-" . date("m") . "-" . date("d") ?>" max="<?php echo date("Y") . "-" . (date("m") + 6) . "-" . date("d") ?>" class="input is-info is-medium" />
-        <input type="time" name="time" min="<?php echo time() ?>" class="input is-info is-medium" />
+        <label for="date" class="label">
+          Order Date
+          <input type="date" name="date" type="date" min="<?php echo date("Y") . "-" . date("m") . "-" . date("d") ?>" max="<?php echo date("Y") . "-" . (date("m") + 6) . "-" . date("d") ?>" class="input is-info is-medium" />
+        </label>
+        <label for="time" class="label">Order Time
+          <input type="time" name="time" min="<?php echo time() ?>" class="input is-info is-medium" />
+        </label>
       </div>
     </div>
     <div class="field" id="field">
