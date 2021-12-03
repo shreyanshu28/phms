@@ -57,12 +57,12 @@ require_once './navbar.php';
                     if ($o->status == 'Confirmed') {
                         echo "<td><a class='button is-info'>Assign Employees</a>&nbsp
                         <a class='button is-info'>Assign props</a></td>";
-                    } else if ($o->status == 'Completed') {
-                        echo "<td><a href='../photos/uploadFiles.php?id=$o->oid' class='button is-info'>Deliver Photos</a></td>";
-                    } else {
-                        echo "<td><a class='button is-warning'>Confirm Order</a></td>";
-                    }
-                    echo "</tr>";
+                } else if ($o->status == 'Completed') {
+                    echo "<td><a href='../photos/uploadFiles.php?id=$o->oid' class='button is-info'>Deliver Photos</a></td>";
+                } else if ($o->status == 'Delivered'){
+                    echo "<td><a class='button is-ghost'></a></td>";
+                } else {
+                    echo "<td><a class='button is-warning'>Confirm Order</a></td>";
                 }
                 ?>
             </tbody>

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <nav class="navbar is-spaced" role="navigration" aria-label="main navigation">
+  <nav class="navbar is-spaced is-primary" role="navigration" aria-label="main navigation">
     <div class="navbar-brand">
       <a href="../index.php" class="navbar-item">
         <h1 class="title is-4">Apricus Productions</h1>
@@ -27,6 +27,7 @@
       <div class="navbar-end">
         <a href="../user/home.php" class="navbar-item">Home</a>
         <a href="../inventory/inventory.php" class="navbar-item">Inventory</a>
+        <a href="../user/admin/view-user.php" class="navbar-item">Users</a>
         <a href="./package.php" class="navbar-item">Packages</a>
         <a href="../order/order.php" class="navbar-item">Orders</a>
         <a href="../user/admin/view-user.php" class="navbar-item">Users</a>
