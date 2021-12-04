@@ -62,7 +62,7 @@ require_once './navbar.php';
                     } else if ($o->status == 'Delivered') {
                         echo "<td><a class='button is-ghost'></a></td>";
                     } else {
-                        echo "<td><a class='button is-warning'>Confirm Order</a></td>";
+                        echo "<td><a href='./orderController.php?oid=$o->oid&status=Confirmed' class='button is-warning'>Confirm Order</a></td>";
                     }
                 }
                 ?>

@@ -13,7 +13,7 @@ $payment = new Payment();
 $url = $_SERVER['HTTP_REFERER'];
 $checkUrl = "http://localhost/ProductionHouse/payment/payment.php";
 
-if (!strcmp($url, $checkUrl)) {
+if (strcmp($url, $checkUrl)) {
   $method = strtoupper("ONLINE");
 
   if (isset($_SESSION["refId"])) {
@@ -31,7 +31,7 @@ if (!strcmp($url, $checkUrl)) {
   $cid = $_SESSION["cid"];
   $status = 1;
 
-  $sql = "SELECT pid, qty FROM tblCart WHERE "
+  $sql = "SELECT cartid, pid, qty FROM tblCart WHERE "
     . "cid = :cid AND status = :status";
 
   $stmt = $pdo->prepare($sql);
@@ -43,6 +43,7 @@ if (!strcmp($url, $checkUrl)) {
   $packages = $stmt->fetchAll();
 
   foreach ($packages as $package) {
+    $cartId = $package->cartid;
     $payment->addPackagePaymentOrder($package->pid, $poid, $package->qty);
   }
 
@@ -53,9 +54,9 @@ if (!strcmp($url, $checkUrl)) {
   $newStatus = 0;
   $stmt = $pdo->prepare($sql);
   $result = $stmt->execute([
-    "newStatus" => $newStatus, "cid" => $cid
+    "newStatus" => $newStatus, "cid" => $cartId
   ]);
-
+  echo $cartId;
   $_SESSION['payment'] = true;
   header("location: /ProductionHouse/user/home.php");
 } else {

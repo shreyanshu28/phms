@@ -8,6 +8,12 @@ class Order extends DB
         parent::__construct();
     }
 
+    public function refreshOrderStatus()
+    {
+        $sql = "UPDATE tblOrderMaster set status='Completed' WHERE date <= CURDATE() AND time <= CURTIME()";
+        return $this->update($sql);
+    }
+
     public function selectAllOrder()
     {
         $sql = "SELECT o.oid, o.status, o.date, o.time, u.email from tblOrderMaster o inner join tblUserMaster u on o.cid = u.uid";
@@ -30,6 +36,14 @@ class Order extends DB
         return $this->select($sql, $cond);
     }
 
+    public function setOrderStatus($status, $oid)
+    {
+        // $sql = "INSERT INTO tblOrderMaster (date, time, cid, poid) VALUES (:date, :time, :cid, :poid)";
+        $sql = "UPDATE tblOrderMaster SET status=:status WHERE oid=:oid";
+        //UPDATE tblordermaster set status='Confirmed' where oid=8;
+        $cond = ["status" => $status, "oid" => $oid];
+        return $this->update($sql, $cond);
+    }
     public function addOrder($date, $time, $cid, $poid)
     {
         $sql = "INSERT INTO tblOrderMaster (date, time, cid, poid) VALUES (:date, :time, :cid, :poid)";

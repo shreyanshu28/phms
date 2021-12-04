@@ -109,7 +109,7 @@ if (!isset($_SESSION['Email'])) {
 
   <p class="title mt-3 is-2 has-text-centered">Order Details</p>
 
-  <form action="./add-address.php" method="post" class="order-address-main">
+  <form action="./add-address.php" method="POST" class="order-address-main">
     <div class='field'>
       <div class='control'>
         <label for="date" class="label">
@@ -169,7 +169,7 @@ if (!isset($_SESSION['Email'])) {
     </div>
     <div class='field'>
       <div class='control'>
-        <input type='submit' class='button is-info m-2 is-medium' name='btnSubmit' value='Next' />
+        <input type='submit' class='button is-info m-2 is-medium' name='submit' value='Next' />
       </div>
     </div>
   </form>
