@@ -20,8 +20,8 @@ if (strcmp($url, $checkUrl)) {
     $refid = $_SESSION["refId"];
   }
 
-  $date = date("Y/m/d");
-  $time = date("h:i:sa");
+  $date = $_SESSION["order-date"];
+  $time = $_SESSION["order-time"];
   $amount = $_SESSION["amtTotal"];
 
   $payment->addPaymentOrder($method, $refid, $date, $time, $amount);
